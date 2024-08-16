@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://gafk8m47resi"]
+[gd_scene load_steps=5 format=3 uid="uid://b2l23pfjp76b7"]
 
-[ext_resource type="Script" path="res://scripts/Bee.gd" id="1_tyim5"]
+[ext_resource type="Script" path="res://scripts/bee.gd" id="1_tyim5"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vi1rl"]
-radius = 37.0
-height = 78.0
+radius = 533.755
+height = 1067.51
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gpbk"]
 radius = 51.0392
 
 [node name="Bee" type="CharacterBody2D"]
+scale = Vector2(0.027842, 0.0316274)
 script = ExtResource("1_tyim5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(10, -5)
-scale = Vector2(0.0754386, 0.0814371)
 texture = ExtResource("2_8ckqs")
 
 [node name="FlockView" type="Area2D" parent="."]

@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var max_speed: = 200.0
+@export var max_speed: = 500.0
 @export var mouse_follow_force: = 0.05
 @export var cohesion_force: = 0.05
 @export var align_force: = 0.05
-@export var separation_force: = 0.05
+@export var separation_force: = 0.06
 @export var view_distance := 50.0
 @export var avoid_distance := 20.0
 

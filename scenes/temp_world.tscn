@@ -1,26 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dart3ow4fmhv3"]
+[gd_scene load_steps=2 format=3 uid="uid://6u3apyqtq24p"]
 
-[ext_resource type="PackedScene" uid="uid://gafk8m47resi" path="res://scenes/bee.tscn" id="1_i7da6"]
+[ext_resource type="PackedScene" uid="uid://b2l23pfjp76b7" path="res://scenes/bee.tscn" id="1_i7da6"]
 
 [node name="TempWorld" type="Node2D"]
 
 [node name="Bee" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(211, 60)
+position = Vector2(519, 354)
 
 [node name="Bee2" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(534, 499)
+position = Vector2(552, 212)
 
 [node name="Bee3" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(79, 258)
+position = Vector2(284, 263)
 
 [node name="Bee4" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(392, 73)
+position = Vector2(724, 585)
 
 [node name="Bee5" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(838, 379)
+position = Vector2(393, 451)
 
 [node name="Bee6" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(631, 12)
+position = Vector2(413, 200)
 
 [node name="Bee7" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(288, 349)
+position = Vector2(633, 288)
