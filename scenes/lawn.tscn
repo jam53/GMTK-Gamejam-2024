@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2c53htsjaklb"]
+
+[ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
+
+[node name="Lawn" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(988, 25)
+texture = ExtResource("1_vh6ib")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_j2s3r")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
