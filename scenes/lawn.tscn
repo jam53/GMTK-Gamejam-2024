@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=9 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/flower_spawner.gd" id="4_721qi"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/basic_bear.tscn" id="5_h78oq"]
+[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/basic_rabbit.tscn" id="8_lk0uv"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -29,3 +30,4 @@ position = Vector2(-994, -21)
 script = ExtResource("4_yw1nr")
 initial_amount = 3
 basic_bear = ExtResource("5_h78oq")
+basic_rabbit = ExtResource("8_lk0uv")

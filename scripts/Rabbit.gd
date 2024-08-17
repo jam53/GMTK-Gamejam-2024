@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed: float = 30.0
+@export var speed: float = 100.0
 
 var target_flower: Node = null
 var collision_timer: Timer = null
@@ -11,7 +11,7 @@ func _ready():
 	find_closest_flower()
 	# Initialize the collision timer
 	collision_timer = Timer.new()
-	collision_timer.wait_time = 5.0
+	collision_timer.wait_time = 10.0
 	collision_timer.one_shot = true
 	add_child(collision_timer)
 	collision_timer.connect("timeout", Callable(self, "_on_collision_timeout"))

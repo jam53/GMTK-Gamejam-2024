@@ -8,15 +8,16 @@ radius = 29.0
 height = 144.0
 
 [node name="BasicBear" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_80u5b")
 
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(80, 115)
 shape = SubResource("CapsuleShape2D_xtj34")
 
 [node name="AxeBear" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(94.125, 114.625)
 scale = Vector2(0.458229, 0.478601)
 texture = ExtResource("1_myaaf")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
