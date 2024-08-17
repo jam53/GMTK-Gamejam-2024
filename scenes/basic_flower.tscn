@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://k7wc1m4j6fm"]
+[gd_scene load_steps=3 format=3 uid="uid://k7wc1m4j6fm"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/BasicFlower.jpg" id="1_vct0m"]
+[ext_resource type="Texture2D" uid="uid://cil2as1oaqfe3" path="res://assets/sprites/BasicFlower.jpg" id="1_vct0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_510v3"]
+radius = 41.0
 
 [node name="Basic_Flower" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-2, 0)
 scale = Vector2(0.317829, 0.317829)
 texture = ExtResource("1_vct0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_510v3")

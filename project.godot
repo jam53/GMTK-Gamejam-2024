@@ -15,6 +15,10 @@ run/main_scene="res://scenes/lawn.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [dotnet]
 
 project/assembly_name="GMTK-Gamejam-2024"
