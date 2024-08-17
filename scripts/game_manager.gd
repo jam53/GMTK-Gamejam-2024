@@ -1,5 +1,7 @@
 extends Node
 
+class_name GameManager
+
 var honey_amount := 0
 @onready var honey_amount_label = $honeyamountlabel
 

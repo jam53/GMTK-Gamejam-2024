@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://njuanacax6rs"]
 
 [ext_resource type="PackedScene" uid="uid://cqv5u44ij7yof" path="res://scenes/boids_component.tscn" id="1_ekwfm"]
-[ext_resource type="Script" path="res://scenes/pollinator.gd" id="1_wpucn"]
+[ext_resource type="Script" path="res://scripts/pollinator.gd" id="1_o4nss"]
 [ext_resource type="Texture2D" uid="uid://cw6sd1iyoi235" path="res://assets/sprites/temp/pollinator.png" id="2_3exmf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7x5u"]
@@ -16,7 +16,9 @@ radius = 53.1473
 [node name="Pollinator" type="Node2D"]
 z_index = 1
 scale = Vector2(0.376313, 0.376313)
-script = ExtResource("1_wpucn")
+script = ExtResource("1_o4nss")
+pollinateTime = null
+hiveTime = null
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_ekwfm")]
 flock_area_shape = NodePath("FlockView")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4a7rjdvsbiot"]
+[gd_scene load_steps=7 format=3 uid="uid://c4a7rjdvsbiot"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
-[ext_resource type="Texture2D" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
+[ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
-[ext_resource type="PackedScene" uid="uid://njuanacax6rs" path="res://scenes/pollinator.tscn" id="2_n0x6s"]
 [ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://b1ykum5n2wew4" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="4_2lnta"]
@@ -26,52 +25,11 @@ text = "Honey amount: 0"
 position = Vector2(545, 286)
 texture = ExtResource("1_vh6ib")
 
-[node name="Pollinator" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator2" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator3" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator4" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator5" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator6" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator7" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator8" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator9" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator10" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator11" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(836, 297)
+
+[node name="Hive2" parent="." instance=ExtResource("2_qycfm")]
+position = Vector2(182, 491)
 
 [node name="Bee" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(263, 127)

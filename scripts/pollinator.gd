@@ -1,12 +1,12 @@
 extends Node2D
 
-@export var hive : Node2D
+@export var hive : Hive
 @export var pollinateTime := 2
 @export var hiveTime := 2
 @onready var boids_component = $BoidsComponent
 @onready var pollinate_timer = $PollinateTimer
 @onready var hive_timer = $HiveTimer
-@onready var game_manager = %GameManager
+
 
 var _flower_found := false
 var _in_hive := false
@@ -47,6 +47,6 @@ func _on_pollinate_timer_timeout():
 
 func _on_hive_timer_timeout():
 	print("Hivetime finished")
-	game_manager.update_honey(5)
+	hive.game_manager.update_honey(5)
 	_in_hive = false
 	boids_component.lure = null
