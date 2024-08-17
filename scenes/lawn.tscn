@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfxbbduw8jsfy"]
+[gd_scene load_steps=7 format=3 uid="uid://c4a7rjdvsbiot"]
 
-[ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
+[ext_resource type="Texture2D" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
-[ext_resource type="PackedScene" uid="uid://b4ya57leg4wvs" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://njuanacax6rs" path="res://scenes/pollinator.tscn" id="2_n0x6s"]
+[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
+[ext_resource type="PackedScene" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="4_2lnta"]
 
 [node name="Lawn" type="Node2D"]
 
 [node name="Grass" type="Sprite2D" parent="."]
-position = Vector2(988, 25)
+position = Vector2(545, 286)
 texture = ExtResource("1_vh6ib")
 
+[node name="Pollinator" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Hive" parent="." instance=ExtResource("2_qycfm")]
+position = Vector2(836, 297)
+
+[node name="Bee" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(263, 127)
+
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(536, 289)
 script = ExtResource("2_j2s3r")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
+position = Vector2(-447, 261)

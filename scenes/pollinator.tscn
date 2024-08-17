@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://njuanacax6rs"]
+
+[ext_resource type="PackedScene" uid="uid://cqv5u44ij7yof" path="res://scenes/boids_component.tscn" id="1_ekwfm"]
+[ext_resource type="Script" path="res://scenes/pollinator.gd" id="1_wpucn"]
+[ext_resource type="Texture2D" uid="uid://cw6sd1iyoi235" path="res://assets/sprites/temp/pollinator.png" id="2_3exmf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7x5u"]
+radius = 17.1172
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfryl"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31pin"]
+radius = 91.0055
+
+[node name="Pollinator" type="Node2D"]
+z_index = 1
+script = ExtResource("1_wpucn")
+
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_ekwfm")]
+flock_area_shape = NodePath("FlockView")
+max_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
+scale = Vector2(0.0504633, 0.0504633)
+texture = ExtResource("2_3exmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent"]
+shape = SubResource("CircleShape2D_g7x5u")
+
+[node name="FlockView" type="CollisionShape2D" parent="BoidsComponent"]
+shape = SubResource("CircleShape2D_mfryl")
+
+[node name="FlowerDetectionArea" type="Area2D" parent="BoidsComponent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/FlowerDetectionArea"]
+shape = SubResource("CircleShape2D_31pin")
+
+[node name="PollinateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="BoidsComponent/FlowerDetectionArea" to="." method="_on_flower_detection_area_area_entered"]
+[connection signal="body_entered" from="BoidsComponent/FlowerDetectionArea" to="." method="_on_flower_detection_area_body_entered"]
+[connection signal="timeout" from="PollinateTimer" to="." method="_on_pollinate_timer_timeout"]
+[connection signal="timeout" from="HiveTimer" to="." method="_on_hive_timer_timeout"]
