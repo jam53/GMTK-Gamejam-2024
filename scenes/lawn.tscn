@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfxbbduw8jsfy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfxbbduw8jsfy"]
 
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://b4ya57leg4wvs" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://bmq34gkbityqd" path="res://scenes/ui/object_placer.tscn" id="5_6hlqp"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -16,3 +17,12 @@ script = ExtResource("2_j2s3r")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
+
+[node name="ObjectPlacer" parent="." instance=ExtResource("5_6hlqp")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 325.0
+offset_bottom = 325.0
+grow_horizontal = 1
+grow_vertical = 1
