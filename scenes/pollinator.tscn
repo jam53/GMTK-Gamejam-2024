@@ -18,7 +18,8 @@ z_index = 1
 scale = Vector2(0.376313, 0.376313)
 script = ExtResource("1_o4nss")
 
-[node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_ekwfm")]
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_ekwfm")]
+sprite = NodePath("Sprite2D")
 flock_area_shape = NodePath("FlockView")
 max_speed = 200.0
 beetype = 1

@@ -12,7 +12,8 @@ radius = 1863.0
 [node name="Bee" type="Node2D"]
 z_index = 2
 
-[node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_efan8")]
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_efan8")]
+sprite = NodePath("Sprite2D")
 flock_area_shape = NodePath("FlockViewCollision")
 max_speed = 350.0
 target_follow_force = 0.076

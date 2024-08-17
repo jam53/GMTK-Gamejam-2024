@@ -4,6 +4,7 @@ extends CharacterBody2D
 class_name BoidComponent
 
 @onready var flock_area = $FlockArea
+@export var sprite : Sprite2D
 @export var flock_area_shape : CollisionShape2D
 
 @export var max_speed: = 500.0
@@ -17,6 +18,8 @@ class_name BoidComponent
 @export var lure : Node2D = null
 @export var beetype : Enums.BeeType
 @export var stopable := false
+
+@export var facing_right := true
 
 var _flock: Array = []
 var _velocity: Vector2
@@ -46,8 +49,6 @@ func _physics_process(_delta):
 	var target
 	var target_force = target_follow_force
 	
-	
-	
 	if lure is Node2D:
 		target = lure.global_position
 		target_force *= 2
@@ -57,6 +58,22 @@ func _physics_process(_delta):
 	var target_vector = Vector2.ZERO
 	if target != Vector2.INF:
 		target_vector = global_position.direction_to(target) * max_speed * target_force
+		
+		
+		
+		var cross = target.x - self.global_position.x
+		if cross > 0:
+			# Target is to the right
+			print("target to the right: %s" % facing_right)
+			if not facing_right: 
+				sprite.flip_h = !sprite.flip_h
+				facing_right = true
+		elif cross < 0:
+			# Target is to the left
+			print("target to the left: %s" % facing_right)
+			if facing_right:
+				sprite.flip_h = !sprite.flip_h
+				facing_right = false
 		
 	# Get cohesion, alignment, and separation vectors
 	var vectors = get_flock_status(_flock)

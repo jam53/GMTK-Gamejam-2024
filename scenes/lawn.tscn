@@ -26,18 +26,9 @@ position = Vector2(545, 286)
 texture = ExtResource("1_vh6ib")
 
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
-position = Vector2(836, 297)
-
-[node name="Hive2" parent="." instance=ExtResource("2_qycfm")]
-position = Vector2(182, 491)
+position = Vector2(688, 349)
 
 [node name="Bee" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(263, 127)
-
-[node name="Bee5" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(263, 127)
-
-[node name="Bee6" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(263, 127)
 
 [node name="Player" type="CharacterBody2D" parent="."]
