@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name Bee
+
+@export var flock_view : Area2D
+
 @export var max_speed: = 500.0
 @export var mouse_follow_force: = 0.05
 @export var cohesion_force: = 0.05
@@ -14,6 +18,7 @@ var _width = ProjectSettings.get_setting("display/window/size/viewport_width")
 var _height = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 var _flock: Array = []
+var _lure: Beelure = null
 var _mouse_target: Vector2
 var _velocity: Vector2
 
@@ -25,8 +30,8 @@ func _ready():
 	_mouse_target = get_global_mouse_position()
 	
 func _physics_process(delta):
-	
-	_mouse_target = get_global_mouse_position()
+	if _lure == null:
+		_mouse_target = get_global_mouse_position()
 	var mouse_vector = Vector2.ZERO
 	if _mouse_target != Vector2.INF:
 		mouse_vector = global_position.direction_to(_mouse_target) * max_speed * mouse_follow_force
@@ -79,10 +84,18 @@ func get_flock_status(flock: Array):
 		
 
 
-func _on_flockview_body_entered(body: PhysicsBody2D):
-	if self != body:
+func _on_flockview_body_entered(body):
+	print("Body entered")
+	if body is Beelure:
+		print("Beelure entered")
+		if _lure == null:
+			_lure = body
+			_mouse_target = body.global_position
+	elif self != body:
+		print("Bee entered")
 		_flock.append(body)
 
 
-func _on_flockview_body_exited(body: PhysicsBody2D):
-	_flock.remove_at(_flock.find(body))
+func _on_flockview_body_exited(body):
+	if body is Bee and self != body:
+		_flock.remove_at(_flock.find(body))

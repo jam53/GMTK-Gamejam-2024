@@ -3,28 +3,33 @@
 [ext_resource type="Script" path="res://scripts/bee.gd" id="1_tyim5"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vi1rl"]
-radius = 533.755
-height = 1067.51
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
+radius = 360.559
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8gpbk"]
-radius = 51.0392
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oofy"]
+radius = 821.096
 
-[node name="Bee" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+
+[node name="Bee" type="CharacterBody2D" parent="." node_paths=PackedStringArray("flock_view")]
 scale = Vector2(0.027842, 0.0316274)
 script = ExtResource("1_tyim5")
+flock_view = NodePath("FlockView")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Bee"]
 position = Vector2(10, -5)
 texture = ExtResource("2_8ckqs")
 
-[node name="FlockView" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee"]
+shape = SubResource("CircleShape2D_2kadw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlockView"]
+[node name="FlockView" type="Area2D" parent="Bee"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/FlockView"]
 position = Vector2(5, 3)
-shape = SubResource("CapsuleShape2D_vi1rl")
+shape = SubResource("CircleShape2D_5oofy")
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 2)
-shape = SubResource("CircleShape2D_8gpbk")
+[connection signal="body_entered" from="Bee/FlockView" to="Bee" method="_on_flockview_body_entered"]
+[connection signal="body_exited" from="Bee/FlockView" to="Bee" method="_on_flockview_body_exited"]

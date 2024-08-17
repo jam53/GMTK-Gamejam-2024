@@ -1,26 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://6u3apyqtq24p"]
+[gd_scene load_steps=3 format=3 uid="uid://6u3apyqtq24p"]
 
-[ext_resource type="PackedScene" uid="uid://b2l23pfjp76b7" path="res://scenes/bee.tscn" id="1_i7da6"]
+[ext_resource type="PackedScene" uid="uid://dsdqo7xgojaep" path="res://scenes/beelure.tscn" id="2_8abiu"]
+[ext_resource type="PackedScene" uid="uid://b2l23pfjp76b7" path="res://scenes/bee.tscn" id="2_14e2i"]
 
 [node name="TempWorld" type="Node2D"]
 
-[node name="Bee" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(519, 354)
+[node name="Beelure" parent="." instance=ExtResource("2_8abiu")]
+position = Vector2(1775, 280)
 
-[node name="Bee2" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(552, 212)
+[node name="Node2D" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(229, 115)
 
-[node name="Bee3" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(284, 263)
+[node name="Node2D2" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
 
-[node name="Bee4" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(724, 585)
+[node name="Node2D3" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
 
-[node name="Bee5" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(393, 451)
+[node name="Node2D4" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
 
-[node name="Bee6" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(413, 200)
+[node name="Node2D5" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
 
-[node name="Bee7" parent="." instance=ExtResource("1_i7da6")]
-position = Vector2(633, 288)
+[node name="Node2D6" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D7" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D8" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D9" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D10" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D11" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)
+
+[node name="Node2D12" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(230, 115)

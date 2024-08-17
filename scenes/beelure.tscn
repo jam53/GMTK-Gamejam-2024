@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsdqo7xgojaep"]
+
+[ext_resource type="Texture2D" uid="uid://csvs55k3ubct7" path="res://assets/sprites/temp/beelure.png" id="1_f76bp"]
+[ext_resource type="Script" path="res://scripts/beelure.gd" id="1_g48lp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c73jq"]
+radius = 1.1986
+
+[node name="Beelure" type="StaticBody2D"]
+scale = Vector2(1.82622, 2.05297)
+script = ExtResource("1_g48lp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -9.53674e-07)
+scale = Vector2(0.0655, 0.0675)
+texture = ExtResource("1_f76bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c73jq")
