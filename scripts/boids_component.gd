@@ -16,6 +16,7 @@ class_name BoidComponent
 
 @export var lure : Node2D = null
 @export var beetype : Enums.BeeType
+@export var stopable := false
 
 var _flock: Array = []
 var _velocity: Vector2
@@ -33,7 +34,7 @@ func _ready():
 	flock_area.add_child(flock_area_shape)
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("disable_follow"):
+	if stopable and Input.is_action_just_pressed("disable_follow"):
 			if _stop_mouse_follow:
 				lure = null
 			else:

@@ -30,11 +30,63 @@ texture = ExtResource("1_vh6ib")
 position = Vector2(374, 269)
 hive = NodePath("../Hive")
 
+[node name="Pollinator2" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator3" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator4" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator5" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator6" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator7" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator8" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator9" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator10" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator11" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(836, 297)
 
 [node name="Bee" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(263, 127)
+
+[node name="Bee5" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(263, 127)
+
+[node name="Bee6" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(263, 127)
+
+[node name="Bee7" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(263, 127)
+
+[node name="Bee8" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(573, 344)
 
 [node name="Bee2" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(530, 133)
@@ -53,3 +105,4 @@ script = ExtResource("2_j2s3r")
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-442, 261)
+initial_amount = 7
