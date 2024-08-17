@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cw6sd1iyoi235" path="res://assets/sprites/temp/pollinator.png" id="2_3exmf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7x5u"]
-radius = 17.1172
+radius = 13.2868
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfryl"]
 radius = 45.0
@@ -21,6 +21,7 @@ script = ExtResource("1_wpucn")
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_ekwfm")]
 flock_area_shape = NodePath("FlockView")
 max_speed = 200.0
+beetype = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
 scale = Vector2(0.0504633, 0.0504633)

@@ -7,7 +7,7 @@
 radius = 215.502
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
-radius = 930.792
+radius = 1863.0
 
 [node name="Bee" type="Node2D"]
 z_index = 2
@@ -15,7 +15,8 @@ z_index = 2
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_efan8")]
 flock_area_shape = NodePath("FlockViewCollision")
 max_speed = 400.0
-target_follow_force = 0.65
+target_follow_force = 0.065
+separation_force = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
 position = Vector2(0.27842, -0.158137)

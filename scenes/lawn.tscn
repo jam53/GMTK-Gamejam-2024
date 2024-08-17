@@ -30,35 +30,20 @@ texture = ExtResource("1_vh6ib")
 position = Vector2(374, 269)
 hive = NodePath("../Hive")
 
-[node name="Pollinator2" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator3" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator4" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator5" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator6" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
-[node name="Pollinator7" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
-position = Vector2(374, 269)
-hive = NodePath("../Hive")
-
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(836, 297)
 
 [node name="Bee" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(263, 127)
+
+[node name="Bee2" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(530, 133)
+
+[node name="Bee3" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(266, 329)
+
+[node name="Bee4" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(71, 218)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(536, 289)
