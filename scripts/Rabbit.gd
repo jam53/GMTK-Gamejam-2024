@@ -42,15 +42,6 @@ func _process(delta):
 			if not collision_timer.is_stopped():
 				print("Stopping collision timer.")
 				collision_timer.stop()
-		# Check for collision with bees
-		for bee in Global.bees:
-			if position.distance_to(bee.position) < 50:  # Adjust the collision distance as needed
-				print("Collision with bee detected.")
-				# Remove both bear and bee
-				if not is_being_freed:
-					is_being_freed = true
-					queue_free()
-					bee.queue_free()
 					
 # Called when the collision timer times out
 func _on_collision_timeout():
