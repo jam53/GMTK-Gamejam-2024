@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsdqo7xgojaep"]
+[gd_scene load_steps=6 format=3 uid="uid://ch7lshbb1clyh"]
 
 [ext_resource type="Texture2D" uid="uid://csvs55k3ubct7" path="res://assets/sprites/temp/beelure.png" id="1_f76bp"]
 [ext_resource type="Script" path="res://scripts/hamburger.gd" id="1_g48lp"]
-[ext_resource type="PackedScene" uid="uid://crnxcwhmik43t" path="res://scenes/beelure_component.tscn" id="2_kmg2s"]
+[ext_resource type="PackedScene" uid="uid://v1lueadrpn7j" path="res://scenes/beelure_component.tscn" id="2_kmg2s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d1fuf"]
 radius = 111.211
@@ -19,7 +19,6 @@ polygon = PackedVector2Array(-111.159, 0, -108.421, -27.2776, -96.3739, -55.5293
 
 [node name="BeelureComponent" parent="." instance=ExtResource("2_kmg2s")]
 capacity = 2
-cooldown = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeelureComponent"]
 shape = SubResource("CircleShape2D_d1fuf")

@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=10 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
-[ext_resource type="PackedScene" uid="uid://k7wc1m4j6fm" path="res://scenes/basic_flower.tscn" id="4_31uwi"]
 [ext_resource type="Script" path="res://scripts/flower_spawner.gd" id="4_721qi"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
-[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/basic_bear.tscn" id="5_h78oq"]
-[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/basic_rabbit.tscn" id="8_lk0uv"]
+[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
+[ext_resource type="Script" path="res://scripts/bee_spawner.gd" id="5_k6b82"]
+[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
+[ext_resource type="PackedScene" uid="uid://bt0v7hxxjiagd" path="res://scenes/bee.tscn" id="8_v2b88"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -21,9 +22,14 @@ script = ExtResource("2_j2s3r")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-991, -27)
+position = Vector2(-988, -31)
 script = ExtResource("4_721qi")
-flower_scene = ExtResource("4_31uwi")
+entities_to_spawn = Array[Dictionary]([])
+
+[node name="BeeSpawner" parent="." instance=ExtResource("3_amc8p")]
+position = Vector2(-988, -31)
+script = ExtResource("5_k6b82")
+bee_scene = ExtResource("8_v2b88")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-994, -21)
@@ -31,3 +37,6 @@ script = ExtResource("4_yw1nr")
 initial_amount = 3
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
+
+[node name="Bee" parent="." instance=ExtResource("8_v2b88")]
+position = Vector2(-99, 39)

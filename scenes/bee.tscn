@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2l23pfjp76b7"]
+[gd_scene load_steps=5 format=3 uid="uid://bt0v7hxxjiagd"]
 
-[ext_resource type="PackedScene" uid="uid://cqerj2lscqdt6" path="res://scenes/boids_component.tscn" id="1_efan8"]
+[ext_resource type="PackedScene" uid="uid://cvo61koheknci" path="res://scenes/boids_component.tscn" id="1_efan8"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
