@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://njuanacax6rs" path="res://scenes/pollinator.tscn" id="2_n0x6s"]
 [ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
-[ext_resource type="PackedScene" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://b1ykum5n2wew4" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="4_2lnta"]
 
 [node name="Lawn" type="Node2D"]

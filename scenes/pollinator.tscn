@@ -11,7 +11,7 @@ radius = 17.1172
 radius = 45.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_31pin"]
-radius = 91.0055
+radius = 53.1473
 
 [node name="Pollinator" type="Node2D"]
 z_index = 1

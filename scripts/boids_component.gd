@@ -19,6 +19,7 @@ class_name BoidComponent
 
 var _flock: Array = []
 var _velocity: Vector2
+var _stop_mouse_follow = true
 
 
 
@@ -35,12 +36,19 @@ func _physics_process(_delta):
 	var target
 	var target_force = target_follow_force
 	
+	if Input.is_action_just_pressed("disable_follow"):
+			if _stop_mouse_follow:
+				lure = null
+			else:
+				lure = Node2D.new()
+				lure.position = get_global_mouse_position()
+			_stop_mouse_follow = not _stop_mouse_follow
+	
 	if lure is Node2D:
 		target = lure.global_position
 		target_force *= 2
 	else:
 		target = get_global_mouse_position()	
-	
 		
 	var target_vector = Vector2.ZERO
 	if target != Vector2.INF:
