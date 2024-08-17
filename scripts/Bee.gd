@@ -12,11 +12,8 @@ class_name Bee
 
 @onready var flockview_collision = $FlockView/CollisionShape2D
 
-var _width = ProjectSettings.get_setting("display/window/size/viewport_width")
-var _height = ProjectSettings.get_setting("display/window/size/viewport_height")
-
 var _flock: Array = []
-var _lure: Beelure = null
+var lure: Beelure = null
 var _mouse_target: Vector2
 var _velocity: Vector2
 
@@ -27,8 +24,8 @@ func _ready():
 	_velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * max_speed
 	_mouse_target = get_global_mouse_position()
 	
-func _physics_process(delta):
-	if _lure == null:
+func _physics_process(_delta):
+	if lure == null:
 		_mouse_target = get_global_mouse_position()
 	var mouse_vector = Vector2.ZERO
 	if _mouse_target != Vector2.INF:
@@ -83,12 +80,7 @@ func get_flock_status(flock: Array):
 
 
 func _on_flockview_body_entered(body):
-	if body is Beelure:
-		print("Beelure entered")
-		if _lure == null:
-			_lure = body
-			_mouse_target = body.global_position
-	elif body is Bee and self != body:
+	if body is Bee and self != body:
 		print("Bee entered")
 		_flock.append(body)
 

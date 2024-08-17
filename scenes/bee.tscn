@@ -23,7 +23,6 @@ texture = ExtResource("2_8ckqs")
 shape = SubResource("CircleShape2D_2kadw")
 
 [node name="FlockView" type="Area2D" parent="Body"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/FlockView"]
 position = Vector2(5, 3)
