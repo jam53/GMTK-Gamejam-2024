@@ -1,3 +1,4 @@
+# https://github.com/kyrick/godot-boids/tree/master
 extends CharacterBody2D
 
 class_name BoidComponent
