@@ -5,41 +5,17 @@
 
 [node name="TempWorld" type="Node2D"]
 
+[node name="Bee" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(317, 83)
+
+[node name="Bee2" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(378, 154)
+
+[node name="Bee3" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(141, 196)
+
+[node name="Bee4" parent="." instance=ExtResource("2_14e2i")]
+position = Vector2(144, 49)
+
 [node name="Beelure" parent="." instance=ExtResource("2_8abiu")]
 position = Vector2(1775, 280)
-
-[node name="Node2D" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(229, 115)
-
-[node name="Node2D2" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D3" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D4" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D5" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D6" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D7" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D8" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D9" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D10" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D11" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)
-
-[node name="Node2D12" parent="." instance=ExtResource("2_14e2i")]
-position = Vector2(230, 115)

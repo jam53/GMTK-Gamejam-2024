@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 class_name Bee
 
-@export var flock_view : Area2D
-
 @export var max_speed: = 500.0
 @export var mouse_follow_force: = 0.05
 @export var cohesion_force: = 0.05
@@ -85,13 +83,12 @@ func get_flock_status(flock: Array):
 
 
 func _on_flockview_body_entered(body):
-	print("Body entered")
 	if body is Beelure:
 		print("Beelure entered")
 		if _lure == null:
 			_lure = body
 			_mouse_target = body.global_position
-	elif self != body:
+	elif body is Bee and self != body:
 		print("Bee entered")
 		_flock.append(body)
 
