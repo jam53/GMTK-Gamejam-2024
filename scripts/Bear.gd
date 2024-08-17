@@ -1,9 +1,13 @@
 extends Node2D
 
 @export var speed: float = 30.0
+@export var max_hp: int = 3  # Maximum HP for the bear
 
+var current_hp: int = max_hp  # Current HP of the bear
 var target_flower: Node = null
 var collision_timer: Timer = null
+var is_being_freed: bool = false  # Flag to prevent race conditions
+var health_bar: ProgressBar = null  # Health bar for the bear
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +19,21 @@ func _ready():
 	collision_timer.one_shot = true
 	add_child(collision_timer)
 	collision_timer.connect("timeout", Callable(self, "_on_collision_timeout"))
+	
+	# Initialize the health bar
+	health_bar = ProgressBar.new()
+	health_bar.min_value = 0
+	health_bar.max_value = max_hp
+	health_bar.value = current_hp
+	health_bar.anchor_left = 0.5
+	health_bar.anchor_right = 0.5
+	health_bar.anchor_top = 0
+	health_bar.anchor_bottom = 0
+	health_bar.offset_left = -50
+	health_bar.offset_right = 50
+	health_bar.offset_top = -20
+	health_bar.offset_bottom = -10
+	add_child(health_bar)
 
 # Finds the closest flower and sets it as the target
 func find_closest_flower():
@@ -25,10 +44,6 @@ func find_closest_flower():
 		if distance < closest_distance:
 			closest_distance = distance
 			target_flower = flower
-	if target_flower:
-		print("Closest flower found at position: ", target_flower.position)
-	else:
-		print("No flowers found.")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,29 +51,28 @@ func _process(delta):
 	find_closest_flower()
 	if target_flower:
 		self.position = self.position.move_toward(target_flower.position, speed * delta)
-		print("Bear position: ", position)
-		print("Target flower position: ", target_flower.position)
-		print("Distance to target: ", position.distance_to(target_flower.position))
 		# Check for collision
 		if position.distance_to(target_flower.position) < 10:  # Adjust the collision distance as needed
-			print("Bear is close to the flower.")
 			if collision_timer.is_stopped():
-				print("Starting collision timer.")
 				collision_timer.start()
 		else:
 			if not collision_timer.is_stopped():
-				print("Stopping collision timer.")
 				collision_timer.stop()
-	else:
-		print("No target flower to move towards.")
 
 # Called when the collision timer times out
 func _on_collision_timeout():
 	if target_flower:
-		print("Removing flower at position: ", target_flower.position)
 		Global.flowers.erase(target_flower)
 		target_flower.queue_free()
 		target_flower = null
 		find_closest_flower()
-	else:
-		print("No target flower to remove.")
+
+func _on_body_entered(body):
+	if body is BoidComponent:
+		if not is_being_freed:
+			current_hp -= 1
+			health_bar.value = current_hp
+			if current_hp <= 0:
+				is_being_freed = true
+				queue_free()
+			body.queue_free()

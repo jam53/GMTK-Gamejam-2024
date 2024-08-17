@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt0v7hxxjiagd"]
+[gd_scene load_steps=6 format=3 uid="uid://bt0v7hxxjiagd"]
 
 [ext_resource type="PackedScene" uid="uid://cvo61koheknci" path="res://scenes/boids_component.tscn" id="1_efan8"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
@@ -8,6 +8,9 @@ radius = 215.502
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 930.792
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ems"]
+radius = 37.3363
 
 [node name="Bee" type="Node2D"]
 
@@ -28,3 +31,10 @@ shape = SubResource("CircleShape2D_2kadw")
 position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2u70o")
+
+[node name="AttackArea" type="Area2D" parent="BoidsComponent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/AttackArea"]
+shape = SubResource("CircleShape2D_x6ems")
+
+[connection signal="body_entered" from="BoidsComponent/AttackArea" to="BoidsComponent" method="_on_attack_area_body_entered"]

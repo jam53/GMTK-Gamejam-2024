@@ -24,7 +24,6 @@ script = ExtResource("2_j2s3r")
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-988, -31)
 script = ExtResource("4_721qi")
-entities_to_spawn = Array[Dictionary]([])
 
 [node name="BeeSpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-988, -31)
