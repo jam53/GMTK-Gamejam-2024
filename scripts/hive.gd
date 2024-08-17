@@ -14,6 +14,7 @@ func _ready():
 	for i in range(capacity):
 		var pollinator = pollinator_template.instantiate()
 		pollinator.hive = self
-		# pollinator.game_manager = game_manager
 		add_child(pollinator)
 
+func bee_arrived():
+	game_manager.update_honey(5)

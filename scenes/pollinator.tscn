@@ -17,8 +17,6 @@ radius = 53.1473
 z_index = 1
 scale = Vector2(0.376313, 0.376313)
 script = ExtResource("1_o4nss")
-pollinateTime = null
-hiveTime = null
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_ekwfm")]
 flock_area_shape = NodePath("FlockView")

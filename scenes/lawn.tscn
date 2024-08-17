@@ -40,21 +40,6 @@ position = Vector2(263, 127)
 [node name="Bee6" parent="." instance=ExtResource("4_2lnta")]
 position = Vector2(263, 127)
 
-[node name="Bee7" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(263, 127)
-
-[node name="Bee8" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(573, 344)
-
-[node name="Bee2" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(530, 133)
-
-[node name="Bee3" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(266, 329)
-
-[node name="Bee4" parent="." instance=ExtResource("4_2lnta")]
-position = Vector2(71, 218)
-
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(536, 289)
 script = ExtResource("2_j2s3r")

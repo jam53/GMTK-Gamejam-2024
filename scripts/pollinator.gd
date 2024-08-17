@@ -39,6 +39,7 @@ func _on_flower_detection_area_body_entered(body):
 		print("Hive found")
 		_flower_found = false
 		_in_hive = true
+		hive.bee_arrived()
 		hive_timer.start()
 
 func _on_pollinate_timer_timeout():
@@ -47,6 +48,5 @@ func _on_pollinate_timer_timeout():
 
 func _on_hive_timer_timeout():
 	print("Hivetime finished")
-	hive.game_manager.update_honey(5)
 	_in_hive = false
 	boids_component.lure = null
