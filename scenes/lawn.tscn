@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4a7rjdvsbiot"]
+[gd_scene load_steps=8 format=3 uid="uid://c4a7rjdvsbiot"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://njuanacax6rs" path="res://scenes/pollinator.tscn" id="2_n0x6s"]
@@ -9,11 +10,47 @@
 
 [node name="Lawn" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_a2cg8")
+
+[node name="honeyamountlabel" type="Label" parent="GameManager"]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 142.0
+offset_bottom = 26.0
+scale = Vector2(1.456, 1.76042)
+text = "Honey amount: 0"
+
 [node name="Grass" type="Sprite2D" parent="."]
 position = Vector2(545, 286)
 texture = ExtResource("1_vh6ib")
 
 [node name="Pollinator" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator2" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator3" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator4" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator5" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator6" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
+position = Vector2(374, 269)
+hive = NodePath("../Hive")
+
+[node name="Pollinator7" parent="." node_paths=PackedStringArray("hive") instance=ExtResource("2_n0x6s")]
 position = Vector2(374, 269)
 hive = NodePath("../Hive")
 
@@ -30,4 +67,4 @@ script = ExtResource("2_j2s3r")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-447, 261)
+position = Vector2(-442, 261)
