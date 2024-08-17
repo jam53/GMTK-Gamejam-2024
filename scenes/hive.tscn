@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://srxwo63rtwbq"]
+
+[ext_resource type="Texture2D" uid="uid://d32xp2y03gugu" path="res://assets/sprites/hive.webp" id="1_r0bes"]
+
+[node name="Basic_Flower" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_r0bes")

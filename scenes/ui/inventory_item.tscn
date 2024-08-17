@@ -1,14 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs7gg22lrfboe"]
-
-[ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_4bknb"]
+[gd_scene format=3 uid="uid://bs7gg22lrfboe"]
 
 [node name="Item" type="TextureButton"]
 custom_minimum_size = Vector2(128, 128)
 scale = Vector2(1.1, 1.1)
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("1_4bknb")
-hover_animation_name = null
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -21,17 +17,13 @@ color = Color(0, 0, 0, 0.290196)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -88.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = -20
+theme_override_constants/margin_bottom = -65
 
 [node name="Amount" type="Label" parent="MarginContainer"]
 layout_mode = 2
