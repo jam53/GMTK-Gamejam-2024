@@ -19,6 +19,7 @@ polygon = PackedVector2Array(-111.159, 0, -108.421, -27.2776, -96.3739, -55.5293
 
 [node name="BeelureComponent" parent="." instance=ExtResource("2_kmg2s")]
 capacity = 2
+cooldown = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeelureComponent"]
 shape = SubResource("CircleShape2D_d1fuf")

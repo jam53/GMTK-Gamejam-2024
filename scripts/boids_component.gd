@@ -1,35 +1,49 @@
 extends CharacterBody2D
 
-class_name Bee
+class_name BoidComponent
+
+@onready var flock_area = $FlockArea
+@export var flock_area_shape : CollisionShape2D
 
 @export var max_speed: = 500.0
-@export var mouse_follow_force: = 0.05
+@export var target_follow_force: = 0.05
 @export var cohesion_force: = 0.05
 @export var align_force: = 0.05
-@export var separation_force: = 0.06
+@export var separation_force: = 0.05
 @export var view_distance := 50.0
 @export var avoid_distance := 20.0
 
-@onready var flockview_collision = $FlockView/CollisionShape2D
+@export var lure : Node2D = null
+@export var beetype : Enums.BeeType
 
 var _flock: Array = []
-var lure: Beelure = null
-var _mouse_target: Vector2
 var _velocity: Vector2
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	randomize()
 	_velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * max_speed
-	_mouse_target = get_global_mouse_position()
 	
+	if flock_area_shape.get_parent() != null:
+		flock_area_shape.get_parent().remove_child(flock_area_shape)
+
+	flock_area.add_child(flock_area_shape)
+
 func _physics_process(_delta):
-	if lure == null:
-		_mouse_target = get_global_mouse_position()
-	var mouse_vector = Vector2.ZERO
-	if _mouse_target != Vector2.INF:
-		mouse_vector = global_position.direction_to(_mouse_target) * max_speed * mouse_follow_force
+	var target
+	var target_force = target_follow_force
+	
+	if lure is Node2D:
+		target = lure.global_position
+		target_force *= 2
+	else:
+		target = get_global_mouse_position()	
+	
+		
+	var target_vector = Vector2.ZERO
+	if target != Vector2.INF:
+		target_vector = global_position.direction_to(target) * max_speed * target_force
 		
 	# Get cohesion, alignment, and separation vectors
 	var vectors = get_flock_status(_flock)
@@ -39,15 +53,14 @@ func _physics_process(_delta):
 	var align_vector = vectors[1] * align_force
 	var separation_vector = vectors[2] * separation_force
 	
-	var acceleration = cohesion_vector + align_vector + separation_vector + mouse_vector
-	
+	# Calculate total acceleration
+	var acceleration = cohesion_vector + align_vector + separation_vector + target_vector
 	_velocity = (_velocity + acceleration).limit_length(max_speed)
 	
-	
+	# Update physics values
 	velocity = _velocity
 	move_and_slide()
 	_velocity = velocity
-	
 
 func get_flock_status(flock: Array):
 	var center_vector := Vector2()
@@ -58,33 +71,35 @@ func get_flock_status(flock: Array):
 	for f in flock:
 		var neighbor_pos: Vector2 = f.global_position
 		
+		# Update alignmentvector and center based on neighbor		
 		align_vector += f._velocity
 		flock_center += neighbor_pos
+		
+		# Calculate avoid vector based on distance to neighbor		
 		var d = global_position.distance_to(neighbor_pos)
 		if d > 0 and d < avoid_distance:
 			avoid_vector -= (neighbor_pos - global_position).normalized() * (avoid_distance / d * max_speed)
-			
+		
 	var flock_size = flock.size()
 	if flock_size:
+		# Calculate mean of alignments
 		align_vector /= flock_size
-		flock_center /= flock_size
 		
+		# Calculate direction of flock
+		flock_center /= flock_size
 		var center_dir = global_position.direction_to(flock_center)
 		var center_speed = max_speed * (
-			global_position.distance_to(flock_center) / flockview_collision.shape.radius
+			global_position.distance_to(flock_center) / flock_area_shape.shape.radius
 		)
 		center_vector = center_dir * center_speed
 	
 	return [center_vector, align_vector, avoid_vector]
-		
-
-
+	
+	
 func _on_flockview_body_entered(body):
-	if body is Bee and self != body:
-		print("Bee entered")
+	if body is BoidComponent and body.beetype == self.beetype:
 		_flock.append(body)
 
-
 func _on_flockview_body_exited(body):
-	if body is Bee and self != body:
+	if body is BoidComponent and body.beetype == self.beetype:
 		_flock.remove_at(_flock.find(body))

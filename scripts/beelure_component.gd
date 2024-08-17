@@ -6,6 +6,8 @@ class_name Beelure
 @export var capacity := 5
 # Time after release where bees won't be attracted
 @export var cooldown := 2
+# Type of bee it attracts
+@export var beetype : Enums.BeeType
 
 var _population := []
 var _can_pickup := true
@@ -15,10 +17,11 @@ func _ready():
 	# Initialize timer
 	timer.wait_time = cooldown
 	
-func _on_body_entered(body):
+func _on_body_entered(body):	
 	if (
 		_can_pickup and # Not on cooldown
-		body is Bee and
+		body is BoidComponent and 
+		body.beetype == beetype and
 		_population.size() < capacity
 	):
 		if body.lure == null: # Make sure bee isn't attracted to something else
