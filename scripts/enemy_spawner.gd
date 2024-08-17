@@ -7,6 +7,8 @@ extends Node2D
 @export var basic_bear: PackedScene
 @export var basic_rabbit: PackedScene
 
+var bear_chance: float = 0.2  # Initial chance of spawning a bear
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Debug information to check if the scenes are assigned
@@ -16,6 +18,13 @@ func _ready():
 		print("Error: basic_rabbit is not assigned.")
 	
 	generate_animals(initial_amount)
+	
+	# Start the timer to spawn animals every 5 seconds
+	var timer = Timer.new()
+	timer.wait_time = 5.0
+	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+	add_child(timer)
+	timer.start()
 
 # Generates a random position within the spawn_area
 func generate_random_position() -> Vector2:
@@ -38,9 +47,14 @@ func generate_animals(amount := 1):
 	for i in range(0, amount):
 		var pos = generate_random_position()
 		var random_value = randf()
-		if random_value < 0.8:
-			print("Spawning a rabbit.")
-			spawn_animal(basic_rabbit, pos)
-		else:
+		if random_value < bear_chance:
 			print("Spawning a bear.")
 			spawn_animal(basic_bear, pos)
+		else:
+			print("Spawning a rabbit.")
+			spawn_animal(basic_rabbit, pos)
+
+# Called every 5 seconds by the timer
+func _on_Timer_timeout():
+	generate_animals(1)
+	bear_chance = min(bear_chance + 0.1, 1.0)  # Increase bear chance by 0.1, maxing out at 1.0

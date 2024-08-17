@@ -33,7 +33,7 @@ bee_scene = ExtResource("8_v2b88")
 [node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-994, -21)
 script = ExtResource("4_yw1nr")
-initial_amount = 3
+initial_amount = 2
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
 
