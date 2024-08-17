@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2l23pfjp76b7"]
+
+[ext_resource type="PackedScene" uid="uid://cqerj2lscqdt6" path="res://scenes/boids_component.tscn" id="1_efan8"]
+[ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
+radius = 215.502
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
+radius = 930.792
+
+[node name="Bee" type="Node2D"]
+
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_efan8")]
+flock_area_shape = NodePath("FlockViewCollision")
+max_speed = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
+position = Vector2(0.27842, -0.158137)
+scale = Vector2(0.027842, 0.0316274)
+texture = ExtResource("2_8ckqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent"]
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2kadw")
+
+[node name="FlockViewCollision" type="CollisionShape2D" parent="BoidsComponent"]
+position = Vector2(0.13921, 0.0948822)
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2u70o")
