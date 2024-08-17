@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5pf8x68dp2u6"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
+[ext_resource type="Script" path="res://scripts/FlowerSpawner.gd" id="3_8smuy"]
+[ext_resource type="PackedScene" uid="uid://k7wc1m4j6fm" path="res://scenes/basic_flower.tscn" id="4_31uwi"]
+
+[node name="Lawn" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(988, 25)
+texture = ExtResource("1_vh6ib")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_j2s3r")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="FlowerSpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawn_area")]
+script = ExtResource("3_8smuy")
+spawn_area = NodePath("SpawnArea")
+basic_flower = ExtResource("4_31uwi")
+
+[node name="SpawnArea" type="ReferenceRect" parent="FlowerSpawner"]
+offset_left = 445.0
+offset_top = -257.0
+offset_right = 1530.0
+offset_bottom = 305.0

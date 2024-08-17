@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://k7wc1m4j6fm"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/BasicFlower.jpg" id="1_vct0m"]
+
+[node name="Basic_Flower" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.317829, 0.317829)
+texture = ExtResource("1_vct0m")
