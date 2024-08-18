@@ -10,7 +10,6 @@ var pollinator_template = preload("res://scenes/pollinator.tscn")
 
 
 func _ready():
-	print(game_manager)
 	for i in range(capacity):
 		var pollinator = pollinator_template.instantiate()
 		pollinator.hive = self

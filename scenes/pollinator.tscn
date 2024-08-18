@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://njuanacax6rs"]
 
-[ext_resource type="PackedScene" uid="uid://cqv5u44ij7yof" path="res://scenes/boids_component.tscn" id="1_ekwfm"]
+[ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_ekwfm"]
 [ext_resource type="Script" path="res://scripts/pollinator.gd" id="1_o4nss"]
 [ext_resource type="Texture2D" uid="uid://cw6sd1iyoi235" path="res://assets/sprites/temp/pollinator.png" id="2_3exmf"]
 
