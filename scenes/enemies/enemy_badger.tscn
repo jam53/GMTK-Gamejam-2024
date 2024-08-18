@@ -31,12 +31,15 @@ shape = SubResource("RectangleShape2D_x6453")
 script = ExtResource("4_4gjmn")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_4ltxc")]
+attack = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_prp0s")]
+max_hp = 20
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("6_ngd4q")]
 health_component = NodePath("../HealthComponent")
 attack_component = NodePath("../AttackComponent")
+enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 scale = Vector2(0.315391, 0.229515)
