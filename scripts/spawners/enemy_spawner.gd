@@ -11,12 +11,6 @@ var bear_chance: float = 0.2  # Initial chance of spawning a bear
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Debug information to check if the scenes are assigned
-	if basic_bear == null:
-		print("Error: basic_bear is not assigned.")
-	if basic_rabbit == null:
-		print("Error: basic_rabbit is not assigned.")
-	
 	generate_animals(initial_amount)
 	
 	# Start the timer to spawn animals every 5 seconds

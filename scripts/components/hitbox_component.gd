@@ -6,7 +6,6 @@ class_name HitboxComponent
 @export var enemy : bool
 
 func take_damage(damage: int) -> void:
-	print(self.get_parent())
 	health_component.take_damage(damage)
 
 func attack(target: Node) -> void:
