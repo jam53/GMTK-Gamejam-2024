@@ -131,9 +131,10 @@ func get_flock_status(flock: Array):
 	
 	
 func _on_flockview_body_entered(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
+		print("Flock entered")
 		_flock.append(body)
 
 func _on_flockview_body_exited(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
 		_flock.remove_at(_flock.find(body))
