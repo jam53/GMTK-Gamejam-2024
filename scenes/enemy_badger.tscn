@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq4ylo8btg5x0"]
+
+[ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="1_ap0he"]
+
+[node name="EnemyBadger" type="Node2D"]
+
+[node name="Badger" type="Sprite2D" parent="."]
+texture = ExtResource("1_ap0he")

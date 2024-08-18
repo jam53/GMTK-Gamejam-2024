@@ -3,6 +3,7 @@ extends Node2D
 @export var speed: float = 30.0
 @export var showHealtbar: bool = true
 @export var max_hp: int # Maximum HP for the bear
+@export var attack: int = 1  # Attack damage of the bear
 
 var current_hp: int  # Current HP of the bear
 var target_flower: Node = null
@@ -83,4 +84,4 @@ func _on_body_entered(body):
 				if showHealtbar:
 					health_bar.queue_free()
 				queue_free()
-			body.queue_free()
+			body.hp -= attack
