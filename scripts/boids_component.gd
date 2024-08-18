@@ -4,6 +4,7 @@ extends CharacterBody2D
 class_name BoidComponent
 
 @onready var flock_area = $FlockArea
+@export var sprite : Sprite2D
 @export var flock_area_shape : CollisionShape2D
 
 @export var max_speed: = 500.0
@@ -16,9 +17,13 @@ class_name BoidComponent
 
 @export var lure : Node2D = null
 @export var beetype : Enums.BeeType
+@export var stopable := false
+
+@export var facing_right := true
 
 var _flock: Array = []
 var _velocity: Vector2
+var _stop_mouse_follow := false
 
 
 
@@ -30,6 +35,15 @@ func _ready():
 		flock_area_shape.get_parent().remove_child(flock_area_shape)
 
 	flock_area.add_child(flock_area_shape)
+	
+func _process(_delta):
+	if stopable and Input.is_action_just_pressed("disable_follow"):
+			if _stop_mouse_follow:
+				lure = null
+			else:
+				lure = Node2D.new()
+				lure.position = self.global_position
+			_stop_mouse_follow = not _stop_mouse_follow
 
 func _physics_process(_delta):
 	var target
@@ -40,11 +54,24 @@ func _physics_process(_delta):
 		target_force *= 2
 	else:
 		target = get_global_mouse_position()	
-	
 		
 	var target_vector = Vector2.ZERO
 	if target != Vector2.INF:
 		target_vector = global_position.direction_to(target) * max_speed * target_force
+		
+		
+		
+		var cross = target.x - self.global_position.x
+		if cross > 0:
+			# Target is to the right
+			if not facing_right: 
+				sprite.flip_h = !sprite.flip_h
+				facing_right = true
+		elif cross < 0:
+			# Target is to the left
+			if facing_right:
+				sprite.flip_h = !sprite.flip_h
+				facing_right = false
 		
 	# Get cohesion, alignment, and separation vectors
 	var vectors = get_flock_status(_flock)

@@ -1,19 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2l23pfjp76b7"]
+[gd_scene load_steps=5 format=3 uid="uid://dply1skjqut7x"]
 
-[ext_resource type="PackedScene" uid="uid://cqerj2lscqdt6" path="res://scenes/boids_component.tscn" id="1_efan8"]
+[ext_resource type="PackedScene" uid="uid://cqv5u44ij7yof" path="res://scenes/boids_component.tscn" id="1_efan8"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
-radius = 930.792
+radius = 1863.0
 
 [node name="Bee" type="Node2D"]
+z_index = 2
 
-[node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_efan8")]
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_efan8")]
+sprite = NodePath("Sprite2D")
 flock_area_shape = NodePath("FlockViewCollision")
-max_speed = 400.0
+max_speed = 350.0
+target_follow_force = 0.076
+avoid_distance = 35.0
+stopable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
 position = Vector2(0.27842, -0.158137)

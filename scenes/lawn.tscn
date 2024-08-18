@@ -1,18 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfxbbduw8jsfy"]
+[gd_scene load_steps=7 format=3 uid="uid://c4a7rjdvsbiot"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
-[ext_resource type="PackedScene" uid="uid://b4ya57leg4wvs" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
+[ext_resource type="PackedScene" uid="uid://b1ykum5n2wew4" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="4_2lnta"]
 
 [node name="Lawn" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_a2cg8")
+
+[node name="honeyamountlabel" type="Label" parent="GameManager"]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 142.0
+offset_bottom = 26.0
+scale = Vector2(1.456, 1.76042)
+text = "Honey amount: 0"
+
 [node name="Grass" type="Sprite2D" parent="."]
-position = Vector2(988, 25)
+position = Vector2(545, 286)
 texture = ExtResource("1_vh6ib")
 
+[node name="Hive" parent="." instance=ExtResource("2_qycfm")]
+position = Vector2(688, 349)
+
+[node name="Bee" parent="." instance=ExtResource("4_2lnta")]
+position = Vector2(263, 127)
+
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(536, 289)
 script = ExtResource("2_j2s3r")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
+position = Vector2(-442, 261)
+initial_amount = 7
