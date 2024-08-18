@@ -1,8 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq4ylo8btg5x0"]
+[gd_scene load_steps=6 format=3 uid="uid://bq4ylo8btg5x0"]
 
+[ext_resource type="Script" path="res://scripts/static_enemy.gd" id="1_3ow3s"]
 [ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="1_ap0he"]
+[ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="4_4gjmn"]
 
-[node name="EnemyBadger" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
+size = Vector2(43.4186, 98.3612)
 
-[node name="Badger" type="Sprite2D" parent="."]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ps7t2"]
+radius = 85.8393
+height = 463.738
+
+[node name="EnemyBadger" type="Area2D" groups=["badgers"]]
+script = ExtResource("1_3ow3s")
+showHealtbar = null
+max_hp = 5
+attack = null
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 5)
+rotation = 3.14159
+scale = Vector2(1.76144, -1.27651)
+shape = SubResource("RectangleShape2D_x6453")
+
+[node name="Polygon2D" type="Line2D" parent="."]
+script = ExtResource("4_4gjmn")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.315391, 0.229515)
+
+[node name="Badger" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("1_ap0he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_ps7t2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=12 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
-[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
+[ext_resource type="PackedScene" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
-[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="8_v2b88"]
+[ext_resource type="PackedScene" uid="uid://bq4ylo8btg5x0" path="res://scenes/enemy_badger.tscn" id="8_ui2m3"]
+[ext_resource type="PackedScene" uid="uid://c02annss7c1yl" path="res://scenes/bee.tscn" id="8_v2b88"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -51,6 +52,13 @@ group = "flowers"
 position = Vector2(-409, 258)
 scene = ExtResource("8_v2b88")
 group = "bees"
+
+[node name="BadgerSpawner" parent="." node_paths=PackedStringArray("spawn_area") instance=ExtResource("3_amc8p")]
+position = Vector2(-409, 258)
+initial_amount = 2
+spawn_area = NodePath("../BeeSpawner/SpawnArea")
+scene = ExtResource("8_ui2m3")
+group = "badgers"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-490, -382)
