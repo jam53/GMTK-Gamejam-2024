@@ -17,7 +17,6 @@ func _ready():
 
 func _process(delta):
 	if not _in_hive and boids_component.lure == null:
-		print("Finding flower")
 		var found_flower = find_flower()
 		if found_flower == null:
 			boids_component.lure = hive

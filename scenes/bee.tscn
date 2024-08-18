@@ -1,16 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c02annss7c1yl"]
+[gd_scene load_steps=7 format=3 uid="uid://c02annss7c1yl"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_efan8"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
+[ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="3_vivsg"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_1hgfv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x6ems"]
-radius = 37.3363
 
 [node name="Bee" type="Node2D" groups=["bees"]]
 z_index = 2
@@ -39,9 +38,8 @@ position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2u70o")
 
-[node name="AttackArea" type="Area2D" parent="BoidsComponent"]
+[node name="AttackComponent" parent="BoidsComponent" instance=ExtResource("3_vivsg")]
+attack = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/AttackArea"]
-shape = SubResource("CircleShape2D_x6ems")
-
-[connection signal="body_entered" from="BoidsComponent/AttackArea" to="BoidsComponent" method="_on_attack_area_body_entered"]
+[node name="HealthComponent" parent="BoidsComponent" instance=ExtResource("4_1hgfv")]
+max_hp = 1

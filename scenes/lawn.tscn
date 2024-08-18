@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=17 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
@@ -8,9 +8,31 @@
 [ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
+[ext_resource type="Script" path="res://scripts/static_enemy.gd" id="8_fk1o8"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
-[ext_resource type="PackedScene" uid="uid://bq4ylo8btg5x0" path="res://scenes/enemy_badger.tscn" id="8_ui2m3"]
 [ext_resource type="PackedScene" uid="uid://c02annss7c1yl" path="res://scenes/bee.tscn" id="8_v2b88"]
+[ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="9_xdpq3"]
+[ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="10_2s6yu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
+size = Vector2(43.4186, 98.3612)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ps7t2"]
+radius = 85.8393
+height = 463.738
+
+[sub_resource type="PackedScene" id="PackedScene_8dj0p"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741831, 1073741830, 29, 28, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("EnemyBadger", "Area2D", "badgers", "script", "showHealtbar", "max_hp", "attack", "Timer", "Timer", "one_shot", "CollisionShape2D", "CollisionShape2D", "position", "rotation", "scale", "shape", "Polygon2D", "Line2D", "script", "CharacterBody2D", "CharacterBody2D", "scale", "Badger", "Sprite2D", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 7,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("./CharacterBody2D"), NodePath("./CharacterBody2D"), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 3, 0, 4, 1, 5, 2, 6, 3, 1, 2, 1073741824, 0, 8, 7, -1, 1, 9, 4, 0, 1073741825, 0, 11, 10, -1, 4, 12, 5, 13, 6, 14, 7, 15, 8, 0, 1073741826, 0, 17, 16, -1, 1, 18, 9, 0, 1073741827, 0, 20, 19, -1, 1, 21, 10, 0, 1073741828, 0, 23, 22, -1, 1, 24, 11, 0, 1073741829, 0, 26, 25, -1, 1, 27, 12, 0),
+"variants": [ExtResource("8_fk1o8"), null, 5, null, true, Vector2(-4, 5), 3.14159, Vector2(1.76144, -1.27651), SubResource("RectangleShape2D_x6453"), ExtResource("9_xdpq3"), Vector2(0.315391, 0.229515), ExtResource("10_2s6yu"), SubResource("CapsuleShape2D_ps7t2")],
+"version": 3
+}
 
 [node name="Lawn" type="Node2D"]
 
@@ -57,7 +79,7 @@ group = "bees"
 position = Vector2(-409, 258)
 initial_amount = 2
 spawn_area = NodePath("../BeeSpawner/SpawnArea")
-scene = ExtResource("8_ui2m3")
+scene = SubResource("PackedScene_8dj0p")
 group = "badgers"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
