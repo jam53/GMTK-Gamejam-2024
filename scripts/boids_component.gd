@@ -21,11 +21,6 @@ class_name BoidComponent
 
 @export var facing_right := true
 
-@export var speed: int = 50
-
-var hp: int = 1
-var health_bar: ProgressBar = null
-
 var _flock: Array = []
 var _velocity: Vector2
 var _stop_mouse_follow := false
@@ -132,6 +127,7 @@ func get_flock_status(flock: Array):
 	
 func _on_flockview_body_entered(body):
 	if body is BoidComponent and body.beetype == self.beetype and body != self:
+		print("body entered")
 		_flock.append(body)
 
 func _on_flockview_body_exited(body):
