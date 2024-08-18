@@ -37,6 +37,7 @@ func _ready():
 	flock_area.add_child(flock_area_shape)
 	
 func _process(_delta):
+	# TODO: fix this for bees that spawn later. Probably move the stopmouse to the GameManager
 	if stopable and Input.is_action_just_pressed("disable_follow"):
 			if _stop_mouse_follow:
 				lure = null

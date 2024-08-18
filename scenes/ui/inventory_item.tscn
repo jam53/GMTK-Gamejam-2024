@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bs7gg22lrfboe"]
+[gd_scene load_steps=2 format=3 uid="uid://bs7gg22lrfboe"]
+
+[ext_resource type="PackedScene" uid="uid://2ba3211jih8k" path="res://scenes/ui/honey_count_label.tscn" id="1_4x2vj"]
 
 [node name="Item" type="TextureButton"]
 custom_minimum_size = Vector2(128, 128)
@@ -25,11 +27,9 @@ grow_vertical = 2
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = -65
 
-[node name="Price" type="Label" parent="MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "0"
-horizontal_alignment = 2
+[node name="Price" parent="MarginContainer" instance=ExtResource("1_4x2vj")]
+position = Vector2(34.5455, 26.3636)
+scale = Vector2(0.386155, 0.426655)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

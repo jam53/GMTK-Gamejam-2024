@@ -3,7 +3,7 @@ class_name ObjectPlacer
 
 @export var node_to_place_objects_in: Node
 @export var item_template: PackedScene # Reference to the item template used to create new item instances
-@export var honey_amount_label : Label
+@export var honey_amount_label : NumberLabel
 
 @onready var inventory := $VBoxContainer/Inventory
 @onready var selected_item_label: Label = $VBoxContainer/SelectedItemTitle # Reference to the label that shows the currently selected item title
@@ -46,7 +46,7 @@ func add_item_to_inventory(inventoryItem: InventoryItem):
 		update_inventory_ui()
 		
 func update_inventory_ui():
-	honey_amount_label.text = "Honey_amount: " + str(GameManager.honey_amount)
+	honey_amount_label.set_count(GameManager.honey_amount)
 	# Remove all old items in the UI
 	for item in inventory.get_children():
 		inventory.remove_child(item)
@@ -57,10 +57,12 @@ func update_inventory_ui():
 			itemInstance.name = item.title
 			itemInstance.texture_normal = item.texture
 			itemInstance.texture_hover = item.texture
-			itemInstance.find_child("Price", true, false).text = str(item.price)
 			itemInstance.button_down.connect(_on_item_pressed.bind(item))
 
 			inventory.add_child(itemInstance)
+			var price_label = itemInstance.find_child("Price", true, false)
+			if price_label is NumberLabel:
+				price_label.set_count(item.price)
 
 # Fires when the user selects an item from the inventory by clicking on the item
 func _on_item_pressed(inventoryItem: InventoryItem):
