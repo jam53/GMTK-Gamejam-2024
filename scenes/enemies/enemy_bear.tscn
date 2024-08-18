@@ -30,7 +30,7 @@ shape = SubResource("CapsuleShape2D_wu687")
 attack = 2
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_w2qks")]
-max_hp = 10
+max_hp = 20
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_jsykh")]
 health_component = NodePath("../HealthComponent")

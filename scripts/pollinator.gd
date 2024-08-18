@@ -25,11 +25,17 @@ func _process(delta):
 
 func find_flower() -> Node2D:
 	var flowers = get_tree().get_nodes_in_group("flowers")
+	var available_flowers = []
 	
-	if flowers.size() == 0:
+	for flower in flowers:
+		if not flower.is_in_group("occupied_flowers"):
+			available_flowers.append(flower)
+		
+	if available_flowers.size() == 0:
 		return null
 	
-	return flowers.pick_random()
+	return available_flowers.pick_random()
+
 
 func _on_flower_detection_area_area_entered(area):
 	if area.get_parent() == boids_component.lure and not _flower_found:

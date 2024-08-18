@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dply1skjqut7x"]
+[gd_scene load_steps=9 format=3 uid="uid://dply1skjqut7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_av7nf"]
 [ext_resource type="Script" path="res://scripts/attacker.gd" id="1_o3a0c"]
@@ -9,9 +9,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_x6ems"]
-radius = 37.3363
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
@@ -38,11 +35,6 @@ position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2u70o")
 
-[node name="AttackArea" type="Area2D" parent="BoidsComponent"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/AttackArea"]
-shape = SubResource("CircleShape2D_x6ems")
-
 [node name="AttackComponent" parent="BoidsComponent" instance=ExtResource("4_wg17l")]
 attack = 1
 
@@ -57,5 +49,4 @@ attack_component = NodePath("../AttackComponent")
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2kadw")
 
-[connection signal="body_entered" from="BoidsComponent/AttackArea" to="BoidsComponent" method="_on_attack_area_body_entered"]
 [connection signal="died" from="BoidsComponent/HealthComponent" to="." method="_on_health_component_died"]
