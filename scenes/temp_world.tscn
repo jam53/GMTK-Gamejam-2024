@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwb34y3tg8vfd"]
 
-[ext_resource type="PackedScene" uid="uid://ch7lshbb1clyh" path="res://scenes/hamburger.tscn" id="2_8abiu"]
-[ext_resource type="PackedScene" uid="uid://bt0v7hxxjiagd" path="res://scenes/bee.tscn" id="2_14e2i"]
+[ext_resource type="PackedScene" uid="uid://co2edrhycne1x" path="res://scenes/hamburger.tscn" id="2_8abiu"]
+[ext_resource type="PackedScene" uid="uid://c02annss7c1yl" path="res://scenes/bee.tscn" id="2_14e2i"]
 
 [node name="TempWorld" type="Node2D" groups=["bees"]]
 

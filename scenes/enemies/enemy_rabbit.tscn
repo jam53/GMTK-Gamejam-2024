@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dei8n40gtxqsw"]
+[gd_scene load_steps=8 format=3 uid="uid://dei8n40gtxqsw"]
 
+[ext_resource type="Script" path="res://scripts/enemies/enemy_rabbit.gd" id="1_ko1gy"]
 [ext_resource type="Texture2D" uid="uid://dfw4ws1yqxg63" path="res://assets/sprites/rabbit.png" id="1_wyne6"]
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="2_fda6u"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="3_sreqt"]
@@ -11,6 +12,7 @@ radius = 29.0
 height = 112.0
 
 [node name="BasicRabbit" type="CharacterBody2D"]
+script = ExtResource("1_ko1gy")
 
 [node name="Rabbit" type="Sprite2D" parent="."]
 scale = Vector2(0.225, 0.225)
@@ -35,3 +37,5 @@ enemy = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_c0lft")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

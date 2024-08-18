@@ -3,16 +3,74 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
-[ext_resource type="PackedScene" path="res://scenes/hive.tscn" id="2_qycfm"]
+[ext_resource type="PackedScene" uid="uid://7drwe0yoca30" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
-[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
-[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
-[ext_resource type="Script" path="res://scripts/static_enemy.gd" id="8_fk1o8"]
-[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
+[ext_resource type="Script" path="res://scripts/spawners/enemy_spawner.gd" id="4_yw1nr"]
+[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="5_h78oq"]
+[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="8_lk0uv"]
 [ext_resource type="PackedScene" uid="uid://c02annss7c1yl" path="res://scenes/bee.tscn" id="8_v2b88"]
 [ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="9_xdpq3"]
 [ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="10_2s6yu"]
+
+[sub_resource type="GDScript" id="GDScript_vqhwl"]
+script/source = "extends Node2D
+
+@export var showHealtbar: bool = true
+@export var max_hp: int # Maximum HP for the bear
+@export var attack: int = 1  # Attack damage of the bear
+
+var current_hp: int  # Current HP of the bear
+var target_flower: Node = null
+var collision_timer: Timer = null
+var is_being_freed: bool = false  # Flag to prevent race conditions
+var health_bar: ProgressBar = null  # Health bar for the bear
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Initial call to find the closest flower
+	# Initialize the collision timer
+	collision_timer = Timer.new()
+	collision_timer.wait_time = 5.0
+	collision_timer.one_shot = true
+	add_child(collision_timer)
+	collision_timer.connect(\"timeout\", Callable(self, \"_on_collision_timeout\"))
+	current_hp = max_hp
+	
+	# Initialize the health bar
+	if showHealtbar:
+		health_bar = ProgressBar.new()
+		health_bar.min_value = 0
+		health_bar.max_value = max_hp
+		health_bar.value = current_hp
+		health_bar.anchor_left = 0.5
+		health_bar.anchor_right = 0.5
+		health_bar.anchor_top = 0
+		health_bar.anchor_bottom = 0
+		health_bar.offset_left = -50
+		health_bar.offset_right = 50
+		health_bar.offset_top = -20
+		health_bar.offset_bottom = -10
+		add_child(health_bar)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_body_entered(body):
+	if body is BoidComponent and body.beetype == Enums.BeeType.BEE:
+		if not is_being_freed:
+			current_hp -= 1
+			if showHealtbar:
+				health_bar.value = current_hp
+			if current_hp <= 0:
+				body.remove_from_group(\"bees\")
+				is_being_freed = true
+				if showHealtbar:
+					health_bar.queue_free()
+				queue_free()
+			body.hp -= attack
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
 size = Vector2(43.4186, 98.3612)
@@ -30,7 +88,7 @@ _bundled = {
 "node_count": 7,
 "node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("./CharacterBody2D"), NodePath("./CharacterBody2D"), NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 3, 0, 4, 1, 5, 2, 6, 3, 1, 2, 1073741824, 0, 8, 7, -1, 1, 9, 4, 0, 1073741825, 0, 11, 10, -1, 4, 12, 5, 13, 6, 14, 7, 15, 8, 0, 1073741826, 0, 17, 16, -1, 1, 18, 9, 0, 1073741827, 0, 20, 19, -1, 1, 21, 10, 0, 1073741828, 0, 23, 22, -1, 1, 24, 11, 0, 1073741829, 0, 26, 25, -1, 1, 27, 12, 0),
-"variants": [ExtResource("8_fk1o8"), null, 5, null, true, Vector2(-4, 5), 3.14159, Vector2(1.76144, -1.27651), SubResource("RectangleShape2D_x6453"), ExtResource("9_xdpq3"), Vector2(0.315391, 0.229515), ExtResource("10_2s6yu"), SubResource("CapsuleShape2D_ps7t2")],
+"variants": [SubResource("GDScript_vqhwl"), null, 5, null, true, Vector2(-4, 5), 3.14159, Vector2(1.76144, -1.27651), SubResource("RectangleShape2D_x6453"), ExtResource("9_xdpq3"), Vector2(0.315391, 0.229515), ExtResource("10_2s6yu"), SubResource("CapsuleShape2D_ps7t2")],
 "version": 3
 }
 

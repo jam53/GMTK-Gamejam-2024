@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://g0ac1og33kjr"]
 
 [ext_resource type="PackedScene" uid="uid://c02annss7c1yl" path="res://scenes/bee.tscn" id="1_r2pla"]
-[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="2_w8o7b"]
+[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="2_w8o7b"]
 
 [node name="Temp" type="Node2D"]
 

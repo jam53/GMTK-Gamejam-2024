@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://c21fqmty4cbhr"]
+
+[ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="1_ap0he"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_badger.gd" id="1_hwlbg"]
+[ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="4_4gjmn"]
+[ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_4ltxc"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_prp0s"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_ngd4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
+size = Vector2(43.4186, 98.3612)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ps7t2"]
+radius = 85.8393
+height = 463.738
+
+[node name="EnemyBadger" type="Area2D" groups=["badgers"]]
+script = ExtResource("1_hwlbg")
+
+[node name="Badger" type="Sprite2D" parent="."]
+scale = Vector2(0.315391, 0.229515)
+texture = ExtResource("1_ap0he")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 5)
+rotation = 3.14159
+scale = Vector2(1.76144, -1.27651)
+shape = SubResource("RectangleShape2D_x6453")
+
+[node name="Polygon2D" type="Line2D" parent="."]
+script = ExtResource("4_4gjmn")
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_4ltxc")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_prp0s")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("6_ngd4q")]
+health_component = NodePath("../HealthComponent")
+attack_component = NodePath("../AttackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+scale = Vector2(0.315391, 0.229515)
+shape = SubResource("CapsuleShape2D_ps7t2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c02annss7c1yl"]
+[gd_scene load_steps=10 format=3 uid="uid://c02annss7c1yl"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_efan8"]
+[ext_resource type="Script" path="res://scripts/bee.gd" id="1_pftlj"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_8ckqs"]
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="3_vivsg"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_1hgfv"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_uww5j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
@@ -11,8 +13,12 @@ radius = 215.502
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gnn5"]
+radius = 83.0542
+
 [node name="Bee" type="Node2D" groups=["bees"]]
 z_index = 2
+script = ExtResource("1_pftlj")
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_efan8")]
 sprite = NodePath("Sprite2D")
@@ -21,7 +27,6 @@ max_speed = 350.0
 target_follow_force = 0.076
 avoid_distance = 35.0
 stopable = true
-max_hp = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="BoidsComponent"]
 position = Vector2(0.27842, -0.158137)
@@ -43,3 +48,12 @@ attack = 1
 
 [node name="HealthComponent" parent="BoidsComponent" instance=ExtResource("4_1hgfv")]
 max_hp = 1
+
+[node name="HitboxComponent" parent="BoidsComponent" node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_uww5j")]
+health_component = NodePath("../HealthComponent")
+attack_component = NodePath("../AttackComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/HitboxComponent"]
+shape = SubResource("CircleShape2D_6gnn5")
+
+[connection signal="died" from="BoidsComponent/HealthComponent" to="." method="_on_health_component_died"]

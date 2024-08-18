@@ -4,15 +4,31 @@ class_name HealthComponent
 @export var max_hp : int
 
 var current_hp : int
+var is_freed : bool = false
 
-var health_bar : ProgressBar = null
+signal died()
+
+var health_bar : ProgressBar = ProgressBar.new()
+
+func _ready():
+	health_bar.modulate.a = 0.0
+	current_hp = max_hp
+	self.add_child(health_bar)
 
 func take_damage(damage: int) -> void:
 	current_hp -= damage
+	if is_freed:
+		return
+	
+	current_hp -= damage
 	if current_hp <= 0:
-		queue_free()
+		is_freed = true
+		if health_bar != null:
+			health_bar.queue_free()
+		died.emit()
+		
 	if current_hp < max_hp:
-		health_bar = ProgressBar.new()
+		health_bar.modulate.a = 1.0
 		health_bar.min_value = 0
 		health_bar.max_value = max_hp
 		health_bar.value = current_hp
@@ -24,5 +40,4 @@ func take_damage(damage: int) -> void:
 		health_bar.offset_right = 12.5  # 4x smaller width
 		health_bar.offset_top = -40     # Moving it a bit more to the top
 		health_bar.offset_bottom = -35  # 4x smaller height
-		add_child(health_bar)
 

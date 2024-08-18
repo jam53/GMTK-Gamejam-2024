@@ -21,9 +21,7 @@ class_name BoidComponent
 
 @export var facing_right := true
 
-@export var max_hp: int = 1
 @export var speed: int = 50
-@export var attack = 1
 
 var hp: int = 1
 var health_bar: ProgressBar = null
@@ -32,10 +30,7 @@ var _flock: Array = []
 var _velocity: Vector2
 var _stop_mouse_follow := false
 
-
-
 func _ready():
-	hp = max_hp
 	randomize()
 	_velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * max_speed
 	
@@ -45,25 +40,6 @@ func _ready():
 	flock_area.add_child(flock_area_shape)
 	
 func _process(_delta):
-	if hp <= 0:
-		queue_free()
-	# show health bar when hp is less than max_hp (make new health bar scene)
-	if hp < max_hp:
-		health_bar = ProgressBar.new()
-		health_bar.min_value = 0
-		health_bar.max_value = max_hp
-		health_bar.value = hp
-		health_bar.anchor_left = 0.5
-		health_bar.anchor_right = 0.5
-		health_bar.anchor_top = 0
-		health_bar.anchor_bottom = 0
-		health_bar.offset_left = -12.5  # 4x smaller width
-		health_bar.offset_right = 12.5  # 4x smaller width
-		health_bar.offset_top = -40     # Moving it a bit more to the top
-		health_bar.offset_bottom = -35  # 4x smaller height
-		add_child(health_bar)
-
-
 	if stopable and Input.is_action_just_pressed("disable_follow"):
 			if _stop_mouse_follow:
 				lure = null

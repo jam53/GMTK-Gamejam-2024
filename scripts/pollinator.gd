@@ -26,14 +26,14 @@ func _process(delta):
 func find_flower() -> Node2D:
 	var flowers = get_tree().get_nodes_in_group("flowers")
 	var available_flowers = []
-    
+	
 	for flower in flowers:
 		if not flower.is_in_group("occupied_flowers"):
 			available_flowers.append(flower)
-        
+		
 	if available_flowers.size() == 0:
 		return null
-    
+	
 	return available_flowers.pick_random()
 
 
