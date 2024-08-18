@@ -48,7 +48,6 @@ func generate_animals(amount := 1):
 		var pos = generate_random_position()
 		var random_value = randf()
 		if random_value < bear_chance:
-			print("Spawning a bear.")
 			spawn_animal(basic_bear, pos)
 		else:
 			print("Spawning a rabbit.")
