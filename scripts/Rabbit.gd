@@ -21,7 +21,7 @@ func _ready():
 func find_closest_flower():
 	var closest_distance = INF
 	target_flower = null  # Reset target_flower before finding the closest one
-	for flower in Global.flowers:
+	for flower in get_tree().get_nodes_in_group("flowers"):
 		var distance = position.distance_to(flower.position)
 		if distance < closest_distance:
 			closest_distance = distance
@@ -46,7 +46,7 @@ func _process(delta):
 # Called when the collision timer times out
 func _on_collision_timeout():
 	if target_flower:
-		Global.flowers.erase(target_flower)
+		target_flower.remove_from_group("flowers")
 		target_flower.queue_free()
 		target_flower = null
 		find_closest_flower()
@@ -54,6 +54,7 @@ func _on_collision_timeout():
 func _on_body_entered(body):
 	if body is BoidComponent:
 		if not is_being_freed:
+			body.remove_from_group("bees")
 			is_being_freed = true
 			queue_free()
 			body.queue_free()

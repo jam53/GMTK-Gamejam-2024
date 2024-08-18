@@ -12,7 +12,7 @@ radius = 930.792
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6ems"]
 radius = 37.3363
 
-[node name="Bee" type="Node2D"]
+[node name="Bee" type="Node2D" groups=["bees"]]
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("flock_area_shape") instance=ExtResource("1_efan8")]
 flock_area_shape = NodePath("FlockViewCollision")

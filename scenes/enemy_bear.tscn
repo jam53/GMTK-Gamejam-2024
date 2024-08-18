@@ -12,6 +12,8 @@ size = Vector2(106.75, 187)
 
 [node name="BasicBear" type="Area2D"]
 script = ExtResource("1_80u5b")
+speed = null
+max_hp = null
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 

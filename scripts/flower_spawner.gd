@@ -9,12 +9,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.flowers = []
 	if flower_scene:
 		generate_flowers(flower_scene, initial_amount)
-		print("Flowers generated: ", Global.flowers.size())
-	else:
-		print("flower_scene is not assigned!")
 
 # Generates a random position within the spawn_area
 func generate_random_position() -> Vector2:
@@ -28,11 +24,9 @@ func spawn_flower(flower: PackedScene, pos: Vector2) -> Node:
 		var flowerInstance = flower.instantiate()
 		flowerInstance.position = pos
 		add_child(flowerInstance)
-		Global.flowers.append(flowerInstance)
-		print("Flower spawned at position: ", pos)
+		add_to_group("flowers")
 		return flowerInstance
 	else:
-		print("Cannot instantiate flower, flower is null!")
 		return null
 
 # Generates a specified number of flowers of the given PackedScene type

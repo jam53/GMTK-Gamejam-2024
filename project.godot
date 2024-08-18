@@ -17,7 +17,6 @@ config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
-Global="*res://Global.gd"
 Enums="*res://scripts/enums.gd"
 
 [dotnet]
