@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfxbbduw8jsfy"]
+[gd_scene load_steps=5 format=3 uid="uid://bfxbbduw8jsfy"]
 
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://b4ya57leg4wvs" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://bmq34gkbityqd" path="res://scenes/ui/object_placer.tscn" id="5_6hlqp"]
-[ext_resource type="Script" path="res://scripts/GameManager.gd" id="5_f0dpq"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -23,7 +22,3 @@ script = ExtResource("2_j2s3r")
 
 [node name="ObjectPlacer" parent="CanvasLayer" node_paths=PackedStringArray("node_to_place_objects_in") instance=ExtResource("5_6hlqp")]
 node_to_place_objects_in = NodePath("../..")
-
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("object_placer")]
-script = ExtResource("5_f0dpq")
-object_placer = NodePath("../CanvasLayer/ObjectPlacer")
