@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://co2edrhycne1x"]
+
+[ext_resource type="Texture2D" uid="uid://csvs55k3ubct7" path="res://assets/sprites/temp/beelure.png" id="1_f76bp"]
+[ext_resource type="Script" path="res://scripts/hamburger.gd" id="1_g48lp"]
+[ext_resource type="PackedScene" uid="uid://c7na7cmgbf3de" path="res://scenes/beelure_component.tscn" id="2_kmg2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1fuf"]
+radius = 111.211
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c73jq"]
+radius = 30.0884
+
+[node name="Hamburger" type="Area2D"]
+scale = Vector2(1.82622, 2.05297)
+script = ExtResource("1_g48lp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-111.159, 0, -108.421, -27.2776, -96.3739, -55.5293, -68.4474, -88.6521, -30.6644, -107.649, 10.404, -111.059, 52.02, -99.3682, 87.6127, -68.1939, 104.588, -34.584, 108.968, 16.0743, 88.1602, 71.6036, 26.8314, 107.162, -27.379, 105.213, -78.8514, 79.8843, -103.492, 44.326)
+
+[node name="BeelureComponent" parent="." instance=ExtResource("2_kmg2s")]
+capacity = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeelureComponent"]
+shape = SubResource("CircleShape2D_d1fuf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -9.53674e-07)
+scale = Vector2(0.0655, 0.0675)
+texture = ExtResource("1_f76bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c73jq")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="beelure_reactivated" from="BeelureComponent" to="." method="_on_beelure_reactivated"]
+[connection signal="beelure_released" from="BeelureComponent" to="." method="_on_beelure_released"]
