@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cod0dvo24bwsr"]
+[gd_scene load_steps=4 format=3 uid="uid://7drwe0yoca30"]
 
 [ext_resource type="Script" path="res://scripts/polinnator_hive.gd" id="1_srik8"]
 [ext_resource type="Texture2D" uid="uid://ihpxivsh2rae" path="res://assets/sprites/temp/beehive.png" id="2_38u8k"]
