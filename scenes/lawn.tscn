@@ -28,8 +28,6 @@ position = Vector2(883, 145)
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(536, 289)
 script = ExtResource("2_j2s3r")
-camera_speed = null
-margin = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
