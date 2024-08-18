@@ -1,10 +1,14 @@
 extends Node2D
 
-@export var speed: float = 100.0
+@export var speed: float = 30.0
+@export var showHealtbar: bool = true
+@export var max_hp: int # Maximum HP for the bear
 
+var current_hp: int  # Current HP of the bear
 var target_flower: Node = null
 var collision_timer: Timer = null
 var is_being_freed: bool = false  # Flag to prevent race conditions
+var health_bar: ProgressBar = null  # Health bar for the bear
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,10 +16,27 @@ func _ready():
 	find_closest_flower()
 	# Initialize the collision timer
 	collision_timer = Timer.new()
-	collision_timer.wait_time = 10.0
+	collision_timer.wait_time = 5.0
 	collision_timer.one_shot = true
 	add_child(collision_timer)
 	collision_timer.connect("timeout", Callable(self, "_on_collision_timeout"))
+	current_hp = max_hp
+	
+	# Initialize the health bar
+	if showHealtbar:
+		health_bar = ProgressBar.new()
+		health_bar.min_value = 0
+		health_bar.max_value = max_hp
+		health_bar.value = current_hp
+		health_bar.anchor_left = 0.5
+		health_bar.anchor_right = 0.5
+		health_bar.anchor_top = 0
+		health_bar.anchor_bottom = 0
+		health_bar.offset_left = -50
+		health_bar.offset_right = 50
+		health_bar.offset_top = -20
+		health_bar.offset_bottom = -10
+		add_child(health_bar)
 
 # Finds the closest flower and sets it as the target
 func find_closest_flower():
@@ -33,19 +54,18 @@ func _process(delta):
 	find_closest_flower()
 	if target_flower:
 		self.position = self.position.move_toward(target_flower.position, speed * delta)
-		# Check for collision with flower
+		# Check for collision
 		if position.distance_to(target_flower.position) < 10:  # Adjust the collision distance as needed
 			if collision_timer.is_stopped():
-				print("Starting collision timer.")
 				collision_timer.start()
 		else:
 			if not collision_timer.is_stopped():
-				print("Stopping collision timer.")
 				collision_timer.stop()
-					
+
 # Called when the collision timer times out
 func _on_collision_timeout():
 	if target_flower:
+		# remove target flower from flowers group
 		target_flower.remove_from_group("flowers")
 		target_flower.queue_free()
 		target_flower = null
@@ -54,7 +74,13 @@ func _on_collision_timeout():
 func _on_body_entered(body):
 	if body is BoidComponent:
 		if not is_being_freed:
-			body.remove_from_group("bees")
-			is_being_freed = true
-			queue_free()
+			current_hp -= 1
+			if showHealtbar:
+				health_bar.value = current_hp
+			if current_hp <= 0:
+				body.remove_from_group("bees")
+				is_being_freed = true
+				if showHealtbar:
+					health_bar.queue_free()
+				queue_free()
 			body.queue_free()
