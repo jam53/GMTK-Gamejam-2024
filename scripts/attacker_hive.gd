@@ -53,7 +53,6 @@ func _spawn_bee(consume_respawn: bool = true):
 		# TODO: REMOVE THIS AND TRIGGER bee_died() when a bee dies
 		bee_died()
 	
-	print("Spawning bee")
 	var attacker = attacker_template.instantiate()
 	add_child(attacker)
 	
