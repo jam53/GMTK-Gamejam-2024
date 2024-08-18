@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://7drwe0yoca30"]
 
-[ext_resource type="Script" path="res://scripts/hive.gd" id="1_srik8"]
+[ext_resource type="Script" path="res://scripts/polinnator_hive.gd" id="1_srik8"]
 [ext_resource type="Texture2D" uid="uid://ihpxivsh2rae" path="res://assets/sprites/temp/beehive.png" id="2_38u8k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_swtab"]
 radius = 33.7343
 
-[node name="Hive" type="StaticBody2D"]
+[node name="PollinatorHive" type="StaticBody2D"]
 script = ExtResource("1_srik8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

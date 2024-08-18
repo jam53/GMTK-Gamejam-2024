@@ -1,6 +1,6 @@
 extends Node
 
 enum BeeType {
-	BEE,
+	ATTACKER,
 	POLLINATOR,
 }
