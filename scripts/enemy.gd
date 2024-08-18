@@ -72,7 +72,7 @@ func _on_collision_timeout():
 		find_closest_flower()
 
 func _on_body_entered(body):
-	if body is BoidComponent and body is Enums.BoidType.BEE:
+	if body is BoidComponent:
 		if not is_being_freed:
 			current_hp -= 1
 			if showHealtbar:
