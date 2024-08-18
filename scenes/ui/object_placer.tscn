@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmq34gkbityqd"]
 
-[ext_resource type="Script" path="res://scripts/ObjectPlacer.gd" id="1_m0yfp"]
+[ext_resource type="Script" path="res://scripts/object_placer.gd" id="1_m0yfp"]
 [ext_resource type="PackedScene" uid="uid://bs7gg22lrfboe" path="res://scenes/ui/inventory_item.tscn" id="2_bkjpv"]
 
 [node name="ObjectPlacer" type="Control"]

@@ -1,11 +1,13 @@
 extends Node
 
-class_name GameManager
-
 var honey_amount := 0
-@onready var honey_amount_label: Label = $honeyamountlabel
 
+var _object_placer
+
+func _ready():
+	_object_placer = get_tree().root.find_child("ObjectPlacer", true, false)
+	
 func update_honey(delta: int):
 	honey_amount += delta
-	honey_amount_label.text = "Honey_amount: " + str(honey_amount)
+	_object_placer.update_inventory_ui()
 	

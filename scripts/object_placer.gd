@@ -3,7 +3,7 @@ class_name ObjectPlacer
 
 @export var node_to_place_objects_in: Node
 @export var item_template: PackedScene # Reference to the item template used to create new item instances
-@export var player_balance: int = 10
+@export var honey_amount_label : Label
 
 @onready var inventory := $VBoxContainer/Inventory
 @onready var selected_item_label: Label = $VBoxContainer/SelectedItemTitle # Reference to the label that shows the currently selected item title
@@ -15,14 +15,14 @@ var cursor_max_size: float = 128
 
 func _ready():
 	add_item_to_inventory(
-        InventoryItem.new(
-            preload("res://assets/sprites/hive.webp"), 
-            2, 
-            "hive", 
-            preload("res://scenes/hive.tscn")
-        )
-    )
-        
+		InventoryItem.new(
+			preload("res://assets/sprites/hive.webp"), 
+			2, 
+			"hive", 
+			preload("res://scenes/hive.tscn")
+		)
+	)
+		
 
 	selected_item_label.text = ""
 	add_child(cursor_sprite)
@@ -46,12 +46,13 @@ func add_item_to_inventory(inventoryItem: InventoryItem):
 		update_inventory_ui()
 		
 func update_inventory_ui():
+	honey_amount_label.text = "Honey_amount: " + str(GameManager.honey_amount)
 	# Remove all old items in the UI
 	for item in inventory.get_children():
 		inventory.remove_child(item)
 
 	for item in user_items:
-		if player_balance >= item.price:
+		if GameManager.honey_amount >= item.price:
 			var itemInstance := item_template.instantiate()
 			itemInstance.name = item.title
 			itemInstance.texture_normal = item.texture
@@ -85,7 +86,7 @@ func unselect_selected_item():
 
 # Places the currently selected item on the play area
 func place_selected_item(position_to_place: Vector2):
-	player_balance -= selected_item.price
+	GameManager.update_honey(-selected_item.price)
 	spawn_item(selected_item.scene_to_spawn, position_to_place)
 
 	update_inventory_ui()
