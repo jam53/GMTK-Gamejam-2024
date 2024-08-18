@@ -9,7 +9,10 @@ radius = 215.502
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
 
-[node name="Bee" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ems"]
+radius = 37.3363
+
+[node name="Bee" type="Node2D" groups=["bees"]]
 z_index = 2
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_efan8")]
@@ -33,3 +36,10 @@ shape = SubResource("CircleShape2D_2kadw")
 position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2u70o")
+
+[node name="AttackArea" type="Area2D" parent="BoidsComponent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/AttackArea"]
+shape = SubResource("CircleShape2D_x6ems")
+
+[connection signal="body_entered" from="BoidsComponent/AttackArea" to="BoidsComponent" method="_on_attack_area_body_entered"]
