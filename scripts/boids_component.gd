@@ -23,7 +23,7 @@ class_name BoidComponent
 
 var _flock: Array = []
 var _velocity: Vector2
-var _stop_mouse_follow = false
+var _stop_mouse_follow := false
 
 
 
@@ -64,13 +64,11 @@ func _physics_process(_delta):
 		var cross = target.x - self.global_position.x
 		if cross > 0:
 			# Target is to the right
-			print("target to the right: %s" % facing_right)
 			if not facing_right: 
 				sprite.flip_h = !sprite.flip_h
 				facing_right = true
 		elif cross < 0:
 			# Target is to the left
-			print("target to the left: %s" % facing_right)
 			if facing_right:
 				sprite.flip_h = !sprite.flip_h
 				facing_right = false

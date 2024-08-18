@@ -30,23 +30,19 @@ func find_flower() -> Node2D:
 func _on_flower_detection_area_area_entered(area):
 	if area.get_parent() == boids_component.lure and not _flower_found:
 		_flower_found = true
-		print("Flower found")
 		pollinate_timer.start()
 
 
 func _on_flower_detection_area_body_entered(body):
 	if body == hive and not _in_hive and _flower_found:
-		print("Hive found")
 		_flower_found = false
 		_in_hive = true
 		hive.bee_arrived()
 		hive_timer.start()
 
 func _on_pollinate_timer_timeout():
-	print("Flower pollinated")
 	boids_component.lure = hive
 
 func _on_hive_timer_timeout():
-	print("Hivetime finished")
 	_in_hive = false
 	boids_component.lure = null

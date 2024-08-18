@@ -1,18 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cod0dvo24bwsr"]
+[gd_scene load_steps=2 format=3 uid="uid://ds65m84ydh2gb"]
 
-[ext_resource type="Script" path="res://scripts/hive.gd" id="1_srik8"]
-[ext_resource type="Texture2D" uid="uid://ihpxivsh2rae" path="res://assets/sprites/temp/beehive.png" id="2_38u8k"]
+[ext_resource type="Texture2D" path="res://assets/sprites/hive.webp" id="1_r0bes"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_swtab"]
-radius = 33.7343
-
-[node name="Hive" type="StaticBody2D"]
-script = ExtResource("1_srik8")
+[node name="Hive" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0714544, 0.0714544)
-texture = ExtResource("2_38u8k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 8)
-shape = SubResource("CircleShape2D_swtab")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_r0bes")
