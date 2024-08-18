@@ -1,17 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=11 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
+[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
-[ext_resource type="PackedScene" uid="uid://k7wc1m4j6fm" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
+[ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
-[ext_resource type="PackedScene" uid="uid://bt0v7hxxjiagd" path="res://scenes/bee.tscn" id="8_v2b88"]
-[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
-[ext_resource type="PackedScene" uid="uid://b1ykum5n2wew4" path="res://scenes/flower_spawner.tscn" id="3_amc8p"]
-[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="4_2lnta"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="8_v2b88"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -33,8 +31,9 @@ texture = ExtResource("1_vh6ib")
 
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(688, 349)
+capacity = 1
 
-[node name="Bee" parent="." instance=ExtResource("4_2lnta")]
+[node name="Bee" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(263, 127)
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -44,21 +43,21 @@ script = ExtResource("2_j2s3r")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-988, -31)
+position = Vector2(-433, 247)
 scene = ExtResource("4_mcwa4")
 group = "flowers"
 
 [node name="BeeSpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-988, -31)
+position = Vector2(-409, 258)
 scene = ExtResource("8_v2b88")
 group = "bees"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-994, -21)
+position = Vector2(-490, -382)
 script = ExtResource("4_yw1nr")
 initial_amount = 2
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
 
-[node name="Bee" parent="." instance=ExtResource("8_v2b88")]
+[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(-99, 39)

@@ -25,7 +25,6 @@ func spawn_item(flower: PackedScene, pos: Vector2) -> Node:
 		var instance = flower.instantiate()
 		instance.position = pos
 		add_child(instance)
-		add_to_group(group)
 		return instance
 	else:
 		return null

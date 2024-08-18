@@ -49,6 +49,9 @@ func _physics_process(_delta):
 	var target
 	var target_force = target_follow_force
 	
+	if not is_instance_valid(lure):
+		lure = null
+	
 	if lure is Node2D:
 		target = lure.global_position
 		target_force *= 2

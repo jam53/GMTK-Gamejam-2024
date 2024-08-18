@@ -43,7 +43,7 @@ func find_closest_flower():
 	var closest_distance = INF
 	target_flower = null  # Reset target_flower before finding the closest one
 	for flower in get_tree().get_nodes_in_group("flowers"):
-		var distance = position.distance_to(flower.position)
+		var distance = global_position.distance_to(flower.global_position)
 		if distance < closest_distance:
 			closest_distance = distance
 			target_flower = flower
@@ -53,9 +53,9 @@ func _process(delta):
 	# Continuously find the closest flower
 	find_closest_flower()
 	if target_flower:
-		self.position = self.position.move_toward(target_flower.position, speed * delta)
+		self.global_position = self.global_position.move_toward(target_flower.global_position, speed * delta)
 		# Check for collision
-		if position.distance_to(target_flower.position) < 10:  # Adjust the collision distance as needed
+		if global_position.distance_to(target_flower.global_position) < 10:  # Adjust the collision distance as needed
 			if collision_timer.is_stopped():
 				collision_timer.start()
 		else:
@@ -72,7 +72,7 @@ func _on_collision_timeout():
 		find_closest_flower()
 
 func _on_body_entered(body):
-	if body is BoidComponent:
+	if body is BoidComponent and body.beetype == Enums.BeeType.BEE:
 		if not is_being_freed:
 			current_hp -= 1
 			if showHealtbar:
