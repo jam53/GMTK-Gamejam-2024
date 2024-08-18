@@ -50,7 +50,6 @@ func generate_animals(amount := 1):
 		if random_value < bear_chance:
 			spawn_animal(basic_bear, pos)
 		else:
-			print("Spawning a rabbit.")
 			spawn_animal(basic_rabbit, pos)
 
 # Called every 5 seconds by the timer
