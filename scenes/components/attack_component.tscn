@@ -4,3 +4,8 @@
 
 [node name="AttackComponent" type="Node2D"]
 script = ExtResource("1_i1lhe")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
