@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dply1skjqut7x"]
+[gd_scene load_steps=6 format=3 uid="uid://dply1skjqut7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_av7nf"]
+[ext_resource type="Script" path="res://scripts/attacker.gd" id="1_o3a0c"]
 [ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="2_cjxco"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
@@ -11,6 +12,7 @@ radius = 1863.0
 
 [node name="Attacker" type="Node2D"]
 z_index = 2
+script = ExtResource("1_o3a0c")
 
 [node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("1_av7nf")]
 sprite = NodePath("Sprite2D")

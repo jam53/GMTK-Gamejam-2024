@@ -39,4 +39,4 @@ script = ExtResource("2_j2s3r")
 
 [node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
 position = Vector2(-429, 345)
-initial_amount = 7
+initial_amount = 3

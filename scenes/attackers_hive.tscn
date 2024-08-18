@@ -17,3 +17,23 @@ texture = ExtResource("1_dyg8n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9)
 shape = SubResource("CircleShape2D_4g7ji")
+
+[node name="Timerlabel" type="Label" parent="."]
+offset_left = -46.0
+offset_top = -31.0
+offset_right = 51.0
+offset_bottom = 44.0
+text = "Next bee respawning in: 5s"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Respawnlabel" type="Label" parent="."]
+offset_left = -43.0
+offset_top = -125.0
+offset_right = 54.0
+offset_bottom = -50.0
+text = "10 respawns"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
