@@ -16,3 +16,7 @@ func _process(delta):
 		if is_in_group("occupied_flowers"):
 			remove_from_group("occupied_flowers")
 		modulate.a = 1.0  # Set visibility to 100%
+
+
+func _on_health_component_died():
+	queue_free()
