@@ -17,10 +17,16 @@ func _ready():
 
 func _process(delta):
 	if not _in_hive and boids_component.lure == null:
-		boids_component.lure = find_flower()
+		print("Finding flower")
+		var found_flower = find_flower()
+		if found_flower == null:
+			boids_component.lure = hive
+		else:
+			boids_component.lure = find_flower()
 
 func find_flower() -> Node2D:
 	var flowers = get_tree().get_nodes_in_group("flowers")
+	print(flowers)
 	
 	if flowers.size() == 0:
 		return null
