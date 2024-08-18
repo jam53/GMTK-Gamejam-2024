@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://n1qqy2sb7vrr"]
+
+[ext_resource type="Texture2D" uid="uid://ox6atyejw8jw" path="res://assets/sprites/temp/beehive-attackers.png" id="1_dyg8n"]
+[ext_resource type="Script" path="res://scripts/attacker_hive.gd" id="1_ukfpk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g7ji"]
+radius = 49.4975
+
+[node name="AttackerHive" type="StaticBody2D"]
+script = ExtResource("1_ukfpk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.107295, 0.107295)
+texture = ExtResource("1_dyg8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -9)
+shape = SubResource("CircleShape2D_4g7ji")
+
+[node name="Timerlabel" type="Label" parent="."]
+offset_left = -46.0
+offset_top = -31.0
+offset_right = 51.0
+offset_bottom = 44.0
+text = "Next bee respawning in: 5s"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Respawnlabel" type="Label" parent="."]
+offset_left = -43.0
+offset_top = -125.0
+offset_right = 54.0
+offset_bottom = -50.0
+text = "10 respawns"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

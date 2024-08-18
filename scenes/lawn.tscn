@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=12 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
-[ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
+[ext_resource type="PackedScene" uid="uid://n1qqy2sb7vrr" path="res://scenes/attackers_hive.tscn" id="4_c0gor"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bmq34gkbityqd" path="res://scenes/ui/object_placer.tscn" id="5_6hlqp"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
 [ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="8_ub6ku"]
-[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="8_v2b88"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/attacker.tscn" id="8_v2b88"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -21,8 +22,8 @@ texture = ExtResource("1_vh6ib")
 position = Vector2(688, 349)
 capacity = 1
 
-[node name="Bee" parent="." instance=ExtResource("8_v2b88")]
-position = Vector2(263, 127)
+[node name="AttackersHive" parent="." instance=ExtResource("4_c0gor")]
+position = Vector2(883, 145)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(536, 289)
