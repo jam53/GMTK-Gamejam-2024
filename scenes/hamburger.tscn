@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch7lshbb1clyh"]
+[gd_scene load_steps=6 format=3 uid="uid://co2edrhycne1x"]
 
 [ext_resource type="Texture2D" uid="uid://csvs55k3ubct7" path="res://assets/sprites/temp/beelure.png" id="1_f76bp"]
 [ext_resource type="Script" path="res://scripts/hamburger.gd" id="1_g48lp"]
-[ext_resource type="PackedScene" uid="uid://v1lueadrpn7j" path="res://scenes/beelure_component.tscn" id="2_kmg2s"]
+[ext_resource type="PackedScene" uid="uid://c7na7cmgbf3de" path="res://scenes/beelure_component.tscn" id="2_kmg2s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d1fuf"]
 radius = 111.211
