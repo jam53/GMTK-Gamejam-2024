@@ -1,29 +1,17 @@
 [gd_scene load_steps=11 format=3 uid="uid://b5pf8x68dp2u6"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_a2cg8"]
 [ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_j2s3r"]
 [ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
-[ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="4_mcwa4"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="4_yw1nr"]
+[ext_resource type="PackedScene" uid="uid://bmq34gkbityqd" path="res://scenes/ui/object_placer.tscn" id="5_6hlqp"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemy_rabbit.tscn" id="8_lk0uv"]
+[ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="8_ub6ku"]
 [ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bee.tscn" id="8_v2b88"]
 
 [node name="Lawn" type="Node2D"]
-
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_a2cg8")
-
-[node name="honeyamountlabel" type="Label" parent="GameManager"]
-offset_left = 9.0
-offset_top = 3.0
-offset_right = 142.0
-offset_bottom = 26.0
-scale = Vector2(1.456, 1.76042)
-text = "Honey amount: 0"
 
 [node name="Grass" type="Sprite2D" parent="."]
 position = Vector2(545, 286)
@@ -42,22 +30,38 @@ script = ExtResource("2_j2s3r")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="FlowerSpawner" parent="." instance=ExtResource("3_amc8p")]
-position = Vector2(-433, 247)
-scene = ExtResource("4_mcwa4")
-group = "flowers"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BeeSpawner" parent="." instance=ExtResource("3_amc8p")]
+[node name="honeyamountlabel" type="Label" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 142.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 19
+text = "Honey amount: 0"
+
+[node name="ObjectPlacer" parent="CanvasLayer" node_paths=PackedStringArray("node_to_place_objects_in", "honey_amount_label") instance=ExtResource("5_6hlqp")]
+unique_name_in_owner = true
+node_to_place_objects_in = NodePath("../..")
+honey_amount_label = NodePath("../honeyamountlabel")
+
+[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
+position = Vector2(-99, 39)
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="FlowerSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
+position = Vector2(-440, 248)
+scene = ExtResource("8_ub6ku")
+
+[node name="BeeSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
 position = Vector2(-409, 258)
 scene = ExtResource("8_v2b88")
 group = "bees"
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3_amc8p")]
+[node name="EnemySpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
 position = Vector2(-490, -382)
 script = ExtResource("4_yw1nr")
 initial_amount = 2
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
-
-[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
-position = Vector2(-99, 39)

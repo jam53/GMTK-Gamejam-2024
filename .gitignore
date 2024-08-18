@@ -2,3 +2,4 @@
 .godot/
 # Ignore temporary scene files
 *.tmp 
+.vscode/
