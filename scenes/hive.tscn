@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7drwe0yoca30"]
+[gd_scene load_steps=8 format=3 uid="uid://7drwe0yoca30"]
 
 [ext_resource type="Script" path="res://scripts/polinnator_hive.gd" id="1_srik8"]
 [ext_resource type="Texture2D" uid="uid://ihpxivsh2rae" path="res://assets/sprites/temp/beehive.png" id="2_38u8k"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_swtab"]
 radius = 33.7343
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nuvh"]
+radius = 50.4876
 
 [node name="PollinatorHive" type="StaticBody2D" groups=["hives"]]
 script = ExtResource("1_srik8")
@@ -29,3 +32,9 @@ max_hp = 6
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_dkv5a")]
 health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_7nuvh")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

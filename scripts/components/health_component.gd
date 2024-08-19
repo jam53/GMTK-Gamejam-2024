@@ -20,7 +20,6 @@ func take_damage(damage: int) -> void:
 	if is_freed:
 		return
 	
-	current_hp -= damage
 	if current_hp <= 0:
 		is_freed = true
 		if health_bar != null:

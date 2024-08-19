@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://n1qqy2sb7vrr"]
+[gd_scene load_steps=8 format=3 uid="uid://n1qqy2sb7vrr"]
 
 [ext_resource type="Texture2D" uid="uid://ox6atyejw8jw" path="res://assets/sprites/temp/beehive-attackers.png" id="1_dyg8n"]
 [ext_resource type="Script" path="res://scripts/attacker_hive.gd" id="1_ukfpk"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g7ji"]
 radius = 49.4975
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl4y6"]
+radius = 67.0671
 
 [node name="AttackerHive" type="StaticBody2D" groups=["hives"]]
 script = ExtResource("1_ukfpk")
@@ -50,3 +53,8 @@ max_hp = 6
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_8ub17")]
 health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_vl4y6")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
