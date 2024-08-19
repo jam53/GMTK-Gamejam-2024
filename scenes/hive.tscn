@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://7drwe0yoca30"]
+[gd_scene load_steps=7 format=3 uid="uid://7drwe0yoca30"]
 
 [ext_resource type="Script" path="res://scripts/polinnator_hive.gd" id="1_srik8"]
 [ext_resource type="Texture2D" uid="uid://ihpxivsh2rae" path="res://assets/sprites/temp/beehive.png" id="2_38u8k"]
+[ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="3_6c8p5"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_n7mpd"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_dkv5a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_swtab"]
 radius = 33.7343
 
-[node name="PollinatorHive" type="StaticBody2D"]
+[node name="PollinatorHive" type="StaticBody2D" groups=["hives"]]
 script = ExtResource("1_srik8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +19,13 @@ texture = ExtResource("2_38u8k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 8)
 shape = SubResource("CircleShape2D_swtab")
+
+[node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("3_6c8p5")]
+info_text = "Hive\\nSpawns worker bees"
+hitboxComponent = NodePath("..")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_n7mpd")]
+max_hp = 6
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_dkv5a")]
+health_component = NodePath("../HealthComponent")

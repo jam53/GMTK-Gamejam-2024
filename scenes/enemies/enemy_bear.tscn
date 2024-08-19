@@ -45,5 +45,6 @@ position = Vector2(0, 7)
 speed = 30.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
+target = 1
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
