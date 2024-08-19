@@ -20,6 +20,10 @@ config/icon="res://assets/sprites/icon.svg"
 Enums="*res://scripts/enums.gd"
 GameManager="*res://scripts/game_manager.gd"
 
+[display]
+
+window/subwindows/embed_subwindows=false
+
 [dotnet]
 
 project/assembly_name="GMTK-Gamejam-2024"
