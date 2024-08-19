@@ -19,9 +19,7 @@ func _ready():
 	self.add_child(health_bar)
 
 func take_damage(damage: float) -> void:
-	print("Old health: ", current_hp)
 	current_hp -= (damage / damage_reduction)
-	print("New health: ", current_hp)
 	if is_freed:
 		return
 	
