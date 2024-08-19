@@ -35,7 +35,6 @@ texture = ExtResource("2_cjxco")
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="BoidsComponent"]
 position = Vector2(2.98023e-08, -1.49012e-08)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_hfn2m")
 
 [node name="FlockViewCollision" type="CollisionShape2D" parent="BoidsComponent"]

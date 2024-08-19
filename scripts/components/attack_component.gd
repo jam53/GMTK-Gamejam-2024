@@ -12,8 +12,8 @@ func _ready():
 
 func damage(target: Node) -> void:
 	if can_attack and target.has_method("take_damage"):
-		target.take_damage(attack)
 		can_attack = false
+		target.take_damage(attack)
 		attack_timer.start()
 
 func _on_Timer_timeout() -> void:
