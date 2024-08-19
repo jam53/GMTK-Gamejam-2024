@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkaw854ax1oes"]
+[gd_scene load_steps=6 format=3 uid="uid://dkaw854ax1oes"]
 
+[ext_resource type="Script" path="res://scripts/basic_flower.gd" id="1_7v4v5"]
 [ext_resource type="Texture2D" uid="uid://cil2as1oaqfe3" path="res://assets/sprites/BasicFlower.jpg" id="1_vct0m"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="3_joiij"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="4_2jp4e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5p2cf"]
-radius = 73.5527
+radius = 45.0444
 
 [node name="Basic_Flower" type="Node2D" groups=["flowers"]]
+script = ExtResource("1_7v4v5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.317829, 0.317829)
 texture = ExtResource("1_vct0m")
 
-[node name="Area2D" type="Area2D" parent="."]
-priority = 1
+[node name="HealthComponent" parent="." instance=ExtResource("3_joiij")]
+max_hp = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_2jp4e")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_5p2cf")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

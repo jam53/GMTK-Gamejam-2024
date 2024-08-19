@@ -25,8 +25,6 @@ var _flock: Array = []
 var _velocity: Vector2
 var _stop_lure: Node2D
 
-
-
 func _ready():
 	randomize()
 	_stop_lure = Node2D.new()
@@ -129,9 +127,9 @@ func get_flock_status(flock: Array):
 	
 	
 func _on_flockview_body_entered(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
 		_flock.append(body)
 
 func _on_flockview_body_exited(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
 		_flock.remove_at(_flock.find(body))
