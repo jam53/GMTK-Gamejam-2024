@@ -6,6 +6,7 @@ extends Node2D
 @export_category("Animals to spawn")
 @export var basic_bear: PackedScene
 @export var basic_rabbit: PackedScene
+@export var spawn_speed = 2.0
 
 var bear_chance: float = 0.2  # Initial chance of spawning a bear
 
@@ -15,7 +16,7 @@ func _ready():
 	
 	# Start the timer to spawn animals every 5 seconds
 	var timer = Timer.new()
-	timer.wait_time = 5.0
+	timer.wait_time = spawn_speed
 	timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 	add_child(timer)
 	timer.start()
