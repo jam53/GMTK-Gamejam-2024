@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dn54re6imlidr"]
 
-[ext_resource type="Script" path="res://scripts/spawner.gd" id="1_7flba"]
+[ext_resource type="Script" path="res://scripts/spawners/spawner.gd" id="1_7flba"]
 
 [node name="FlowerSpawner" type="Node2D" node_paths=PackedStringArray("spawn_area")]
 script = ExtResource("1_7flba")

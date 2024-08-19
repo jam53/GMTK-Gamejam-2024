@@ -25,8 +25,6 @@ var _flock: Array = []
 var _velocity: Vector2
 var _stop_mouse_follow := false
 
-
-
 func _ready():
 	randomize()
 	_velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * max_speed
@@ -128,9 +126,9 @@ func get_flock_status(flock: Array):
 	
 	
 func _on_flockview_body_entered(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
 		_flock.append(body)
 
 func _on_flockview_body_exited(body):
-	if body is BoidComponent and body.beetype == self.beetype:
+	if body is BoidComponent and body.beetype == self.beetype and body != self:
 		_flock.remove_at(_flock.find(body))
