@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dei8n40gtxqsw"]
+[gd_scene load_steps=5 format=3 uid="uid://oktv7qffskqx"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_rsmg6"]
 [ext_resource type="Texture2D" uid="uid://dfw4ws1yqxg63" path="res://assets/sprites/rabbit.png" id="1_wyne6"]
@@ -19,7 +19,7 @@ max_hp = 1
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="Rabbit" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_wyne6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
