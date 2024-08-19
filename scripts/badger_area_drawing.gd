@@ -1,7 +1,7 @@
 extends Line2D
 
 @export var radius = 500  # The radius of the circle
-
+@export var color: Color = Color(1, 0, 0)  # The color of the circle (default is red)
 
 func _ready():
 	var num_sides = 64  # The number of sides of the polygon (more sides = smoother circle)
@@ -16,4 +16,4 @@ func _ready():
 	points.append(points[0])  # Close the circle by adding the first point at the end
 	self.points = points
 	self.width = 2  # Set the width of the line
-	self.default_color = Color(1, 0, 0)  # Set the color to red
+	self.default_color = color  # Use the exported color

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="1_ap0he"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy_badger.gd" id="1_hwlbg"]
-[ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="4_4gjmn"]
+[ext_resource type="PackedScene" uid="uid://dj2sptpfehdln" path="res://scenes/area_drawing.tscn" id="3_vql60"]
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_4ltxc"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_prp0s"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_ngd4q"]
@@ -25,8 +25,7 @@ texture = ExtResource("1_ap0he")
 scale = Vector2(0.315391, 0.229515)
 shape = SubResource("CapsuleShape2D_ps7t2")
 
-[node name="Polygon2D" type="Line2D" parent="."]
-script = ExtResource("4_4gjmn")
+[node name="AreaDrawing" parent="." instance=ExtResource("3_vql60")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_4ltxc")]
 attack = 1

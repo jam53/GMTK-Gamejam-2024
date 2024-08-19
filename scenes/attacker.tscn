@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dply1skjqut7x"]
+[gd_scene load_steps=10 format=3 uid="uid://dply1skjqut7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_av7nf"]
 [ext_resource type="Script" path="res://scripts/attacker.gd" id="1_o3a0c"]
@@ -7,11 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_rxqik"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_q3247"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
+radius = 215.502
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
-radius = 215.502
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3flu"]
+radius = 37.0135
 
 [node name="Attacker" type="Node2D"]
 z_index = 2
@@ -30,6 +33,10 @@ position = Vector2(0.27842, -0.158137)
 scale = Vector2(0.027842, 0.0316274)
 texture = ExtResource("2_cjxco")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent"]
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2kadw")
+
 [node name="FlockViewCollision" type="CollisionShape2D" parent="BoidsComponent"]
 position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
@@ -45,8 +52,7 @@ max_hp = 1
 health_component = NodePath("../HealthComponent")
 attack_component = NodePath("../AttackComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent/HitboxComponent"]
-scale = Vector2(0.027842, 0.0316274)
-shape = SubResource("CircleShape2D_2kadw")
+[node name="AttackCollision" type="CollisionShape2D" parent="BoidsComponent/HitboxComponent"]
+shape = SubResource("CircleShape2D_c3flu")
 
 [connection signal="died" from="BoidsComponent/HealthComponent" to="." method="_on_health_component_died"]
