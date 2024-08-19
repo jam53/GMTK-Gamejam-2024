@@ -14,14 +14,20 @@ var cursor_sprite: Sprite2D = Sprite2D.new() # Sprite that will be used to displ
 var cursor_max_size: float = 128
 
 func _ready():
-	add_item_to_inventory(
+	add_items_to_inventory([
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/beehive.png"), 
 			2, 
-			"hive", 
+			"beehive", 
 			preload("res://scenes/hive.tscn")
+		),
+		InventoryItem.new(
+			preload("res://assets/sprites/temp/beehive-attackers.png"),
+			5,
+			"beehive attackers",
+			preload("res://scenes/attackers_hive.tscn")
 		)
-	)
+	])
 		
 	add_child(cursor_sprite)
 	update_inventory_ui()
@@ -39,10 +45,11 @@ func _input(event):
 		place_selected_item(world_position)
 
 # Adds an item to the user's inventory
-func add_item_to_inventory(inventoryItem: InventoryItem):
-	if !is_item_in_inventory(inventoryItem):
-		user_items.append(inventoryItem)
-		update_inventory_ui()
+func add_items_to_inventory(inventoryItems: Array[InventoryItem]):
+	for item in inventoryItems:
+		if !is_item_in_inventory(item):
+			user_items.append(item)
+			update_inventory_ui()
 		
 func update_inventory_ui():
 	honey_amount_label.set_count(GameManager.honey_amount)
