@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var how_to_play_window: Window
+@onready var how_to_play_window: Window = HowToPlay
 @export var personal_best_ui_node: Button
 
 func _ready():

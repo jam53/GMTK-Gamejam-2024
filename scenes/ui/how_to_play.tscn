@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://deehdmyfc0q6a"]
+
+[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
+[ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="2_kdwgv"]
+[ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="3_1kktn"]
+
+[node name="HowToPlay" type="Window"]
+initial_position = 2
+size = Vector2i(1000, 800)
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0wpaa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.247059)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_kdwgv")
+theme_override_font_sizes/font_size = 116
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 75
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 280.81)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.247059)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("3_1kktn")
+theme_override_fonts/bold_font = ExtResource("2_kdwgv")
+theme_override_fonts/italics_font = ExtResource("2_kdwgv")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/italics_font_size = 40
+bbcode_enabled = true
+text = "[b]About[/b]
+Honey Horizon was made for the GMTK 2024 game jam by a team of three people, around the theme “Built to Scale.”
+
+[b]Keybinds:[/b]
+- [i]WASD/ZQSD[/i]: Camera movement
+- [i]E[/i]: Lock/Unlock the attacker bees somewhere on the map
+- [i]M:[/i] Toggle whether or not the camera can also be moved by dragging the mouse outside the boundaries of the screen.
+- [i]Click[/i] on an item in the shop at the bottom of the screen, then click somewhere on the map to place the selected item. This can be canceled by pressing [i]ESC[/i].
+
+[b]Goal of the Game:[/b]
+Try to survive as long as possible."
