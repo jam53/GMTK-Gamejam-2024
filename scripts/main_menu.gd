@@ -14,7 +14,7 @@ func _ready():
 	personal_best_ui_node.text = personal_best
 
 func _on_play_button_down():
-	get_tree().change_scene("res://scenes/lawn.tscn")
+	get_tree().change_scene_to_file("res://scenes/lawn.tscn")
 
 func _on_how_to_play_button_down():
 	how_to_play_window.show()

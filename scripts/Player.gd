@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var camera_speed: float = 500 # Speed at which the camera moves 
 @export var margin: int = 25 # Margin for detecting when the mouse is out of bounds
-@export var enable_camera_movement_with_cursor: bool = true
+var enable_camera_movement_with_cursor: bool = true
 
 # Used to move the camera using the cursor
 func _process(delta: float) -> void:
@@ -31,6 +31,9 @@ func _process(delta: float) -> void:
 func get_input():
 	var input_direction := Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * camera_speed
+	
+	if Input.is_action_just_pressed("toggle_camera_cursor_movement"):
+		enable_camera_movement_with_cursor = !enable_camera_movement_with_cursor
 
 func _physics_process(delta):
 	get_input()
