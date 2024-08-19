@@ -22,5 +22,6 @@ func _process(_delta):
 	
 func update_honey(delta: int):
 	honey_amount += delta
-	_object_placer.update_inventory_ui()
+	if _object_placer != null:
+		_object_placer.update_inventory_ui()
 	

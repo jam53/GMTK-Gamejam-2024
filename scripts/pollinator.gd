@@ -11,7 +11,8 @@ var basic_flower = preload("res://scenes/basic_flower.tscn")
 
 var _flower_found := false
 var _in_hive := false
-var found_flower 
+var found_flower_location : Vector2
+var found_flower_parent : Node
 
 func _ready():
 	pollinate_timer.wait_time = pollinateTime
@@ -19,10 +20,13 @@ func _ready():
 
 func _process(delta):
 	if not _in_hive and boids_component.lure == null:
-		found_flower = find_flower()
+		var found_flower = find_flower()
+		
 		if found_flower == null:
 			boids_component.lure = hive
 		else:
+			found_flower_location = found_flower.global_position
+			found_flower_parent = found_flower.get_parent()
 			boids_component.lure = find_flower()
 
 func find_flower() -> Node2D:
@@ -56,15 +60,16 @@ func _on_flower_detection_area_body_entered(body):
 func _on_pollinate_timer_timeout():
 	boids_component.lure = hive
 	
-	# Create a new basic_flower instance
-	var new_flower = basic_flower.instantiate()
-	
-	# Set the position of the new flower close to the found_flower
-	var offset = Vector2(randf() * 500 - 10, randf() * 500 - 10)  # Random offset within a 20x20 area
-	new_flower.position = found_flower.position + offset
-	
-	# Add the new flower as a child to the parent of found_flower
-	found_flower.get_parent().add_child(new_flower)
+	if found_flower_location != null and found_flower_parent != null:
+		# Create a new basic_flower instance
+		var new_flower = basic_flower.instantiate()
+		
+		# Set the position of the new flower close to the found_flower
+		var offset = Vector2(randf() * 500 - 250, randf() * 500 - 250)  # Random offset within a 20x20 area
+		new_flower.position = found_flower_location + offset
+		
+		# Add the new flower as a child to the parent of found_flower
+		found_flower_parent.add_child(new_flower)
 
 
 func _on_hive_timer_timeout():
