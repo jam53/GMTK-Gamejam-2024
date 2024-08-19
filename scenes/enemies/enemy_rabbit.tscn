@@ -23,7 +23,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_lvbct")
 
 [node name="Rabbit" type="Sprite2D" parent="."]
-scale = Vector2(0.225, 0.225)
+scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_wyne6")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_fda6u")]

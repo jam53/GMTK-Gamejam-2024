@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d32xp2y03gugu"
-path="res://.godot/imported/hive.webp-ef7f886795b677e39886fc8756e32a25.ctex"
+uid="uid://c4688lmmfs428"
+path="res://.godot/imported/honey.png-2b083f42a8a66584b7ab5050f0d3c79f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/hive.webp"
-dest_files=["res://.godot/imported/hive.webp-ef7f886795b677e39886fc8756e32a25.ctex"]
+source_file="res://assets/sprites/temp/honey.png"
+dest_files=["res://.godot/imported/honey.png-2b083f42a8a66584b7ab5050f0d3c79f.ctex"]
 
 [params]
 

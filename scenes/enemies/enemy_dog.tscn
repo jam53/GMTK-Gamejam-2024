@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c21fqmty4cbhr"]
 
-[ext_resource type="Texture2D" uid="uid://bl5vre17rxq77" path="res://assets/sprites/badger.png" id="1_ap0he"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy_badger.gd" id="1_hwlbg"]
+[ext_resource type="Texture2D" uid="uid://dlikqdwi6h7ac" path="res://assets/sprites/dog.png" id="2_i0i2a"]
 [ext_resource type="Script" path="res://scripts/badger_area_drawing.gd" id="4_4gjmn"]
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_4ltxc"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_prp0s"]
@@ -14,12 +14,12 @@ height = 463.738
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
 size = Vector2(43.4186, 98.3612)
 
-[node name="EnemyBadger" type="CharacterBody2D" groups=["badgers"]]
+[node name="EnemyDog" type="CharacterBody2D" groups=["badgers"]]
 script = ExtResource("1_hwlbg")
 
-[node name="Badger" type="Sprite2D" parent="."]
-scale = Vector2(0.315391, 0.229515)
-texture = ExtResource("1_ap0he")
+[node name="Dog" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_i0i2a")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(0.315391, 0.229515)
