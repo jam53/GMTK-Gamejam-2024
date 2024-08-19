@@ -16,7 +16,7 @@ var cursor_max_size: float = 128
 func _ready():
 	add_item_to_inventory(
 		InventoryItem.new(
-			preload("res://assets/sprites/hive.webp"), 
+			preload("res://assets/sprites/temp/beehive.png"), 
 			2, 
 			"hive", 
 			preload("res://scenes/hive.tscn")
