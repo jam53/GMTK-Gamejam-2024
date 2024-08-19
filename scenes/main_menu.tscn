@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://56m3atearqot"]
+[gd_scene load_steps=14 format=3 uid="uid://b3kuv7uk6nm7m"]
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_j7str"]
-[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ufsb4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
 [ext_resource type="Script" path="res://scripts/camera_main_menu.gd" id="3_xyf10"]
 [ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="4_cewai"]
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="5_pib4d"]
 [ext_resource type="Script" path="res://scripts/background_bees.gd" id="6_64rpm"]
-[ext_resource type="PackedScene" uid="uid://doy30tslrqjgp" path="res://scenes/ui/main_menu_bee.tscn" id="7_kf7sv"]
+[ext_resource type="PackedScene" path="res://scenes/ui/main_menu_bee.tscn" id="7_kf7sv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_170og"]
 
@@ -19,6 +20,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuqh4"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ufsb4")
 
 [node name="BackgroundMainMenu" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_j7str")
@@ -88,7 +90,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
 text = "Play"
 
-[node name="Highscore" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
+[node name="HowToPlay" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.881989, 0.881989, 0.881989, 1)
@@ -102,9 +104,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_cx6gf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_sh4t4")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
-text = "Highscore"
+text = "How to play"
 
-[node name="Keybinds" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
+[node name="PersonalBest" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.881989, 0.881989, 0.881989, 1)
@@ -118,4 +120,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_cx6gf")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_sh4t4")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
-text = "Keybinds"
+text = "Personal best: 00:00.00"
+
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/ButtonsHolder/Play" to="." method="_on_play_button_down"]
