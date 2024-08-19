@@ -7,9 +7,11 @@ extends Node2D
 @onready var pollinate_timer = $PollinateTimer
 @onready var hive_timer = $HiveTimer
 
+var basic_flower = preload("res://scenes/basic_flower.tscn")
 
 var _flower_found := false
 var _in_hive := false
+var found_flower 
 
 func _ready():
 	pollinate_timer.wait_time = pollinateTime
@@ -17,7 +19,7 @@ func _ready():
 
 func _process(delta):
 	if not _in_hive and boids_component.lure == null:
-		var found_flower = find_flower()
+		found_flower = find_flower()
 		if found_flower == null:
 			boids_component.lure = hive
 		else:
@@ -50,8 +52,20 @@ func _on_flower_detection_area_body_entered(body):
 		hive.bee_arrived()
 		hive_timer.start()
 
+
 func _on_pollinate_timer_timeout():
 	boids_component.lure = hive
+	
+	# Create a new basic_flower instance
+	var new_flower = basic_flower.instantiate()
+	
+	# Set the position of the new flower close to the found_flower
+	var offset = Vector2(randf() * 500 - 10, randf() * 500 - 10)  # Random offset within a 20x20 area
+	new_flower.position = found_flower.position + offset
+	
+	# Add the new flower as a child to the parent of found_flower
+	found_flower.get_parent().add_child(new_flower)
+
 
 func _on_hive_timer_timeout():
 	_in_hive = false
