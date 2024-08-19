@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=13 format=3 uid="uid://b5pf8x68dp2u6"]
 
-[ext_resource type="Texture2D" uid="uid://binims7yi7qeu" path="res://assets/sprites/Grass.jpg" id="1_vh6ib"]
+[ext_resource type="Texture2D" uid="uid://yobgbgr7ytpw" path="res://assets/sprites/Grass.jpg" id="2_be4tn"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_j2s3r"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="2_qolai"]
 [ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://n1qqy2sb7vrr" path="res://scenes/attackers_hive.tscn" id="4_c0gor"]
@@ -14,9 +15,10 @@
 
 [node name="Lawn" type="Node2D"]
 
-[node name="Grass" type="Sprite2D" parent="."]
-position = Vector2(545, 286)
-texture = ExtResource("1_vh6ib")
+[node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_qolai")
+chunk_texture = ExtResource("2_be4tn")
+player = NodePath("../Player")
 
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(688, 349)
@@ -40,11 +42,13 @@ offset_right = 142.0
 offset_bottom = 26.0
 theme_override_font_sizes/font_size = 19
 text = "Honey amount: 0"
+metadata/_edit_use_anchors_ = true
 
 [node name="ObjectPlacer" parent="CanvasLayer" node_paths=PackedStringArray("node_to_place_objects_in", "honey_amount_label") instance=ExtResource("5_6hlqp")]
 unique_name_in_owner = true
 node_to_place_objects_in = NodePath("../..")
 honey_amount_label = NodePath("../honeyamountlabel")
+metadata/_edit_use_anchors_ = true
 
 [node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(-99, 39)
