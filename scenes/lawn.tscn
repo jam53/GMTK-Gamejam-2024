@@ -43,11 +43,9 @@ scale = Vector2(1, 1)
 
 [node name="ObjectPlacer" parent="CanvasLayer" node_paths=PackedStringArray("node_to_place_objects_in", "honey_amount_label") instance=ExtResource("5_6hlqp")]
 unique_name_in_owner = true
+mouse_filter = 1
 node_to_place_objects_in = NodePath("../..")
 honey_amount_label = NodePath("../HoneyCountLabel")
-
-[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
-position = Vector2(-99, 39)
 
 [node name="Spawners" type="Node2D" parent="."]
 
@@ -67,3 +65,6 @@ script = ExtResource("4_yw1nr")
 initial_amount = 2
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
+
+[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
+position = Vector2(-99, 39)

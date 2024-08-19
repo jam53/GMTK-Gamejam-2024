@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bleutwv0o77ln"]
+
+[ext_resource type="Script" path="res://scripts/components/control_info_component.gd" id="1_3kxxs"]
+
+[node name="ControlInfoComponent" type="Node2D"]
+script = ExtResource("1_3kxxs")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -73.0
+offset_top = -83.0
+offset_right = 73.0
+offset_bottom = -34.0
+fit_content = true

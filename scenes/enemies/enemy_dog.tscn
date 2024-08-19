@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c21fqmty4cbhr"]
+[gd_scene load_steps=10 format=3 uid="uid://c21fqmty4cbhr"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_badger.gd" id="1_hwlbg"]
 [ext_resource type="Texture2D" uid="uid://dlikqdwi6h7ac" path="res://assets/sprites/dog.png" id="2_i0i2a"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_4ltxc"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_prp0s"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_ngd4q"]
+[ext_resource type="PackedScene" path="res://scenes/components/info_component.tscn" id="7_q877x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ps7t2"]
 radius = 85.8393
@@ -44,5 +45,9 @@ position = Vector2(-4, 5)
 rotation = 3.14159
 scale = Vector2(1.76144, -1.27651)
 shape = SubResource("RectangleShape2D_x6453")
+
+[node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_q877x")]
+info_text = "Dog\\nOccupies Flowers\\n5 hp 1 atk"
+hitboxComponent = NodePath("../HitboxComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
