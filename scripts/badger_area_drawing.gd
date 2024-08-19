@@ -5,7 +5,10 @@ extends Line2D
 		radius = value
 		_draw_circle()
 		
-@export var color: Color = Color(1, 0, 0)  # The color of the circle (default is red)
+@export var color: Color = Color(1, 0, 0): # The color of the circle (default is red)
+	set(value):
+		color = value
+		_draw_circle()
 
 func _ready():
 	_draw_circle()

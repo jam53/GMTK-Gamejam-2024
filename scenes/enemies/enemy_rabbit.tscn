@@ -30,7 +30,6 @@ texture = ExtResource("1_wyne6")
 attack = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]
-max_hp = 1
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("4_cs4vb")]
 speed = 50.0

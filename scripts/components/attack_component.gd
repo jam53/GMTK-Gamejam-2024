@@ -2,14 +2,8 @@ extends Node2D
 class_name AttackComponent
 
 @export var attack: int
-@export var attack_multiplier : float = 1:
-	set(value):
-		multiplier_changed.emit(value)
-		attack_multiplier = value
-		
+@export var attack_multiplier : float = 1
 @export var attack_cooldown: float = 1
-
-signal multiplier_changed(multiplier: float)
 
 var can_attack: bool = true
 @onready var attack_timer = $Timer

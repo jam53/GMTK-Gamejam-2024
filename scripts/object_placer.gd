@@ -26,6 +26,18 @@ func _ready():
 			5,
 			"beehive attackers",
 			preload("res://scenes/attackers_hive.tscn")
+		),
+		InventoryItem.new(
+			preload("res://assets/sprites/temp/attack_boost_flower.png"),
+			10,
+			"attack boost flower",
+			preload("res://scenes/flowers/attack_boost_flower.tscn")
+		),
+		InventoryItem.new(
+			preload("res://assets/sprites/temp/health_boost_flower.png"),
+			10,
+			"health boost flower",
+			preload("res://scenes/flowers/health_boost_flower.tscn")
 		)
 	])
 		
