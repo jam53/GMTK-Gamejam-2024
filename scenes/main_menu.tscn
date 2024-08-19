@@ -19,9 +19,10 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuqh4"]
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("how_to_play_window")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("how_to_play_window", "personal_best_ui_node")]
 script = ExtResource("1_ufsb4")
 how_to_play_window = NodePath("HowToPlay")
+personal_best_ui_node = NodePath("CanvasLayer/VBoxContainer/ButtonsHolder/PersonalBest")
 
 [node name="BackgroundMainMenu" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_j7str")
@@ -110,7 +111,7 @@ text = "How to play"
 [node name="PersonalBest" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.881989, 0.881989, 0.881989, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
 theme_override_colors/icon_normal_color = Color(0.159815, 0.545718, 3.85046e-07, 1)
 theme_override_constants/outline_size = 9
