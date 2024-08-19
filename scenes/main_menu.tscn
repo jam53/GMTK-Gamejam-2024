@@ -1,3 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://6ca5scx6ijk0"]
 
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_j7str"]
+[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
+[ext_resource type="Script" path="res://scripts/camera_main_menu.gd" id="3_xyf10"]
+
 [node name="MainMenu" type="Node2D"]
+
+[node name="BackgroundMainMenu" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_j7str")
+chunk_texture = ExtResource("2_1ias7")
+player = NodePath("../CameraMainMenu")
+
+[node name="CameraMainMenu" type="CharacterBody2D" parent="."]
+position = Vector2(536, 289)
+script = ExtResource("3_xyf10")
+
+[node name="Camera2D" type="Camera2D" parent="CameraMainMenu"]
