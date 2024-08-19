@@ -14,3 +14,7 @@ func _ready():
 
 func bee_arrived():
 	GameManager.update_honey(5)
+
+
+func _on_health_component_died():
+	queue_free()

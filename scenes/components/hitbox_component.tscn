@@ -6,4 +6,5 @@
 script = ExtResource("1_s4itx")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="on_body_entered"]

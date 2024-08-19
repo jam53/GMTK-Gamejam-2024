@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqd87tbsse2v"]
+
+[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="1_v4id4"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/attacker.tscn" id="2_wjnku"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyBear" parent="." instance=ExtResource("1_v4id4")]
+position = Vector2(152, 98)
+
+[node name="Attacker" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(414, 250)
+
+[node name="Attacker2" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(739, 402)
+
+[node name="Attacker3" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(427, 459)
+
+[node name="Attacker4" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(220, 383)
+
+[node name="Attacker5" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(616, 270)
+
+[node name="Attacker6" parent="." instance=ExtResource("2_wjnku")]
+position = Vector2(503, 62)

@@ -55,11 +55,9 @@ offset_left = -37.0
 offset_top = 3.0
 offset_right = -37.0
 offset_bottom = 3.0
+mouse_filter = 1
 node_to_place_objects_in = NodePath("../..")
 honey_amount_label = NodePath("../HoneyCountLabel")
-
-[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
-position = Vector2(-99, 39)
 
 [node name="Spawners" type="Node2D" parent="."]
 
@@ -80,3 +78,6 @@ increment_bear_chance = 0
 boss_wave_wait_time = 120
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
+
+[node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
+position = Vector2(-99, 39)
