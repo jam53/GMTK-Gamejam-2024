@@ -23,9 +23,8 @@ func _ready():
 		)
 	)
 		
-
-	selected_item_label.text = ""
 	add_child(cursor_sprite)
+	update_inventory_ui()
 
 func _process(delta):
 	if selected_item != null:
@@ -64,6 +63,11 @@ func update_inventory_ui():
 			if price_label is NumberLabel:
 				price_label.set_count(item.price)
 
+	if inventory.get_child_count() == 0:
+		selected_item_label.text = "Not enough honey to buy any items"
+	else:
+		selected_item_label.text = ""
+
 # Fires when the user selects an item from the inventory by clicking on the item
 func _on_item_pressed(inventoryItem: InventoryItem):
 	selected_item = inventoryItem
@@ -82,7 +86,6 @@ func _on_item_pressed(inventoryItem: InventoryItem):
 # Deselects the currently selected item
 func unselect_selected_item():
 	selected_item = null
-	selected_item_label.text = ""
 	cursor_sprite.texture = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
