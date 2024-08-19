@@ -18,7 +18,7 @@ size = Vector2(106.75, 187)
 script = ExtResource("1_y4kid")
 
 [node name="Bear" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.262)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_xpm74")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
