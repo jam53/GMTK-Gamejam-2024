@@ -1,33 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5eyugwsohmnm"]
+[gd_scene load_steps=9 format=3 uid="uid://b5eyugwsohmnm"]
 
 [ext_resource type="PackedScene" uid="uid://c4rj533k6di4v" path="res://scenes/components/flower_component.tscn" id="1_ghxpj"]
-[ext_resource type="Script" path="res://scenes/flowers/attack_boost_flower.gd" id="1_st4f1"]
+[ext_resource type="Script" path="res://scripts/attack_boost_flower.gd" id="1_st4f1"]
 [ext_resource type="Texture2D" uid="uid://cnkydtbpj3b52" path="res://assets/sprites/temp/attack_boost_flower.png" id="2_ik7e2"]
 [ext_resource type="PackedScene" uid="uid://dj2sptpfehdln" path="res://scenes/area_drawing.tscn" id="3_5qp0t"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_6dw3n"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_1yo10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bq1w"]
+radius = 250.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3pjo"]
 radius = 31.0161
 
 [node name="AttackBoostFlower" type="Node2D"]
 script = ExtResource("1_st4f1")
+radius = 300
+
+[node name="BoostArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoostArea"]
+shape = SubResource("CircleShape2D_2bq1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.143955, 0.143955)
 texture = ExtResource("2_ik7e2")
 
-[node name="AreaDrawing" parent="." instance=ExtResource("3_5qp0t")]
-radius = 300
-color = Color(0.709804, 0, 0.305882, 1)
-
 [node name="FlowerComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_ghxpj")]
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_6dw3n")]
+max_hp = 20
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_1yo10")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_a3pjo")
+
+[node name="AreaDrawing" parent="." instance=ExtResource("3_5qp0t")]
+radius = 300
+color = Color(0.709804, 0, 0.305882, 1)
+
+[connection signal="body_entered" from="BoostArea" to="." method="_on_boost_area_body_entered"]
+[connection signal="body_exited" from="BoostArea" to="." method="_on_boost_area_body_exited"]

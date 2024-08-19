@@ -1,9 +1,16 @@
 extends Line2D
 
-@export var radius = 500  # The radius of the circle
+@export var radius = 500:  # The radius of the circle
+	set(value):
+		radius = value
+		_draw_circle()
+		
 @export var color: Color = Color(1, 0, 0)  # The color of the circle (default is red)
 
 func _ready():
+	_draw_circle()
+	
+func _draw_circle():
 	var num_sides = 64  # The number of sides of the polygon (more sides = smoother circle)
 	var points = PackedVector2Array()
 	
