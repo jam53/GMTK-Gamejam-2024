@@ -7,7 +7,7 @@ script = ExtResource("1_7flba")
 spawn_area = NodePath("SpawnArea")
 
 [node name="SpawnArea" type="ReferenceRect" parent="."]
-offset_left = 445.0
-offset_top = -257.0
-offset_right = 1530.0
-offset_bottom = 305.0
+offset_left = -2827.0
+offset_top = -2573.0
+offset_right = 2908.0
+offset_bottom = 2448.0

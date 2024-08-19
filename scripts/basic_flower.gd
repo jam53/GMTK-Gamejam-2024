@@ -3,7 +3,7 @@ extends Node2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var badger_nearby = false
-	for badger in get_tree().get_nodes_in_group("badgers"):
+	for badger in get_tree().get_nodes_in_group("dogs"):
 		if global_position.distance_to(badger.global_position) < 500:
 			badger_nearby = true
 			break

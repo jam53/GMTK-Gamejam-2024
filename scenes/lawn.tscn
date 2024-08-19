@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://yobgbgr7ytpw" path="res://assets/sprites/Grass.jpg" id="2_be4tn"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_j2s3r"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="2_qolai"]
-[ext_resource type="PackedScene" uid="uid://cod0dvo24bwsr" path="res://scenes/hive.tscn" id="2_qycfm"]
+[ext_resource type="PackedScene" uid="uid://7drwe0yoca30" path="res://scenes/hive.tscn" id="2_qycfm"]
 [ext_resource type="PackedScene" uid="uid://dn54re6imlidr" path="res://scenes/spawner.tscn" id="3_amc8p"]
 [ext_resource type="PackedScene" uid="uid://n1qqy2sb7vrr" path="res://scenes/attackers_hive.tscn" id="4_c0gor"]
 [ext_resource type="Script" path="res://scripts/spawners/enemy_spawner.gd" id="4_yw1nr"]
 [ext_resource type="PackedScene" uid="uid://bmq34gkbityqd" path="res://scenes/ui/object_placer.tscn" id="5_6hlqp"]
-[ext_resource type="PackedScene" path="res://scenes/ui/honey_count_label.tscn" id="5_ak5ap"]
+[ext_resource type="PackedScene" uid="uid://2ba3211jih8k" path="res://scenes/ui/honey_count_label.tscn" id="5_ak5ap"]
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="8_lk0uv"]
 [ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="8_ub6ku"]
@@ -53,11 +53,11 @@ position = Vector2(-99, 39)
 
 [node name="FlowerSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
 position = Vector2(-440, 248)
+initial_amount = 100
 scene = ExtResource("8_ub6ku")
 
 [node name="DogSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
-position = Vector2(-409, 258)
-initial_amount = 2
+initial_amount = 20
 scene = ExtResource("9_u5hqr")
 group = "badgers"
 
