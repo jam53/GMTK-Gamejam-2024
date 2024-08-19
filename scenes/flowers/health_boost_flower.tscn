@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5xqb1kbgtw8b"]
+[gd_scene load_steps=9 format=3 uid="uid://b5xqb1kbgtw8b"]
 
 [ext_resource type="Script" path="res://scripts/health_boost_flower.gd" id="1_ymttq"]
 [ext_resource type="PackedScene" uid="uid://7ntfeyytjyh7" path="res://scenes/boost_area.tscn" id="2_27kon"]
 [ext_resource type="Texture2D" uid="uid://dj7qoidn8i5lb" path="res://assets/sprites/temp/health_boost_flower.png" id="3_adtt0"]
+[ext_resource type="PackedScene" uid="uid://5vp1ugb5kfej" path="res://scenes/progress_timer.tscn" id="4_3bhc1"]
 [ext_resource type="PackedScene" uid="uid://c4rj533k6di4v" path="res://scenes/components/flower_component.tscn" id="4_mayg7"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_gw1kj"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_5gw2x"]
@@ -20,6 +21,12 @@ color = Color(0, 1, 1, 1)
 scale = Vector2(0.143955, 0.143955)
 texture = ExtResource("3_adtt0")
 
+[node name="ProgressTimer" parent="." instance=ExtResource("4_3bhc1")]
+modulate = Color(0, 0, 1, 1)
+offset_top = -1.0
+offset_bottom = -1.0
+scale = Vector2(0.348259, 0.348259)
+
 [node name="FlowerComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_mayg7")]
 health_component = NodePath("../HealthComponent")
 
@@ -33,3 +40,4 @@ shape = SubResource("CircleShape2D_a3pjo")
 
 [connection signal="body_entered" from="BoostArea" to="." method="_on_boost_area_body_entered"]
 [connection signal="body_exited" from="BoostArea" to="." method="_on_boost_area_body_exited"]
+[connection signal="timer_finsihed" from="ProgressTimer" to="." method="_on_progress_timer_timer_finsihed"]
