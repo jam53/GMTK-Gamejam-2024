@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://2ba3211jih8k"]
+
+[ext_resource type="Script" path="res://scripts/honey_count_label.gd" id="1_pacsa"]
+[ext_resource type="Texture2D" uid="uid://c4688lmmfs428" path="res://assets/sprites/temp/honey.png" id="2_h5ko0"]
+
+[node name="HoneyCountLabel" type="Node2D"]
+position = Vector2(6.99999, -4.00002)
+scale = Vector2(0.206046, 0.227656)
+script = ExtResource("1_pacsa")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.0823529, 0.0823529, 0.0823529, 0.360784)
+position = Vector2(-33.973, 4.3926)
+scale = Vector2(0.130394, 0.130394)
+texture = ExtResource("2_h5ko0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33.1694, 4.7637)
+scale = Vector2(0.122935, 0.122935)
+texture = ExtResource("2_h5ko0")
+
+[node name="HoneyAmountLabel" type="Label" parent="."]
+offset_left = -111.626
+offset_top = -17.5704
+offset_right = 46.3743
+offset_bottom = 51.4296
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

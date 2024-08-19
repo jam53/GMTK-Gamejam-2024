@@ -3,7 +3,7 @@ class_name ObjectPlacer
 
 @export var node_to_place_objects_in: Node
 @export var item_template: PackedScene # Reference to the item template used to create new item instances
-@export var honey_amount_label : Label
+@export var honey_amount_label : NumberLabel
 
 @onready var inventory := $VBoxContainer/Inventory
 @onready var selected_item_label: Label = $VBoxContainer/SelectedItemTitle # Reference to the label that shows the currently selected item title
@@ -14,18 +14,23 @@ var cursor_sprite: Sprite2D = Sprite2D.new() # Sprite that will be used to displ
 var cursor_max_size: float = 128
 
 func _ready():
-	add_item_to_inventory(
+	add_items_to_inventory([
 		InventoryItem.new(
-			preload("res://assets/sprites/hive.webp"), 
+			preload("res://assets/sprites/temp/beehive.png"), 
 			2, 
-			"hive", 
+			"beehive", 
 			preload("res://scenes/hive.tscn")
+		),
+		InventoryItem.new(
+			preload("res://assets/sprites/temp/beehive-attackers.png"),
+			5,
+			"beehive attackers",
+			preload("res://scenes/attackers_hive.tscn")
 		)
-	)
+	])
 		
-
-	selected_item_label.text = ""
 	add_child(cursor_sprite)
+	update_inventory_ui()
 
 func _process(delta):
 	if selected_item != null:
@@ -40,13 +45,14 @@ func _input(event):
 		place_selected_item(world_position)
 
 # Adds an item to the user's inventory
-func add_item_to_inventory(inventoryItem: InventoryItem):
-	if !is_item_in_inventory(inventoryItem):
-		user_items.append(inventoryItem)
-		update_inventory_ui()
+func add_items_to_inventory(inventoryItems: Array[InventoryItem]):
+	for item in inventoryItems:
+		if !is_item_in_inventory(item):
+			user_items.append(item)
+			update_inventory_ui()
 		
 func update_inventory_ui():
-	honey_amount_label.text = "Honey_amount: " + str(GameManager.honey_amount)
+	honey_amount_label.set_count(GameManager.honey_amount)
 	# Remove all old items in the UI
 	for item in inventory.get_children():
 		inventory.remove_child(item)
@@ -57,10 +63,17 @@ func update_inventory_ui():
 			itemInstance.name = item.title
 			itemInstance.texture_normal = item.texture
 			itemInstance.texture_hover = item.texture
-			itemInstance.find_child("Price", true, false).text = str(item.price)
 			itemInstance.button_down.connect(_on_item_pressed.bind(item))
 
 			inventory.add_child(itemInstance)
+			var price_label = itemInstance.find_child("Price", true, false)
+			if price_label is NumberLabel:
+				price_label.set_count(item.price)
+
+	if inventory.get_child_count() == 0:
+		selected_item_label.text = "Not enough honey to buy any items"
+	else:
+		selected_item_label.text = ""
 
 # Fires when the user selects an item from the inventory by clicking on the item
 func _on_item_pressed(inventoryItem: InventoryItem):
@@ -80,7 +93,6 @@ func _on_item_pressed(inventoryItem: InventoryItem):
 # Deselects the currently selected item
 func unselect_selected_item():
 	selected_item = null
-	selected_item_label.text = ""
 	cursor_sprite.texture = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

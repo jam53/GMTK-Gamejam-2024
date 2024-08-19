@@ -23,10 +23,11 @@ class_name BoidComponent
 
 var _flock: Array = []
 var _velocity: Vector2
-var _stop_mouse_follow := false
+var _stop_lure: Node2D
 
 func _ready():
 	randomize()
+	_stop_lure = Node2D.new()
 	_velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * max_speed
 	
 	if flock_area_shape.get_parent() != null:
@@ -35,13 +36,12 @@ func _ready():
 	flock_area.add_child(flock_area_shape)
 	
 func _process(_delta):
-	if stopable and Input.is_action_just_pressed("disable_follow"):
-			if _stop_mouse_follow:
-				lure = null
-			else:
-				lure = Node2D.new()
-				lure.position = self.global_position
-			_stop_mouse_follow = not _stop_mouse_follow
+	if stopable:
+		if lure == null and not GameManager.get_mouse_follow():
+			lure = _stop_lure
+			lure.position = self.global_position
+		elif lure != null and GameManager.get_mouse_follow():
+			lure = null
 
 func _physics_process(_delta):
 	var target
