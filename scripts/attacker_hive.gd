@@ -3,7 +3,7 @@ extends StaticBody2D
 class_name AttackHive
 
 @export var capacity := 5
-@export var respawns := 2
+@export var respawns := 5
 @export var respawntime: float = 5
 
 @onready var timertext = $Timerlabel
@@ -18,13 +18,10 @@ func _ready():
 	set_respawntext()
 	for i in range(capacity):
 		_spawn_bee(false)
-
-	bee_died()
 	
 func set_respawntext():
 	respawntext.text = str(respawns) + " respawns"
 	
-
 func bee_died():
 	# Create new timer
 	var new_timer = Timer.new()
@@ -33,12 +30,13 @@ func bee_died():
 	new_timer.timeout.connect(_on_timer_timeout)
 	add_child(new_timer)
 	new_timer.start()
-
+	
 	# Add the new timer to the list of active timers
 	active_timers.append(new_timer)
 
 func _on_timer_timeout():
 	# Spawn a new bee
+
 	_spawn_bee()
 
 	# Remove expired timers from the active timers list
@@ -50,17 +48,16 @@ func _spawn_bee(consume_respawn: bool = true):
 	if consume_respawn:
 		respawns -= 1
 		set_respawntext()
-		# TODO: REMOVE THIS AND TRIGGER bee_died() when a bee dies
-		bee_died()
 	
 	var attacker = attacker_template.instantiate()
+	attacker.hive = self
 	add_child(attacker)
 	
 	if respawns == 0:
 		for child in get_children():
 			if child is Attacker:
 				var global_pos = child.global_position
-				
+				child.hive = null
 				remove_child(child)
 				get_parent().add_child(child)
 				
