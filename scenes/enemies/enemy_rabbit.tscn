@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dei8n40gtxqsw"]
+[gd_scene load_steps=10 format=3 uid="uid://dei8n40gtxqsw"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_rabbit.gd" id="1_ko1gy"]
 [ext_resource type="Texture2D" uid="uid://dfw4ws1yqxg63" path="res://assets/sprites/rabbit.png" id="1_wyne6"]
@@ -6,31 +6,33 @@
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="3_sreqt"]
 [ext_resource type="PackedScene" uid="uid://drrhds5tdidgu" path="res://scenes/components/move_component.tscn" id="4_cs4vb"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_1eo3m"]
+[ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="7_14pdh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvbct"]
 radius = 15.0
 height = 94.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0lft"]
-radius = 29.0
-height = 112.0
+radius = 42.0
+height = 110.0
 
 [node name="BasicRabbit" type="CharacterBody2D"]
 script = ExtResource("1_ko1gy")
-
-[node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_lvbct")
 
 [node name="Rabbit" type="Sprite2D" parent="."]
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_wyne6")
 
+[node name="hitbox" type="CollisionShape2D" parent="Rabbit"]
+position = Vector2(0, 18.75)
+scale = Vector2(6.25, 6.25)
+shape = SubResource("CapsuleShape2D_lvbct")
+
 [node name="AttackComponent" parent="." instance=ExtResource("2_fda6u")]
 attack = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]
-max_hp = 1
+max_hp = 2
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("4_cs4vb")]
 speed = 50.0
@@ -45,5 +47,9 @@ enemy = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_c0lft")
+
+[node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_14pdh")]
+info_text = "Rabbit\\nAttacks Flowers\\n1 hp 1 atk"
+hitboxComponent = NodePath("../HitboxComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
