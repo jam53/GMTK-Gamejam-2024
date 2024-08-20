@@ -105,7 +105,7 @@ func update_inventory_ui():
 
 	if inventory.get_child_count() == 0:
 		selected_item_label.text = "Not enough honey to buy any items"
-	else:
+	elif selected_item == null:
 		selected_item_label.text = ""
 
 # Fires when the user selects an item from the inventory by clicking on the item
