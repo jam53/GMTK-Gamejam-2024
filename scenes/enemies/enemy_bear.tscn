@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhysoj6yo0m6t"]
+[gd_scene load_steps=10 format=3 uid="uid://bhysoj6yo0m6t"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_bear.gd" id="1_y4kid"]
 [ext_resource type="Texture2D" uid="uid://tgihw6xuxqf" path="res://assets/sprites/bear.png" id="2_xpm74"]
@@ -6,15 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_w2qks"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_jsykh"]
 [ext_resource type="PackedScene" uid="uid://drrhds5tdidgu" path="res://scenes/components/move_component.tscn" id="6_mlkqe"]
+[ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="7_1jlrn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu687"]
-radius = 31.0
-height = 164.0
+radius = 49.0
+height = 98.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xetl1"]
-size = Vector2(106.75, 187)
+size = Vector2(132, 112)
 
-[node name="EnemyBear" type="CharacterBody2D"]
+[node name="EnemyBear" type="CharacterBody2D" groups=["bears"]]
 script = ExtResource("1_y4kid")
 
 [node name="Bear" type="Sprite2D" parent="."]
@@ -27,6 +28,7 @@ shape = SubResource("CapsuleShape2D_wu687")
 
 [node name="AttackComponent" parent="." instance=ExtResource("3_pp3yy")]
 attack = 2
+attack_cooldown = 1.5
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_w2qks")]
 
@@ -36,7 +38,7 @@ attack_component = NodePath("../AttackComponent")
 enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-1, 3)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_xetl1")
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("6_mlkqe")]
@@ -44,5 +46,10 @@ position = Vector2(0, 7)
 speed = 30.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
+target = 1
+
+[node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_1jlrn")]
+info_text = "Bear\\nAttacks Flowers\\n10 hp 2 atk"
+hitboxComponent = NodePath("../HitboxComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

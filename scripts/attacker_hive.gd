@@ -43,6 +43,17 @@ func _on_timer_timeout():
 	active_timers = active_timers.filter(func(timer):
 		return timer.is_stopped() == false
 	)
+	
+func die():
+	for child in get_children():
+		if child is Attacker:
+			var global_pos = child.global_position
+			child.hive = null
+			remove_child(child)
+			get_parent().add_child(child)
+				
+			child.global_position = global_pos
+		queue_free()
 
 func _spawn_bee(consume_respawn: bool = true):
 	if consume_respawn:
@@ -54,15 +65,7 @@ func _spawn_bee(consume_respawn: bool = true):
 	add_child(attacker)
 	
 	if respawns == 0:
-		for child in get_children():
-			if child is Attacker:
-				var global_pos = child.global_position
-				child.hive = null
-				remove_child(child)
-				get_parent().add_child(child)
-				
-				child.global_position = global_pos
-		queue_free()
+		die()
 
 func _process(delta):
 	if active_timers.size() > 0:
@@ -76,3 +79,7 @@ func _process(delta):
 		timertext.text = "Respawning in: %.2f" % shortest_time
 	else:
 		timertext.text = ""
+
+
+func _on_health_component_died():
+	die()
