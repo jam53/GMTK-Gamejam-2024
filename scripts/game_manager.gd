@@ -4,7 +4,7 @@ var honey_amount := 0
 
 
 var _mouse_follow := true
-var _object_placer
+var _object_placer: ObjectPlacer
 
 func get_mouse_follow() -> bool:
 	return _mouse_follow
@@ -13,8 +13,7 @@ func toggle_mouse_follow():
 	_mouse_follow = not _mouse_follow
 
 func _ready():
-	# This is ok since ObjectPlacer has been marked as Unique
-	_object_placer = get_tree().root.find_child("ObjectPlacer", true, false)
+	_object_placer = get_object_placer()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("disable_follow"):
@@ -22,6 +21,11 @@ func _process(_delta):
 	
 func update_honey(delta: int):
 	honey_amount += delta
-	if _object_placer != null:
+	if _object_placer:
 		_object_placer.update_inventory_ui()
+	else:
+		_object_placer = get_object_placer()
 	
+func get_object_placer() -> ObjectPlacer:
+	# This is ok since ObjectPlacer has been marked as Unique
+	return get_tree().root.find_child("ObjectPlacer", true, false)

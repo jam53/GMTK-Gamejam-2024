@@ -4,7 +4,7 @@ extends CharacterBody2D
 class_name BoidComponent
 
 @onready var flock_area = $FlockArea
-@export var sprite : Sprite2D
+@export var sprite : Node2D
 @export var flock_area_shape : CollisionShape2D
 
 @export var max_speed: = 500.0
@@ -42,6 +42,12 @@ func _process(_delta):
 			lure.position = self.global_position
 		elif lure != null and GameManager.get_mouse_follow():
 			lure = null
+			
+			
+func flip_sprites():
+	for child in sprite.get_children():
+		if child is Sprite2D:
+			child.flip_h = not child.flip_h
 
 func _physics_process(_delta):
 	var target
@@ -66,12 +72,12 @@ func _physics_process(_delta):
 		if cross > 0:
 			# Target is to the right
 			if not facing_right: 
-				sprite.flip_h = !sprite.flip_h
+				flip_sprites()
 				facing_right = true
 		elif cross < 0:
 			# Target is to the left
 			if facing_right:
-				sprite.flip_h = !sprite.flip_h
+				flip_sprites()
 				facing_right = false
 		
 	# Get cohesion, alignment, and separation vectors

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cju6x7gy02tl0"]
+
+[ext_resource type="Script" path="res://scripts/main_menu_bee.gd" id="1_m1sn3"]
+[ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="1_sqock"]
+
+[node name="MainMenuBee" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1sn3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+texture = ExtResource("1_sqock")
+expand_mode = 1

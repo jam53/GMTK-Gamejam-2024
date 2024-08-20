@@ -7,7 +7,7 @@ extends Node2D
 @onready var pollinate_timer = $PollinateTimer
 @onready var hive_timer = $HiveTimer
 
-var basic_flower = preload("res://scenes/basic_flower.tscn")
+var basic_flower = preload("res://scenes/flowers/basic_flower.tscn")
 
 var _flower_found := false
 var _in_hive := false
