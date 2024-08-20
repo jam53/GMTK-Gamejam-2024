@@ -19,25 +19,29 @@ func _ready():
 			preload("res://assets/sprites/temp/beehive.png"), 
 			2, 
 			"beehive", 
-			preload("res://scenes/hive.tscn")
+			preload("res://scenes/hive.tscn"),
+			0.5
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/beehive-attackers.png"),
 			5,
 			"beehive attackers",
-			preload("res://scenes/attackers_hive.tscn")
+			preload("res://scenes/attackers_hive.tscn"),
+			0.5
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/attack_boost_flower.png"),
 			10,
 			"attack boost flower",
-			preload("res://scenes/flowers/attack_boost_flower.tscn")
+			preload("res://scenes/flowers/attack_boost_flower.tscn"),
+			0.05
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/health_boost_flower.png"),
 			10,
 			"health boost flower",
-			preload("res://scenes/flowers/health_boost_flower.tscn")
+			preload("res://scenes/flowers/health_boost_flower.tscn"),
+			0.05
 		)
 	])
 		
@@ -113,6 +117,8 @@ func place_selected_item(position_to_place: Vector2):
 	GameManager.update_honey(-selected_item.price)
 	spawn_item(selected_item.scene_to_spawn, position_to_place)
 
+	selected_item.price += ceil(selected_item.price * selected_item.increase_price_by_percent)
+
 	update_inventory_ui()
 	unselect_selected_item()
 
@@ -144,9 +150,11 @@ class InventoryItem:
 	var price: int
 	var title: String # This is assumed to be unique per item
 	var scene_to_spawn: PackedScene # This will be used to instantiate the item on the play area
+	var increase_price_by_percent: float # The amount in percent as a float (0.0 -> 1.0) by which the price of an item should be increased when it has been purchased
 
-	func _init(texture: Texture2D, price: int, title: String, scene_to_spawn: PackedScene):
+	func _init(texture: Texture2D, price: int, title: String, scene_to_spawn: PackedScene, increase_price_by_percent: float):
 		self.texture = texture
 		self.price = price
 		self.title = title
 		self.scene_to_spawn = scene_to_spawn
+		self.increase_price_by_percent = increase_price_by_percent
