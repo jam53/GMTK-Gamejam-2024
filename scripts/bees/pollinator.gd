@@ -16,6 +16,7 @@ var _flower_found := false
 var _in_hive := false
 var found_flower_location : Vector2
 var found_flower_parent : Node
+var found_flower : Node
 
 func _ready():
 	bee_type = Enums.BeeType.POLLINATOR
@@ -23,15 +24,21 @@ func _ready():
 	hive_timer.wait_time = hiveTime
 
 func _process(delta):
-	if not _in_hive and boids_component.lure == null:
-		var found_flower = find_flower()
+	if not _in_hive and (boids_component.lure == null or (not _flower_found and boids_component.lure == hive)):
+		print("finding new flower")
+		found_flower = find_flower()
 		
 		if found_flower == null:
 			boids_component.lure = hive
 		else:
 			found_flower_location = found_flower.global_position
 			found_flower_parent = found_flower.get_parent()
-			boids_component.lure = find_flower()
+			boids_component.lure = found_flower
+	
+	if is_instance_valid(found_flower) and found_flower.is_in_group("occupied_flowers"):
+		boids_component.lure = null
+	
+	
 
 func find_flower() -> Node2D:
 	var flowers = get_tree().get_nodes_in_group("flowers")
