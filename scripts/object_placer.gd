@@ -152,7 +152,7 @@ class InventoryItem:
 	var scene_to_spawn: PackedScene # This will be used to instantiate the item on the play area
 	var increase_price_by_percent: float # The amount in percent as a float (0.0 -> 1.0) by which the price of an item should be increased when it has been purchased
 
-	func _init(texture: Texture2D, price: int, title: String, scene_to_spawn: PackedScene, increase_price_by_percent: float):
+	func _init(texture: Texture2D, price: int, title: String, scene_to_spawn: PackedScene, increase_price_by_percent: float = 0):
 		self.texture = texture
 		self.price = price
 		self.title = title
