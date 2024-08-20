@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmoni6x4lg7e0"]
 
-[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="1_qyecn"]
-[ext_resource type="PackedScene" uid="uid://n1qqy2sb7vrr" path="res://scenes/attackers_hive.tscn" id="5_ydc7k"]
+[ext_resource type="PackedScene" uid="uid://b5eyugwsohmnm" path="res://scenes/flowers/attack_boost_flower.tscn" id="1_25ucl"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bees/attacker.tscn" id="2_8kede"]
 
 [node name="test_scene" type="Node2D"]
 
-[node name="AttackerHive" parent="." instance=ExtResource("5_ydc7k")]
-position = Vector2(783.502, 427.563)
+[node name="AttackBoostFlower" parent="." instance=ExtResource("1_25ucl")]
+position = Vector2(156, 140)
 
-[node name="EnemyBear" parent="." instance=ExtResource("1_qyecn")]
-position = Vector2(153, 99)
+[node name="Attacker" parent="." instance=ExtResource("2_8kede")]
+position = Vector2(509, 414)

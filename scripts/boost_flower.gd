@@ -19,15 +19,15 @@ func _process(delta):
 			body.add_boost(self, boost_type, multiplier)
 	
 func _on_boost_area_body_entered(body):
-	if body.get_parent() is Attacker:
+	if body is Attacker:
 		if not disabled:
-			body.get_parent().add_boost(self, boost_type, multiplier)
-		boosted.append(body.get_parent())
+			body.add_boost(self, boost_type, multiplier)
+		boosted.append(body)
 	
 func _on_boost_area_body_exited(body):
-	if body.get_parent() is Attacker:
-		body.get_parent().remove_boost(self, boost_type)
-		boosted.remove_at(boosted.find(body.get_parent()))
+	if body is Attacker:
+		body.remove_boost(self, boost_type)
+		boosted.remove_at(boosted.find(body))
 
 func _on_progress_timer_timer_finsihed():
 	for body in boosted:

@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_taja3"]
 
 [node name="BoostArea" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_g4rbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
