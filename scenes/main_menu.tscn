@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_j7str"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ufsb4"]
-[ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
+[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
 [ext_resource type="Script" path="res://scripts/camera_main_menu.gd" id="3_xyf10"]
 [ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="4_cewai"]
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="5_pib4d"]
