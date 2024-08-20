@@ -2,9 +2,9 @@ extends Node2D
 
 class_name Attacker
 
-@onready var attack_component = $BoidsComponent/AttackComponent
 @onready var shadow_sprite = $BoidsComponent/Sprites/ShadowSprite
 @onready var health_component = $BoidsComponent/HealthComponent
+@onready var attack_component = $BoidsComponent/AttackComponent
 
 
 var hive : AttackHive
@@ -31,6 +31,7 @@ func _find_max_in_dict(dict):
 
 func add_attack_boost(source: Node, multiplier: int):
 	attack_boosts_active[source] = multiplier
+	print(attack_component, attack_boosts_active)
 	attack_component.attack_multiplier = _find_max_in_dict(attack_boosts_active)
 	
 

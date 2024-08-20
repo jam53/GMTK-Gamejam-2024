@@ -31,6 +31,7 @@ attack = 2
 attack_cooldown = 1.5
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_w2qks")]
+max_hp = 15.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_jsykh")]
 health_component = NodePath("../HealthComponent")
