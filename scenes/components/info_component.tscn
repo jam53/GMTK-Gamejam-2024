@@ -6,8 +6,9 @@
 script = ExtResource("1_vjwua")
 
 [node name="Label" type="RichTextLabel" parent="."]
-offset_left = -73.0
-offset_top = -83.0
-offset_right = 73.0
-offset_bottom = -34.0
+offset_left = -87.0
+offset_top = -99.0
+offset_right = 92.0
+offset_bottom = -44.0
+bbcode_enabled = true
 fit_content = true

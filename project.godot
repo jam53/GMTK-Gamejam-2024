@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GMTK-Gamejam-2024"
+config/name="Honey Horizon"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"

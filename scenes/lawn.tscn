@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/attacker.tscn" id="8_v2b88"]
 [ext_resource type="PackedScene" uid="uid://c21fqmty4cbhr" path="res://scenes/enemies/enemy_dog.tscn" id="9_u5hqr"]
 [ext_resource type="AudioStream" uid="uid://bm720vx6qxbol" path="res://assets/sounds/legacyAlli - RF Country Landscape.mp3" id="15_ohsri"]
+[ext_resource type="Script" path="res://scripts/spawners/spawner.gd" id="13_41skp"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -62,15 +63,6 @@ honey_amount_label = NodePath("../HoneyCountLabel")
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="FlowerSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
-position = Vector2(-15, -52)
-
-[node name="DogSpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
-position = Vector2(-17, -52)
-initial_amount = 2
-scene = ExtResource("9_u5hqr")
-group = "badgers"
-
 [node name="EnemySpawner" parent="Spawners" instance=ExtResource("3_amc8p")]
 position = Vector2(-13, -49)
 script = ExtResource("4_yw1nr")
@@ -79,6 +71,30 @@ increment_bear_chance = 0
 boss_wave_wait_time = 120
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
+
+[node name="DogSpawner" type="Node2D" parent="Spawners" node_paths=PackedStringArray("spawn_area", "dont_spawn_area")]
+script = ExtResource("13_41skp")
+initial_amount = 50
+spawn_area = NodePath("ReferenceRect")
+dont_spawn_area = NodePath("../../FlowerSpawner/ReferenceRect2")
+scene = ExtResource("9_u5hqr")
+group = "dogs"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Spawners/DogSpawner"]
+offset_left = -3953.0
+offset_top = -2220.0
+offset_right = 4680.0
+offset_bottom = 3876.0
+
+[node name="FlowerSpawner" parent="." node_paths=PackedStringArray("spawn_area") instance=ExtResource("3_amc8p")]
+position = Vector2(-15, -52)
+spawn_area = NodePath("ReferenceRect2")
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="FlowerSpawner"]
+offset_left = -363.0
+offset_top = -495.0
+offset_right = 1526.0
+offset_bottom = 1065.0
 
 [node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(-99, 39)
