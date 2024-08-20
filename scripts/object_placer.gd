@@ -129,6 +129,7 @@ func unselect_selected_item():
 	selected_item = null
 	cursor_sprite.texture = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	update_inventory_ui()
 
 # Places the currently selected item on the play area
 func place_selected_item(position_to_place: Vector2):
