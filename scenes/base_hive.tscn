@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://coyo8k2hr1no8"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_bear.gd" id="1_wfm3c"]
+[ext_resource type="Texture2D" uid="uid://cahfbf8ayu4l" path="res://assets/sprites/temp/beehive-base.png" id="2_j4b4k"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_jbvdk"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_y56t7"]
+[ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="7_8bk6r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu687"]
+radius = 49.0
+height = 98.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xetl1"]
+size = Vector2(132, 112)
+
+[node name="BaseHive" type="CharacterBody2D" groups=["hives"]]
+script = ExtResource("1_wfm3c")
+
+[node name="Hive" type="Sprite2D" parent="."]
+scale = Vector2(0.071, 0.071)
+texture = ExtResource("2_j4b4k")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("CapsuleShape2D_wu687")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_jbvdk")]
+max_hp = 20
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_y56t7")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_xetl1")
+
+[node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_8bk6r")]
+info_text = "Player base\\nGame ends when destroyed\\n20 HP"
+hitboxComponent = NodePath("../HitboxComponent")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
