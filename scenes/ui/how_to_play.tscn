@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://pujtwj4ynafs"]
+[gd_scene load_steps=5 format=3 uid="uid://pujtwj4ynafs"]
 
 [ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_umn2q"]
 [ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="2_kdwgv"]
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="3_1kktn"]
 
@@ -8,6 +9,7 @@
 initial_position = 2
 size = Vector2i(1000, 800)
 visible = false
+script = ExtResource("1_umn2q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -72,3 +74,5 @@ Honey Horizon was made for the GMTK 2024 game jam by a team of three people, aro
 
 [b]Goal of the game:[/b]
 Try to survive as long as possible."
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

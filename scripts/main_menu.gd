@@ -18,6 +18,3 @@ func _on_play_button_down():
 
 func _on_how_to_play_button_down():
 	how_to_play_window.show()
-
-func _on_how_to_play_close_requested():
-	how_to_play_window.hide()
