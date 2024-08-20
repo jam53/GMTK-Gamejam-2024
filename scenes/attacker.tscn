@@ -32,7 +32,6 @@ stopable = true
 [node name="Sprites" type="Node2D" parent="BoidsComponent"]
 
 [node name="ShadowSprite" type="Sprite2D" parent="BoidsComponent/Sprites"]
-visible = false
 modulate = Color(0, 0.839216, 0.8, 1)
 position = Vector2(0.27842, -0.158137)
 scale = Vector2(0.0310142, 0.0351494)
@@ -44,12 +43,10 @@ scale = Vector2(0.027842, 0.0316274)
 texture = ExtResource("2_cjxco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoidsComponent"]
-visible = false
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2kadw")
 
 [node name="FlockViewCollision" type="CollisionShape2D" parent="BoidsComponent"]
-visible = false
 position = Vector2(0.13921, 0.0948822)
 scale = Vector2(0.027842, 0.0316274)
 shape = SubResource("CircleShape2D_2u70o")
@@ -65,7 +62,6 @@ health_component = NodePath("../HealthComponent")
 attack_component = NodePath("../AttackComponent")
 
 [node name="AttackCollision" type="CollisionShape2D" parent="BoidsComponent/HitboxComponent"]
-visible = false
 shape = SubResource("CircleShape2D_c3flu")
 
 [connection signal="died" from="BoidsComponent/HealthComponent" to="." method="_on_health_component_died"]

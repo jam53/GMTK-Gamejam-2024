@@ -16,8 +16,6 @@ func _ready():
 	
 func add_target(target: Node):
 	if target.has_method("take_damage"):
-		if get_parent() in get_tree().get_nodes_in_group("bears"):
-			print("adding ", target.get_parent())
 		targets.append(target)
 		if targets.size() == 1:
 			damage(target)
@@ -26,8 +24,6 @@ func add_target(target: Node):
 		
 func remove_target(target: Node):
 	if target in targets:
-		if get_parent() in get_tree().get_nodes_in_group("bears"):
-			print("removing ", target.get_parent())
 		targets.remove_at(targets.find(target))
 
 func damage(target: Node) -> void:
