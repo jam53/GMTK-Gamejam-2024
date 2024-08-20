@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://pujtwj4ynafs"]
+[gd_scene load_steps=5 format=3 uid="uid://dvddict56q367"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
+[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
 [ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_umn2q"]
 [ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="2_kdwgv"]
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="3_1kktn"]
@@ -70,7 +70,7 @@ Honey Horizon was made for the GMTK 2024 game jam by a team of three people, aro
 - [i]WASD/ZQSD[/i]: Camera movement
 - [i]E[/i]: Lock/Unlock the attacker bees somewhere on the map
 - [i]M:[/i] Toggle whether or not the camera can also be moved by dragging the mouse outside the boundaries of the screen.
-- [i]Click[/i] on an item in the shop at the bottom of the screen, then click somewhere on the map to place the selected item. This can be canceled by pressing [i]ESC[/i].
+- [i]Click[/i] on an item in the shop at the bottom of the screen to select it, or alternatively use the numerical keys [i]1[/i], [i]2[/i], ... and so on. Then, click somewhere on the map to place the selected item. This action can be canceled by pressing [i]ESC[/i].
 
 [b]Goal of the game:[/b]
 Try to survive as long as possible."
