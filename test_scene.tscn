@@ -10,7 +10,7 @@
 [node name="test_scene" type="Node2D"]
 
 [node name="PollinatorHive" parent="." instance=ExtResource("1_8oxpj")]
-position = Vector2(637, 225)
+position = Vector2(146, 460)
 
 [node name="EnemyBear" parent="." instance=ExtResource("1_qyecn")]
 position = Vector2(153, 99)

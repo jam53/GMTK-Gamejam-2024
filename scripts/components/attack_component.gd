@@ -4,7 +4,6 @@ class_name AttackComponent
 @export var attack: int
 @export var attack_cooldown: float = 1
 
-
 @onready var attack_timer = $Timer
 
 var main_target : Node = null
@@ -37,6 +36,13 @@ func remove_freed_nodes_from_list(node_list: Array) -> void:
 		if not is_instance_valid(node_list[i]):
 			node_list.remove_at(i)
 
+func _is_valid_target(target):
+	var attacker = target.get_parent().is_in_group("attackers")
+	if main_target == null:
+		return attacker
+	else:
+		return attacker or main_target == target.get_parent()
+		
 
 func _on_Timer_timeout() -> void:
 	_can_attack = true
@@ -50,15 +56,17 @@ func _on_Timer_timeout() -> void:
 		if is_instance_valid(target):
 			# Filter based on main_target
 			var i = 1
-			if main_target != null:
-				while target.get_parent() != main_target and not target.get_parent().is_in_group("attackers"):
+			if get_parent().is_in_group("attackers"):
+				damage(target)
+			else:
+				while not _is_valid_target(target):
 					if i < targets.size():
 						target = targets[i]
 						i += 1
 					else: 
 						target = null
 						break
-			
-			if target != null:
-				damage(target)
+							
+				if target != null:
+					damage(target)
 		attack_timer.start()
