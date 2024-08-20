@@ -7,7 +7,7 @@ Honey Horizon was made for the [GMTK 2024 game jam](https://itch.io/jam/gmtk-202
 - **WASD/ZQSD**: Camera movement
 - **E**: Lock/Unlock the attacker bees somewhere on the map
 - **M**: Toggle whether or not the camera can also be moved by dragging the mouse outside the boundaries of the screen.
-- **Click** on an item in the shop at the bottom of the screen, then click somewhere on the map to place the selected item. This can be canceled by pressing **ESC**.
+- **Click** on an item in the shop at the bottom of the screen to select it, or alternatively use the numerical keys **1**, **2**, ... and so on. Then, click somewhere on the map to place the selected item. This action can be canceled by pressing **ESC**.
 
 ## Goal of the game
 Try to survive as long as possible.
@@ -40,3 +40,13 @@ To export a standalone binary for Honey Horizon:
 > Configure rcedit path in the Editor Settings (Export > Windows > rcedit),
 > or disable 'Application > Modify Resources' in the export preset.
 > ```
+
+## Asset Credits
+* [Bee](https://www.vecteezy.com/png/1203858-bee)
+* [Grass](https://www.vecteezy.com/vector-art/8289688-seamless-texture-cartoon-grass-green-plants-pattern-for-wallpaper-vector-illustration-backdrop-organic-background-for-the-game-gui)
+* [Honey drop](https://www.vecteezy.com/vector-art/14347164-honey-drop-icon-cartoon-vector-bee-nectar)
+* [Flowers](https://delirioussteve.itch.io/flower-power-2d-imagesicons)
+* [Hive](https://clipart-library.com/clipart/6Tp6Knqyc.htm)
+* [Music](https://freemusicarchive.org/music/legacyAlli/legacyAlli-RF_Country_Landscape)
+* [Death sound](https://freesound.org/s/692084/)
+

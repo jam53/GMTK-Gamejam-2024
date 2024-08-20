@@ -25,6 +25,8 @@ func update_honey(delta: int):
 		_object_placer.update_inventory_ui()
 	else:
 		_object_placer = get_object_placer()
+		if _object_placer:
+			_object_placer.update_inventory_ui()
 	
 func get_object_placer() -> ObjectPlacer:
 	# This is ok since ObjectPlacer has been marked as Unique
