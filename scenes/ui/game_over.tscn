@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvddict56q367"]
+[gd_scene load_steps=5 format=3 uid="uid://d2hi6sn5k31m8"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
-[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_umn2q"]
-[ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="2_kdwgv"]
-[ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="3_1kktn"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_o2nhm"]
+[ext_resource type="Texture2D" uid="uid://cereni0kmng6f" path="res://assets/sprites/GrassBlurred.jpg" id="2_7reqx"]
+[ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="3_j0nwf"]
+[ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="4_og12r"]
 
-[node name="HowToPlay" type="Window"]
-title = "Honey Horizon - How to play"
+[node name="GameOver" type="Window" node_paths=PackedStringArray("description")]
+title = "Honey Horizon - Game over"
 initial_position = 2
 size = Vector2i(1000, 800)
 visible = false
-script = ExtResource("1_umn2q")
+script = ExtResource("1_o2nhm")
+description = NodePath("CanvasLayer/VBoxContainer/MarginContainer/Description")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0wpaa")
+texture = ExtResource("2_7reqx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -37,9 +38,9 @@ theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1
 theme_override_constants/shadow_offset_x = 6
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_kdwgv")
+theme_override_fonts/font = ExtResource("3_j0nwf")
 theme_override_font_sizes/font_size = 116
-text = "How to play"
+text = "Game over"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
@@ -47,7 +48,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 75
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 280.81)
 layout_mode = 2
 size_flags_vertical = 3
@@ -57,23 +58,15 @@ theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 6
-theme_override_fonts/normal_font = ExtResource("3_1kktn")
-theme_override_fonts/bold_font = ExtResource("2_kdwgv")
-theme_override_fonts/italics_font = ExtResource("2_kdwgv")
+theme_override_fonts/normal_font = ExtResource("4_og12r")
+theme_override_fonts/bold_font = ExtResource("3_j0nwf")
+theme_override_fonts/italics_font = ExtResource("3_j0nwf")
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 64
 theme_override_font_sizes/italics_font_size = 40
 bbcode_enabled = true
-text = "[b]About[/b]
-Honey Horizon was made for the GMTK 2024 game jam by a team of three people, around the theme “Built to Scale.”
+text = "Your base hive (green) was destroyed, ending the game. 
 
-[b]Keybinds:[/b]
-- [i]WASD/ZQSD[/i]: Camera movement
-- [i]E[/i]: Lock/Unlock the attacker bees somewhere on the map
-- [i]M:[/i] Toggle whether or not the camera can also be moved by dragging the mouse outside the boundaries of the screen.
-- [i]Click[/i] on an item in the shop at the bottom of the screen, then click somewhere on the map to place the selected item. This can be canceled by pressing [i]ESC[/i].
-
-[b]Goal of the game:[/b]
-Try to survive as long as possible."
+[b]Time survived: 00:00.00[/b]"
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]

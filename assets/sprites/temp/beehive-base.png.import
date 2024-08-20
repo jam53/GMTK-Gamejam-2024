@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jg3cne4p22ua"
-path="res://.godot/imported/HoneyHorizonGameplay.jpg-c1d2c823d851614c641023e3f299f4b8.ctex"
+uid="uid://cahfbf8ayu4l"
+path="res://.godot/imported/beehive-base.png-cd69a02a02398618e00819b7756b6fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/HoneyHorizonGameplay.jpg"
-dest_files=["res://.godot/imported/HoneyHorizonGameplay.jpg-c1d2c823d851614c641023e3f299f4b8.ctex"]
+source_file="res://assets/sprites/temp/beehive-base.png"
+dest_files=["res://.godot/imported/beehive-base.png-cd69a02a02398618e00819b7756b6fed.ctex"]
 
 [params]
 
