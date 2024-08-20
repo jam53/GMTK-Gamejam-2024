@@ -85,9 +85,3 @@ basic_rabbit = ExtResource("8_lk0uv")
 
 [node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(-99, 39)
-
-[node name="EnemyBear" parent="." instance=ExtResource("5_h78oq")]
-position = Vector2(170, 518)
-
-[node name="EnemyBear2" parent="." instance=ExtResource("5_h78oq")]
-position = Vector2(285, 620)
