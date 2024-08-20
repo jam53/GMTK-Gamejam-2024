@@ -46,6 +46,7 @@ func find_flower() -> Node2D:
 
 func _on_flower_detection_area_area_entered(area):
 	if area.get_parent() == boids_component.lure and not _flower_found:
+		print("flower found")
 		_flower_found = true
 		pollinate_timer.start()
 

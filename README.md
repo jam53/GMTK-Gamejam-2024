@@ -7,7 +7,7 @@ Honey Horizon was made for the [GMTK 2024 game jam](https://itch.io/jam/gmtk-202
 - **WASD/ZQSD**: Camera movement
 - **E**: Lock/Unlock the attacker bees somewhere on the map
 - **M**: Toggle whether or not the camera can also be moved by dragging the mouse outside the boundaries of the screen.
-- **Click** on an item in the shop at the bottom of the screen, then click somewhere on the map to place the selected item. This can be canceled by pressing **ESC**.
+- **Click** on an item in the shop at the bottom of the screen to select it, or alternatively use the numerical keys **1**, **2**, ... and so on. Then, click somewhere on the map to place the selected item. This action can be canceled by pressing **ESC**.
 
 ## Goal of the game
 Try to survive as long as possible.

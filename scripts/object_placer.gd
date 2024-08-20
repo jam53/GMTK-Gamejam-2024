@@ -59,6 +59,23 @@ func _input(event):
 	elif event.is_action_pressed("click") and selected_item != null:
 		var world_position = get_viewport().get_camera_2d().get_global_mouse_position()
 		place_selected_item(world_position)
+	else:
+		var action_map = {
+			"zero": 9,
+			"one": 0,
+			"two": 1,
+			"three": 2,
+			"four": 3,
+			"five": 4,
+			"six": 5,
+			"seven": 6,
+			"eight": 7,
+			"nine": 8
+		}
+
+		for action in action_map.keys():
+			if event.is_action_pressed(action):
+				set_selected_item(user_items[action_map[action]])
 
 # Adds an item to the user's inventory
 func add_items_to_inventory(inventoryItems: Array[InventoryItem]):
@@ -79,7 +96,7 @@ func update_inventory_ui():
 			itemInstance.name = item.title
 			itemInstance.texture_normal = item.texture
 			itemInstance.texture_hover = item.texture
-			itemInstance.button_down.connect(_on_item_pressed.bind(item))
+			itemInstance.button_down.connect(set_selected_item.bind(item))
 
 			inventory.add_child(itemInstance)
 			var price_label = itemInstance.find_child("Price", true, false)
@@ -92,19 +109,20 @@ func update_inventory_ui():
 		selected_item_label.text = ""
 
 # Fires when the user selects an item from the inventory by clicking on the item
-func _on_item_pressed(inventoryItem: InventoryItem):
-	selected_item = inventoryItem
-	selected_item_label.text = "Selected item: " + selected_item.title + ". Click to place, ESC to abort"
+func set_selected_item(inventoryItem: InventoryItem):
+	if GameManager.honey_amount >= inventoryItem.price:
+		selected_item = inventoryItem
+		selected_item_label.text = "Selected item: " + selected_item.title + ". Click to place, ESC to abort"
 
-	# Calculate the scale to ensure the maximum size doesn't exceed `cursor_max_size`
-	var texture_size = inventoryItem.texture.get_size()
-	if texture_size.x > cursor_max_size or texture_size.y > cursor_max_size:
-		var scale_factor = min(cursor_max_size / texture_size.x, cursor_max_size / texture_size.y)
-		cursor_sprite.scale = Vector2(scale_factor, scale_factor)
-	
-	cursor_sprite.texture = inventoryItem.texture
-	# Hide the default cursor
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		# Calculate the scale to ensure the maximum size doesn't exceed `cursor_max_size`
+		var texture_size = inventoryItem.texture.get_size()
+		if texture_size.x > cursor_max_size or texture_size.y > cursor_max_size:
+			var scale_factor = min(cursor_max_size / texture_size.x, cursor_max_size / texture_size.y)
+			cursor_sprite.scale = Vector2(scale_factor, scale_factor)
+		
+		cursor_sprite.texture = inventoryItem.texture
+		# Hide the default cursor
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 # Deselects the currently selected item
 func unselect_selected_item():
@@ -137,7 +155,7 @@ func is_item_in_inventory(inventoryItem: InventoryItem) -> bool:
 	return false
 
 # Retrieves an item from the inventory by its title
-func get_item_in_inventory(itemTitle: String) -> InventoryItem:
+func get_item_in_inventory_by_title(itemTitle: String) -> InventoryItem:
 	for item in user_items:
 		if item.title == itemTitle:
 			return item
