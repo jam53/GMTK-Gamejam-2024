@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5pf8x68dp2u6"]
+[gd_scene load_steps=17 format=3 uid="uid://b5pf8x68dp2u6"]
 
 [ext_resource type="Texture2D" uid="uid://yobgbgr7ytpw" path="res://assets/sprites/Grass.jpg" id="2_be4tn"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_j2s3r"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c21fqmty4cbhr" path="res://scenes/enemies/enemy_dog.tscn" id="9_u5hqr"]
 [ext_resource type="PackedScene" uid="uid://bbnkk7labr480" path="res://scenes/base_hive.tscn" id="15_vpwca"]
 [ext_resource type="Script" path="res://scripts/spawners/spawner.gd" id="13_41skp"]
+[ext_resource type="AudioStream" uid="uid://bm720vx6qxbol" path="res://assets/sounds/legacyAlli - RF Country Landscape.mp3" id="15_ohsri"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -75,11 +76,10 @@ boss_wave_wait_time = 120
 basic_bear = ExtResource("5_h78oq")
 basic_rabbit = ExtResource("8_lk0uv")
 
-[node name="DogSpawner" type="Node2D" parent="Spawners" node_paths=PackedStringArray("spawn_area", "dont_spawn_area")]
+[node name="DogSpawner" type="Node2D" parent="Spawners" node_paths=PackedStringArray("spawn_area")]
 script = ExtResource("13_41skp")
 initial_amount = 50
 spawn_area = NodePath("ReferenceRect")
-dont_spawn_area = NodePath("../../FlowerSpawner/ReferenceRect2")
 scene = ExtResource("9_u5hqr")
 group = "dogs"
 
@@ -101,3 +101,7 @@ offset_bottom = 1065.0
 
 [node name="Bee2" parent="." instance=ExtResource("8_v2b88")]
 position = Vector2(-99, 39)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ohsri")
+autoplay = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bm720vx6qxbol"
+path="res://.godot/imported/legacyAlli - RF Country Landscape.mp3-714536d61120b4e8d6486ddee288a578.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/legacyAlli - RF Country Landscape.mp3"
+dest_files=["res://.godot/imported/legacyAlli - RF Country Landscape.mp3-714536d61120b4e8d6486ddee288a578.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

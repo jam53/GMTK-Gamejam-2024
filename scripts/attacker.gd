@@ -6,6 +6,7 @@ class_name Attacker
 @onready var health_component = $BoidsComponent/HealthComponent
 @onready var attack_component = $BoidsComponent/AttackComponent
 
+@onready var musicplayer = $AudioStreamPlayer
 
 var hive : AttackHive
 
@@ -51,7 +52,10 @@ func remove_damage_reduction(source: Node):
 func _on_health_component_died():
 	if hive != null:
 		hive.bee_died()
-	self.queue_free()
+	if musicplayer:
+		musicplayer.play()
+	await get_tree().create_timer(0.1).timeout
+	queue_free()
 
 
 
