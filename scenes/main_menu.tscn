@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://cwu15hb8tnw15"]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_j7str"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ufsb4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="2_1ias7"]
+[ext_resource type="Script" path="res://scripts/camera_main_menu.gd" id="3_xyf10"]
+[ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="4_cewai"]
+[ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="5_pib4d"]
+[ext_resource type="Script" path="res://scripts/background_bees.gd" id="6_64rpm"]
+[ext_resource type="PackedScene" uid="uid://cju6x7gy02tl0" path="res://scenes/ui/main_menu_bee.tscn" id="7_kf7sv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_170og"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cx6gf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sh4t4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gijn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuqh4"]
+
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("personal_best_ui_node")]
+script = ExtResource("1_ufsb4")
+personal_best_ui_node = NodePath("CanvasLayer/VBoxContainer/ButtonsHolder/PersonalBest")
+
+[node name="BackgroundMainMenu" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("1_j7str")
+chunk_texture = ExtResource("2_1ias7")
+player = NodePath("../CameraMainMenu")
+
+[node name="CameraMainMenu" type="CharacterBody2D" parent="."]
+position = Vector2(536, 289)
+script = ExtResource("3_xyf10")
+
+[node name="Camera2D" type="Camera2D" parent="CameraMainMenu"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundBees" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_64rpm")
+bee_scene = ExtResource("7_kf7sv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.5
+offset_top = -324.0
+offset_right = 412.5
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
+
+[node name="Title" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.247059)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_cewai")
+theme_override_font_sizes/font_size = 116
+text = "Honey Horizon"
+horizontal_alignment = 1
+
+[node name="ButtonsHolder" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.881989, 0.881989, 0.881989, 1)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_colors/icon_normal_color = Color(0.159815, 0.545718, 3.85046e-07, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_pib4d")
+theme_override_font_sizes/font_size = 91
+theme_override_styles/normal = SubResource("StyleBoxEmpty_170og")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cx6gf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sh4t4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
+text = "Play"
+
+[node name="HowToPlay" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.881989, 0.881989, 0.881989, 1)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_colors/icon_normal_color = Color(0.159815, 0.545718, 3.85046e-07, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_pib4d")
+theme_override_font_sizes/font_size = 91
+theme_override_styles/normal = SubResource("StyleBoxEmpty_170og")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cx6gf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sh4t4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
+text = "How to play"
+
+[node name="PersonalBest" type="Button" parent="CanvasLayer/VBoxContainer/ButtonsHolder"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_colors/icon_normal_color = Color(0.159815, 0.545718, 3.85046e-07, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_pib4d")
+theme_override_font_sizes/font_size = 91
+theme_override_styles/normal = SubResource("StyleBoxEmpty_170og")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cx6gf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sh4t4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gijn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nuqh4")
+text = "Personal best: 00:00.00"
+
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/ButtonsHolder/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/VBoxContainer/ButtonsHolder/HowToPlay" to="." method="_on_how_to_play_button_down"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK-Gamejam-2024"
-run/main_scene="res://scenes/lawn.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://assets/sprites/icon.svg"
 
 Enums="*res://scripts/enums.gd"
 GameManager="*res://scripts/game_manager.gd"
+HowToPlay="*res://scenes/ui/how_to_play.tscn"
+
+[display]
+
+window/subwindows/embed_subwindows=false
 
 [dotnet]
 
@@ -62,6 +67,11 @@ abort={
 }
 disable_follow={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":119,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
+toggle_camera_cursor_movement={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":77,"physical_keycode":0,"key_label":0,"unicode":109,"echo":false,"script":null)
 ]
 }
