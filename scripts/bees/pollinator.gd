@@ -1,5 +1,7 @@
 extends Bee
 
+class_name Pollinator
+
 @export var hive : Hive
 @export var pollinateTime := 2
 @export var hiveTime := 2

@@ -1,6 +1,8 @@
-extends CharacterBody2D
+extends StaticBody2D
 
-class_name Dog
+class_name BasicFlower
+
+
 
 func _on_health_component_died():
 	queue_free()

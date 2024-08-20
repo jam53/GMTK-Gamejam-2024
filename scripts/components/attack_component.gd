@@ -18,6 +18,7 @@ func add_target(target: Node):
 	if target.has_method("take_damage"):
 		targets.append(target)
 		if targets.size() == 1:
+			print("initial attack from ", get_parent())
 			damage(target)
 			attack_timer.start()
 	
@@ -28,6 +29,7 @@ func remove_target(target: Node):
 
 func damage(target: Node) -> void:
 	if _can_attack:
+		print(get_parent(), " attacks ", target.get_parent())
 		target.take_damage(attack * attack_multiplier)
 		_can_attack = false
 

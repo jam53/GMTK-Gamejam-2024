@@ -1,21 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmoni6x4lg7e0"]
+[gd_scene load_steps=4 format=3 uid="uid://dmoni6x4lg7e0"]
 
-[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="1_jsaap"]
-[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bees/attacker.tscn" id="2_ebt27"]
+[ext_resource type="PackedScene" uid="uid://c21fqmty4cbhr" path="res://scenes/enemies/enemy_dog.tscn" id="1_acuej"]
+[ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="1_rdh80"]
+[ext_resource type="PackedScene" uid="uid://n1qqy2sb7vrr" path="res://scenes/attackers_hive.tscn" id="5_ydc7k"]
 
 [node name="test_scene" type="Node2D"]
 
-[node name="EnemyBear" parent="." instance=ExtResource("1_jsaap")]
-position = Vector2(270, 169)
+[node name="BasicRabbit" parent="." instance=ExtResource("1_rdh80")]
+position = Vector2(944, 137)
 
-[node name="Attacker" parent="." instance=ExtResource("2_ebt27")]
-position = Vector2(1077, 568)
+[node name="EnemyDog" parent="." instance=ExtResource("1_acuej")]
+position = Vector2(132, 541)
 
-[node name="Attacker2" parent="." instance=ExtResource("2_ebt27")]
-position = Vector2(1077, 568)
-
-[node name="Attacker3" parent="." instance=ExtResource("2_ebt27")]
-position = Vector2(1077, 568)
-
-[node name="Attacker4" parent="." instance=ExtResource("2_ebt27")]
-position = Vector2(1077, 568)
+[node name="AttackerHive" parent="." instance=ExtResource("5_ydc7k")]
+position = Vector2(274, 16)

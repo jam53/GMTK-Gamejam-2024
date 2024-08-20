@@ -11,10 +11,9 @@ enum TargetType { FLOWER, HIVE }
 var target_flower: Node = null
 
 func _process(delta):
-	if hitbox_component.enemy:
-		find_closest_flower(target)
-		if target_flower:
-			parent.global_position =  parent.global_position.move_toward(target_flower.global_position, speed * delta)
+	find_closest_flower(target)
+	if target_flower:
+		parent.global_position =  parent.global_position.move_toward(target_flower.global_position, speed * delta)
 
 # Finds the closest flower and sets it as the target
 func find_closest_flower(targetGroup: TargetType):

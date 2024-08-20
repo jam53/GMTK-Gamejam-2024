@@ -12,7 +12,7 @@
 radius = 215.502
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3flu"]
-radius = 37.0135
+radius = 42.0119
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
 radius = 1863.0
@@ -20,10 +20,6 @@ radius = 1863.0
 [node name="Attacker" type="CharacterBody2D" groups=["attackers"]]
 z_index = 2
 script = ExtResource("1_uy8nc")
-
-[node name="hitbox" type="CollisionShape2D" parent="."]
-scale = Vector2(0.027842, 0.0316274)
-shape = SubResource("CircleShape2D_2kadw")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -37,6 +33,10 @@ texture = ExtResource("2_oivec")
 position = Vector2(0.27842, -0.158137)
 scale = Vector2(0.027842, 0.0316274)
 texture = ExtResource("3_y7a7x")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2kadw")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_afn2j")]
 attack = 1

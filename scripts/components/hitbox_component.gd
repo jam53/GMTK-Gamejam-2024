@@ -2,7 +2,6 @@ extends Node2D
 class_name HitboxComponent
 
 @export var attack_component: AttackComponent = null
-@export var enemy : bool
 
 func attack(target: Node) -> void:
 	attack_component.add_target(target)

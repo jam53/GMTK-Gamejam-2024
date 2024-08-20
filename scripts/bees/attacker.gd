@@ -3,8 +3,8 @@ extends Bee
 class_name Attacker
 
 @onready var shadow_sprite = $Sprites/ShadowSprite
-@onready var health_component = $BoidsComponent/HealthComponent
-@onready var attack_component = $BoidsComponent/AttackComponent
+@onready var health_component = $HealthComponent
+@onready var attack_component = $AttackComponent
 
 
 var hive : AttackHive

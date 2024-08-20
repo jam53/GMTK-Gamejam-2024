@@ -36,7 +36,6 @@ max_hp = 15.0
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_jsykh")]
 position = Vector2(-4, 0)
 attack_component = NodePath("../AttackComponent")
-enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(4, 1)
