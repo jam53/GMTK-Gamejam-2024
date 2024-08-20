@@ -4,10 +4,12 @@ class_name AttackComponent
 @export var attack: int
 @export var attack_cooldown: float = 1
 
+
 @onready var attack_timer = $Timer
 
 var targets : Array[Node] = []
 var _can_attack
+var attack_multiplier = 1
 
 func _ready():
 	attack_timer.wait_time = attack_cooldown
@@ -30,7 +32,7 @@ func remove_target(target: Node):
 
 func damage(target: Node) -> void:
 	if _can_attack:
-		target.take_damage(attack)
+		target.take_damage(attack * attack_multiplier)
 		_can_attack = false
 
 func _on_Timer_timeout() -> void:

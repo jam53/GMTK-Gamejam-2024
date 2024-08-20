@@ -1,22 +1,25 @@
 extends Node2D
 class_name HealthComponent
 
-@export var max_hp : int
+@export var max_hp : float
 
-var current_hp : int
+var current_hp : float
+var damage_reduction : float = 1
+
 var is_freed : bool = false
 
 signal died()
 
 var health_bar : ProgressBar = ProgressBar.new()
 
+
 func _ready():
 	health_bar.modulate.a = 0.0
 	current_hp = max_hp
 	self.add_child(health_bar)
 
-func take_damage(damage: int) -> void:
-	current_hp -= damage
+func take_damage(damage: float) -> void:
+	current_hp -= (damage / damage_reduction)
 	if is_freed:
 		return
 	

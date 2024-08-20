@@ -19,20 +19,19 @@ height = 110.0
 [node name="BasicRabbit" type="CharacterBody2D"]
 script = ExtResource("1_ko1gy")
 
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_lvbct")
+
 [node name="Rabbit" type="Sprite2D" parent="."]
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_wyne6")
-
-[node name="hitbox" type="CollisionShape2D" parent="Rabbit"]
-position = Vector2(0, 18.75)
-scale = Vector2(6.25, 6.25)
-shape = SubResource("CapsuleShape2D_lvbct")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_fda6u")]
 attack = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]
-max_hp = 2
+max_hp = 5.0
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("4_cs4vb")]
 speed = 50.0
