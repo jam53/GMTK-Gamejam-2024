@@ -24,7 +24,7 @@ func _process(delta):
 		var found_flower = find_flower()
 		
 		if found_flower == null:
-			boids_component.lure = hive
+			boids_component.lure = null
 		else:
 			found_flower_location = found_flower.global_position
 			found_flower_parent = found_flower.get_parent()
