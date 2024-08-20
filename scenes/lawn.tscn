@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="8_lk0uv"]
 [ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/attacker.tscn" id="8_v2b88"]
 [ext_resource type="PackedScene" uid="uid://c21fqmty4cbhr" path="res://scenes/enemies/enemy_dog.tscn" id="9_u5hqr"]
-[ext_resource type="PackedScene" uid="uid://coyo8k2hr1no8" path="res://scenes/base_hive.tscn" id="15_vpwca"]
+[ext_resource type="PackedScene" uid="uid://bbnkk7labr480" path="res://scenes/base_hive.tscn" id="15_vpwca"]
 
 [node name="Lawn" type="Node2D"]
 
@@ -24,7 +24,7 @@ chunk_texture = ExtResource("2_be4tn")
 player = NodePath("../Player")
 
 [node name="BaseHive" parent="." instance=ExtResource("15_vpwca")]
-position = Vector2(343, 475)
+position = Vector2(327, 529)
 
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(688, 349)

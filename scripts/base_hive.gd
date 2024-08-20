@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
+@export var game_over_window: GameOver
+
 var time_start: int
+var time_survived: int = -1
 
 func _ready():
 	time_start = Time.get_ticks_msec()
@@ -11,16 +14,20 @@ func _notification(what):
 		get_tree().quit() # default behavior, closes the game
 
 func _on_health_component_died():
+	game_over_window.show_game_over_window(get_time_survived())
+	get_tree().root.add_child(game_over_window.duplicate())
 	update_personal_best()
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func update_personal_best():
-	var time_survived = get_time_survived()
-	if time_survived > get_personal_best_from_disk():
+	if get_time_survived() > get_personal_best_from_disk():
 		save_personal_best_to_disk(time_survived)
 
 func get_time_survived() -> int:
-	return Time.get_ticks_msec() - time_start
+	if time_survived == -1:
+		time_survived = Time.get_ticks_msec() - time_start
+
+	return time_survived
 
 func get_personal_best_from_disk() -> int:
 	var personal_best: int = 0

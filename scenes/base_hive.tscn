@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://coyo8k2hr1no8"]
+[gd_scene load_steps=9 format=3 uid="uid://bbnkk7labr480"]
 
 [ext_resource type="Script" path="res://scripts/base_hive.gd" id="1_a8tyv"]
 [ext_resource type="Texture2D" uid="uid://cahfbf8ayu4l" path="res://assets/sprites/temp/beehive-base.png" id="2_j4b4k"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_jbvdk"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_y56t7"]
+[ext_resource type="PackedScene" uid="uid://d2hi6sn5k31m8" path="res://scenes/ui/game_over.tscn" id="6_j3a5f"]
 [ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="7_8bk6r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu687"]
@@ -13,8 +14,9 @@ height = 98.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xetl1"]
 size = Vector2(132, 112)
 
-[node name="BaseHive" type="CharacterBody2D" groups=["hives"]]
+[node name="BaseHive" type="CharacterBody2D" node_paths=PackedStringArray("game_over_window") groups=["hives"]]
 script = ExtResource("1_a8tyv")
+game_over_window = NodePath("GameOver")
 
 [node name="Hive" type="Sprite2D" parent="."]
 scale = Vector2(0.107, 0.107)
@@ -37,5 +39,7 @@ shape = SubResource("RectangleShape2D_xetl1")
 [node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_8bk6r")]
 info_text = "Player base\\nGame ends when destroyed\\n20 HP"
 hitboxComponent = NodePath("../HitboxComponent")
+
+[node name="GameOver" parent="." instance=ExtResource("6_j3a5f")]
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
