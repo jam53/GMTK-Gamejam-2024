@@ -41,12 +41,12 @@ To export a standalone binary for Honey Horizon:
 > or disable 'Application > Modify Resources' in the export preset.
 > ```
 
-### Sources
-* [Bee (attacker)](https://www.vecteezy.com/png/1203858-bee)
+## Asset Credits
+* [Bee](https://www.vecteezy.com/png/1203858-bee)
 * [Grass](https://www.vecteezy.com/vector-art/8289688-seamless-texture-cartoon-grass-green-plants-pattern-for-wallpaper-vector-illustration-backdrop-organic-background-for-the-game-gui)
 * [Honey drop](https://www.vecteezy.com/vector-art/14347164-honey-drop-icon-cartoon-vector-bee-nectar)
 * [Flowers](https://delirioussteve.itch.io/flower-power-2d-imagesicons)
 * [Hive](https://clipart-library.com/clipart/6Tp6Knqyc.htm)
-* [Music: RF Country Landscape by legacyAlli](https://freemusicarchive.org/music/legacyAlli/legacyAlli-RF_Country_Landscape)
-* [Death sound: Death Sound Pixel by gamer500](https://freesound.org/s/692084/)
+* [Music](https://freemusicarchive.org/music/legacyAlli/legacyAlli-RF_Country_Landscape)
+* [Death sound](https://freesound.org/s/692084/)
 
