@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dply1skjqut7x"]
+[gd_scene load_steps=12 format=3 uid="uid://dply1skjqut7x"]
 
 [ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="1_av7nf"]
 [ext_resource type="Script" path="res://scripts/attacker.gd" id="1_o3a0c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_wg17l"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_rxqik"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_q3247"]
+[ext_resource type="AudioStream" uid="uid://cvvj1assyhfnm" path="res://assets/sounds/692084__gamer500__death-sound-pixel.wav" id="8_bmaol"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
@@ -67,5 +68,9 @@ attack_component = NodePath("../AttackComponent")
 [node name="AttackCollision" type="CollisionShape2D" parent="BoidsComponent/HitboxComponent"]
 visible = false
 shape = SubResource("CircleShape2D_c3flu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bmaol")
+pitch_scale = 5.0
 
 [connection signal="died" from="BoidsComponent/HealthComponent" to="." method="_on_health_component_died"]
