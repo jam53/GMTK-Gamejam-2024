@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cmo4arn350ar4" path="res://assets/fonts/FredokaOne-Regular.ttf" id="4_cewai"]
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="5_pib4d"]
 [ext_resource type="Script" path="res://scripts/background_bees.gd" id="6_64rpm"]
-[ext_resource type="PackedScene" path="res://scenes/ui/main_menu_bee.tscn" id="7_kf7sv"]
+[ext_resource type="PackedScene" uid="uid://cju6x7gy02tl0" path="res://scenes/ui/main_menu_bee.tscn" id="7_kf7sv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_170og"]
 

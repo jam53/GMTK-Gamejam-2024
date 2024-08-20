@@ -10,7 +10,7 @@ class_name AttackHive
 @onready var respawntext = $Respawnlabel
 
 
-var attacker_template = preload("res://scenes/attacker.tscn")
+var attacker_template = preload("res://scenes/bees/attacker.tscn")
 var active_timers: Array = []
 
 func _ready():

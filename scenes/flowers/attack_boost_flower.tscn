@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5eyugwsohmnm"]
+[gd_scene load_steps=8 format=3 uid="uid://b5eyugwsohmnm"]
 
 [ext_resource type="PackedScene" uid="uid://c4rj533k6di4v" path="res://scenes/components/flower_component.tscn" id="1_ghxpj"]
-[ext_resource type="Script" path="res://scripts/attack_boost_flower.gd" id="1_st4f1"]
+[ext_resource type="Script" path="res://scripts/boost_flower.gd" id="1_tvuhu"]
 [ext_resource type="Texture2D" uid="uid://cnkydtbpj3b52" path="res://assets/sprites/temp/attack_boost_flower.png" id="2_ik7e2"]
 [ext_resource type="PackedScene" uid="uid://7ntfeyytjyh7" path="res://scenes/boost_area.tscn" id="2_r1u52"]
-[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="4_6dw3n"]
 [ext_resource type="PackedScene" uid="uid://5vp1ugb5kfej" path="res://scenes/progress_timer.tscn" id="4_mygwi"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="5_1yo10"]
 
@@ -12,7 +11,7 @@
 radius = 31.0161
 
 [node name="AttackBoostFlower" type="Node2D"]
-script = ExtResource("1_st4f1")
+script = ExtResource("1_tvuhu")
 
 [node name="BoostArea" parent="." instance=ExtResource("2_r1u52")]
 
@@ -26,13 +25,9 @@ offset_top = -1.0
 offset_bottom = -1.0
 scale = Vector2(0.5, 0.5)
 
-[node name="FlowerComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_ghxpj")]
-health_component = NodePath("../HealthComponent")
+[node name="FlowerComponent" parent="." instance=ExtResource("1_ghxpj")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_6dw3n")]
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_1yo10")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("5_1yo10")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_a3pjo")

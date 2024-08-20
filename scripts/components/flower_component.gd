@@ -1,9 +1,5 @@
 extends Node2D
 
-@export var health_component : HealthComponent
-
-func _ready():
-	health_component.died.connect(_on_health_component_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,6 +19,3 @@ func _process(delta):
 			parent.remove_from_group("occupied_flowers")
 		parent.modulate.a = 1.0  # Set visibility to 100%
 
-
-func _on_health_component_died():
-	get_parent().queue_free()

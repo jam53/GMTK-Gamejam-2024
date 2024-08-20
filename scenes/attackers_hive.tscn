@@ -51,8 +51,7 @@ hitboxComponent = NodePath("..")
 [node name="HealthComponent" parent="." instance=ExtResource("4_144ep")]
 max_hp = 6
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_8ub17")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("5_8ub17")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_vl4y6")

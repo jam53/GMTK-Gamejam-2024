@@ -1,11 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://cxsk04ljtla46"]
 
-[ext_resource type="Script" path="res://scripts/boids_component.gd" id="1_8shy5"]
+[ext_resource type="Script" path="res://scripts/boids_component.gd" id="1_a3k5i"]
 
 [node name="BoidsComponent" type="CharacterBody2D"]
-script = ExtResource("1_8shy5")
+collision_mask = 3
+script = ExtResource("1_a3k5i")
 
 [node name="FlockArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [connection signal="body_entered" from="FlockArea" to="." method="_on_flockview_body_entered"]
 [connection signal="body_exited" from="FlockArea" to="." method="_on_flockview_body_exited"]

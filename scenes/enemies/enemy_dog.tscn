@@ -9,14 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://c2tnhw17jpf8x" path="res://scenes/components/info_component.tscn" id="7_q877x"]
 [ext_resource type="AudioStream" uid="uid://cvvj1assyhfnm" path="res://assets/sounds/692084__gamer500__death-sound-pixel.wav" id="8_w2pl3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ps7t2"]
-radius = 85.8393
-height = 463.738
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hql0"]
+radius = 34.0147
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
-size = Vector2(43.4186, 98.3612)
+size = Vector2(47.2567, 86.9558)
 
-[node name="EnemyDog" type="CharacterBody2D" groups=["badgers", "dogs"]]
+[node name="EnemyDog" type="CharacterBody2D" groups=["badgers", "enemies"]]
+z_index = 4
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_q6yrs")
 
 [node name="Dog" type="Sprite2D" parent="."]
@@ -27,8 +29,8 @@ texture = ExtResource("2_i0i2a")
 color = Color(0.292446, 0.170032, 0.00334097, 1)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-scale = Vector2(0.315391, 0.229515)
-shape = SubResource("CapsuleShape2D_ps7t2")
+position = Vector2(-1, 9)
+shape = SubResource("CircleShape2D_8hql0")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_4ltxc")]
 attack = 1
@@ -36,13 +38,11 @@ attack = 1
 [node name="HealthComponent" parent="." instance=ExtResource("5_prp0s")]
 max_hp = 8.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("6_ngd4q")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("6_ngd4q")]
 attack_component = NodePath("../AttackComponent")
-enemy = true
 
 [node name="area" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-4, 5)
+position = Vector2(-0.619752, -1.4999)
 rotation = 3.14159
 scale = Vector2(1.76144, -1.27651)
 shape = SubResource("RectangleShape2D_x6453")

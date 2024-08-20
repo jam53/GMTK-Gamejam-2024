@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmoni6x4lg7e0"]
+
+[ext_resource type="PackedScene" uid="uid://b5eyugwsohmnm" path="res://scenes/flowers/attack_boost_flower.tscn" id="1_25ucl"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bees/attacker.tscn" id="2_8kede"]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="AttackBoostFlower" parent="." instance=ExtResource("1_25ucl")]
+position = Vector2(156, 140)
+
+[node name="Attacker" parent="." instance=ExtResource("2_8kede")]
+position = Vector2(509, 414)

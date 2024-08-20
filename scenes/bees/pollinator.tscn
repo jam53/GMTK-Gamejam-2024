@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://boiwkonnqb83"]
+
+[ext_resource type="Script" path="res://scripts/bees/pollinator.gd" id="1_cou1f"]
+[ext_resource type="Texture2D" uid="uid://cw6sd1iyoi235" path="res://assets/sprites/temp/pollinator.png" id="3_7dj3w"]
+[ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/components/boids_component.tscn" id="3_mkp01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7x5u"]
+radius = 13.2868
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31pin"]
+radius = 53.1473
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfryl"]
+radius = 45.0
+
+[node name="Pollinator" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.376313, 0.376313)
+script = ExtResource("1_cou1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0504633, 0.0504633)
+texture = ExtResource("3_7dj3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g7x5u")
+
+[node name="PollinateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FlowerDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerDetectionArea"]
+shape = SubResource("CircleShape2D_31pin")
+
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("3_mkp01")]
+sprite = NodePath("../Sprite2D")
+flock_area_shape = NodePath("FlockView")
+max_speed = 200.0
+
+[node name="FlockView" type="CollisionShape2D" parent="BoidsComponent"]
+shape = SubResource("CircleShape2D_mfryl")
+
+[connection signal="timeout" from="PollinateTimer" to="." method="_on_pollinate_timer_timeout"]
+[connection signal="timeout" from="HiveTimer" to="." method="_on_hive_timer_timeout"]
+[connection signal="area_entered" from="FlowerDetectionArea" to="." method="_on_flower_detection_area_area_entered"]
+[connection signal="body_entered" from="FlowerDetectionArea" to="." method="_on_flower_detection_area_body_entered"]

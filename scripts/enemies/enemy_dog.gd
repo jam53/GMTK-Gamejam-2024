@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Dog
 @onready var musicplayer = $AudioStreamPlayer
 
 func _on_health_component_died():

@@ -1,4 +1,6 @@
-extends Node2D
+extends Bee
+
+class_name Pollinator
 
 @export var hive : Hive
 @export var pollinateTime := 2
@@ -17,12 +19,12 @@ var found_flower_parent : Node
 var found_flower : Node
 
 func _ready():
+	bee_type = Enums.BeeType.POLLINATOR
 	pollinate_timer.wait_time = pollinateTime
 	hive_timer.wait_time = hiveTime
 
 func _process(delta):
 	if not _in_hive and (boids_component.lure == null or (not _flower_found and boids_component.lure == hive)):
-		print("finding new flower")
 		found_flower = find_flower()
 		
 		if found_flower == null:
@@ -53,7 +55,6 @@ func find_flower() -> Node2D:
 
 func _on_flower_detection_area_area_entered(area):
 	if area.get_parent() == boids_component.lure and not _flower_found:
-		print("flower found")
 		_flower_found = true
 		pollinate_timer.start()
 

@@ -10,43 +10,46 @@
 [ext_resource type="AudioStream" uid="uid://cvvj1assyhfnm" path="res://assets/sounds/692084__gamer500__death-sound-pixel.wav" id="8_nm4s7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvbct"]
-radius = 15.0
-height = 94.0
+radius = 39.0
+height = 102.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0lft"]
-radius = 42.0
-height = 110.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wfrq"]
+radius = 47.0
+height = 120.0
 
-[node name="BasicRabbit" type="CharacterBody2D"]
+[node name="BasicRabbit" type="CharacterBody2D" groups=["enemies"]]
+z_index = 4
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ko1gy")
-
-[node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_lvbct")
 
 [node name="Rabbit" type="Sprite2D" parent="."]
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("1_wyne6")
 
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_lvbct")
+
 [node name="AttackComponent" parent="." instance=ExtResource("2_fda6u")]
-attack = 1
+z_index = 4
+attack = 2
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]
 max_hp = 5.0
 
-[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("4_cs4vb")]
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component", "attack_component") instance=ExtResource("4_cs4vb")]
 speed = 50.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_1eo3m")]
-health_component = NodePath("../HealthComponent")
 attack_component = NodePath("../AttackComponent")
-enemy = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_c0lft")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_1eo3m")]
+attack_component = NodePath("../AttackComponent")
+
+[node name="hitbox2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_5wfrq")
 
 [node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_14pdh")]
 info_text = "Rabbit\\nAttacks Flowers\\n1 hp 1 atk"
