@@ -17,28 +17,28 @@ func _ready():
 	add_items_to_inventory([
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/beehive.png"), 
-			2, 
+			10, 
 			"beehive", 
 			preload("res://scenes/hive.tscn"),
 			0.5
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/beehive-attackers.png"),
-			5,
+			15,
 			"beehive attackers",
 			preload("res://scenes/attackers_hive.tscn"),
 			0.5
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/attack_boost_flower.png"),
-			10,
+			50,
 			"attack boost flower",
 			preload("res://scenes/flowers/attack_boost_flower.tscn"),
 			0.05
 		),
 		InventoryItem.new(
 			preload("res://assets/sprites/temp/health_boost_flower.png"),
-			10,
+			50,
 			"health boost flower",
 			preload("res://scenes/flowers/health_boost_flower.tscn"),
 			0.05
