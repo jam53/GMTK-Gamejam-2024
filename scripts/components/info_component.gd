@@ -23,6 +23,6 @@ func _on_mouse_exited():
 func process_text(text: String) -> String:
 	# Replace \n with actual newline
 	text = text.replace("\\n", "\n")
+	# Add color, bold, and outline to the text
+	text = "[color=black]" + text + "[/color]"
 	return text
-
-
