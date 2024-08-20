@@ -7,6 +7,7 @@ class_name AttackComponent
 
 @onready var attack_timer = $Timer
 
+var main_target : Node = null
 var targets : Array[Node] = []
 var _can_attack
 var attack_multiplier = 1
@@ -18,7 +19,6 @@ func add_target(target: Node):
 	if target.has_method("take_damage"):
 		targets.append(target)
 		if targets.size() == 1:
-			print("initial attack from ", get_parent())
 			damage(target)
 			attack_timer.start()
 	
@@ -29,20 +29,36 @@ func remove_target(target: Node):
 
 func damage(target: Node) -> void:
 	if _can_attack:
-		print(get_parent(), " attacks ", target.get_parent())
 		target.take_damage(attack * attack_multiplier)
 		_can_attack = false
+		
+func remove_freed_nodes_from_list(node_list: Array) -> void:
+	for i in range(node_list.size() - 1, -1, -1):  # Iterate in reverse to avoid skipping elements
+		if not is_instance_valid(node_list[i]):
+			node_list.remove_at(i)
+
 
 func _on_Timer_timeout() -> void:
 	_can_attack = true
+	remove_freed_nodes_from_list(targets)
 	if targets.size() == 0:
 		return
+		
 	var target = targets[0]
-	while not is_instance_valid(target) and targets.size() > 1:
-		targets.remove_at(0)
-		target = targets[0]
 		
 	if targets.size() > 0:
 		if is_instance_valid(target):
-			damage(target)
+			# Filter based on main_target
+			var i = 1
+			if main_target != null:
+				while target.get_parent() != main_target and not target.get_parent().is_in_group("attackers"):
+					if i < targets.size():
+						target = targets[i]
+						i += 1
+					else: 
+						target = null
+						break
+			
+			if target != null:
+				damage(target)
 		attack_timer.start()

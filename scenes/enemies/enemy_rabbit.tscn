@@ -33,10 +33,11 @@ attack = 2
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]
 max_hp = 5.0
 
-[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("4_cs4vb")]
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component", "attack_component") instance=ExtResource("4_cs4vb")]
 speed = 50.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
+attack_component = NodePath("../AttackComponent")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_1eo3m")]
 attack_component = NodePath("../AttackComponent")

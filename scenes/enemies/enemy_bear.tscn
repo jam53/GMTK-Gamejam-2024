@@ -12,8 +12,8 @@
 radius = 49.0
 height = 98.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xetl1"]
-size = Vector2(431, 351)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdpfe"]
+radius = 109.115
 
 [node name="EnemyBear" type="CharacterBody2D" groups=["bears", "enemies"]]
 script = ExtResource("1_y4kid")
@@ -39,13 +39,14 @@ attack_component = NodePath("../AttackComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(4, 1)
-shape = SubResource("RectangleShape2D_xetl1")
+shape = SubResource("CircleShape2D_bdpfe")
 
-[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("6_mlkqe")]
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component", "attack_component") instance=ExtResource("6_mlkqe")]
 position = Vector2(0, 7)
 speed = 30.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
+attack_component = NodePath("../AttackComponent")
 target = 1
 
 [node name="InfoComponent" parent="." node_paths=PackedStringArray("hitboxComponent") instance=ExtResource("7_1jlrn")]

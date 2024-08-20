@@ -4,11 +4,16 @@ class_name MoveComponent
 @export var speed: float
 @export var parent : Node2D
 @export var hitbox_component : HitboxComponent
+@export var attack_component : AttackComponent
 
 enum TargetType { FLOWER, HIVE }
 @export var target: TargetType = TargetType.FLOWER
 
-var target_flower: Node = null
+var target_flower: Node = null:
+	set(value):
+		target_flower = value
+		if attack_component != null:
+			attack_component.main_target = value
 
 func _process(delta):
 	find_closest_flower(target)
