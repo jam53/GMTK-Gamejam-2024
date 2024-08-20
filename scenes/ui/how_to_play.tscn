@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://pujtwj4ynafs"]
+[gd_scene load_steps=5 format=3 uid="uid://dvddict56q367"]
 
 [ext_resource type="Texture2D" path="res://assets/sprites/GrassBlurred.jpg" id="1_0wpaa"]
 [ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_umn2q"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bh6jf7bkg5idf" path="res://assets/fonts/Fredoka-Regular.ttf" id="3_1kktn"]
 
 [node name="HowToPlay" type="Window"]
+title = "Honey Horizon - How to play"
 initial_position = 2
 size = Vector2i(1000, 800)
 visible = false
