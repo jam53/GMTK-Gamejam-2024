@@ -17,6 +17,9 @@ radius = 47.0
 height = 120.0
 
 [node name="BasicRabbit" type="CharacterBody2D" groups=["enemies"]]
+z_index = 4
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ko1gy")
 
 [node name="Rabbit" type="Sprite2D" parent="."]
@@ -28,6 +31,7 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lvbct")
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_fda6u")]
+z_index = 4
 attack = 2
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_sreqt")]

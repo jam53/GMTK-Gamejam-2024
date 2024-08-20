@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_afn2j"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_tk22a"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_pegh7"]
-[ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="7_eh658"]
+[ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/components/boids_component.tscn" id="7_sue0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
 radius = 215.502
@@ -18,7 +18,9 @@ radius = 42.0119
 radius = 1863.0
 
 [node name="Attacker" type="CharacterBody2D" groups=["attackers"]]
-z_index = 2
+z_index = 10
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_uy8nc")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -50,7 +52,7 @@ attack_component = NodePath("../AttackComponent")
 [node name="AttackCollision" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_c3flu")
 
-[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("7_eh658")]
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("7_sue0a")]
 sprite = NodePath("../Sprites")
 flock_area_shape = NodePath("FlockViewCollision")
 max_speed = 350.0
