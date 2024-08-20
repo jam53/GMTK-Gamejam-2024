@@ -25,7 +25,6 @@ func _ready():
 
 func _process(delta):
 	if not _in_hive and (boids_component.lure == null or (not _flower_found and boids_component.lure == hive)):
-		print("finding new flower")
 		found_flower = find_flower()
 		
 		if found_flower == null:

@@ -18,8 +18,9 @@ func add_target(target: Node):
 	if target.has_method("take_damage"):
 		targets.append(target)
 		if targets.size() == 1:
-			damage(target)
-			attack_timer.start()
+			if is_in_group("attackers") or _is_valid_target(target):
+				damage(target)
+				attack_timer.start()
 	
 		
 func remove_target(target: Node):
@@ -59,6 +60,7 @@ func _on_Timer_timeout() -> void:
 			if get_parent().is_in_group("attackers"):
 				damage(target)
 			else:
+				print(target, " ",_is_valid_target(target), " main target: ", main_target)
 				while not _is_valid_target(target):
 					if i < targets.size():
 						target = targets[i]
