@@ -1,16 +1,20 @@
-extends Node2D
+extends Bee
 
 class_name Attacker
 
-@onready var shadow_sprite = $BoidsComponent/Sprites/ShadowSprite
+@onready var shadow_sprite = $Sprites/ShadowSprite
 @onready var health_component = $BoidsComponent/HealthComponent
 @onready var attack_component = $BoidsComponent/AttackComponent
 
 
 var hive : AttackHive
+var beetype := Enums.BeeType.ATTACKER
 
 var attack_boosts_active := {}
 var health_boosts_active := {}
+
+func _ready():
+	bee_type = Enums.BeeType.ATTACKER
 
 func _process(delta):
 	if attack_boosts_active.size() > 0:

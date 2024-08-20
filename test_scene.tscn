@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmoni6x4lg7e0"]
+
+[ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="1_jsaap"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bees/attacker.tscn" id="2_ebt27"]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="EnemyBear" parent="." instance=ExtResource("1_jsaap")]
+position = Vector2(270, 169)
+
+[node name="Attacker" parent="." instance=ExtResource("2_ebt27")]
+position = Vector2(1077, 568)
+
+[node name="Attacker2" parent="." instance=ExtResource("2_ebt27")]
+position = Vector2(1077, 568)
+
+[node name="Attacker3" parent="." instance=ExtResource("2_ebt27")]
+position = Vector2(1077, 568)
+
+[node name="Attacker4" parent="." instance=ExtResource("2_ebt27")]
+position = Vector2(1077, 568)

@@ -33,8 +33,7 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_gw1kj")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_5gw2x")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("6_5gw2x")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_a3pjo")

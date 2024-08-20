@@ -4,7 +4,7 @@ class_name Hive
 
 @export var capacity := 5
 
-var pollinator_template = preload("res://scenes/pollinator.tscn")
+var pollinator_template = preload("res://scenes/bees/pollinator.tscn")
 
 func _ready():
 	for i in range(capacity):

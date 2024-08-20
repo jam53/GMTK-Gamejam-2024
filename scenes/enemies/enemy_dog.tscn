@@ -15,7 +15,7 @@ height = 463.738
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
 size = Vector2(43.4186, 98.3612)
 
-[node name="EnemyDog" type="CharacterBody2D" groups=["badgers"]]
+[node name="EnemyDog" type="CharacterBody2D" groups=["badgers", "enemies"]]
 script = ExtResource("1_q6yrs")
 
 [node name="Dog" type="Sprite2D" parent="."]
@@ -35,8 +35,7 @@ attack = 1
 [node name="HealthComponent" parent="." instance=ExtResource("5_prp0s")]
 max_hp = 8.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("6_ngd4q")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("6_ngd4q")]
 attack_component = NodePath("../AttackComponent")
 enemy = true
 

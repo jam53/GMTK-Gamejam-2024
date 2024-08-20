@@ -13,9 +13,9 @@ radius = 49.0
 height = 98.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xetl1"]
-size = Vector2(132, 112)
+size = Vector2(431, 351)
 
-[node name="EnemyBear" type="CharacterBody2D" groups=["bears"]]
+[node name="EnemyBear" type="CharacterBody2D" groups=["bears", "enemies"]]
 script = ExtResource("1_y4kid")
 
 [node name="Bear" type="Sprite2D" parent="."]
@@ -33,13 +33,13 @@ attack_cooldown = 1.5
 [node name="HealthComponent" parent="." instance=ExtResource("4_w2qks")]
 max_hp = 15.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_jsykh")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_jsykh")]
+position = Vector2(-4, 0)
 attack_component = NodePath("../AttackComponent")
 enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-1, -2)
+position = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_xetl1")
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("parent", "hitbox_component") instance=ExtResource("6_mlkqe")]

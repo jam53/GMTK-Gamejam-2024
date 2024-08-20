@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bhysoj6yo0m6t" path="res://scenes/enemies/enemy_bear.tscn" id="5_h78oq"]
 [ext_resource type="Script" path="res://scripts/moving_area.gd" id="6_minpy"]
 [ext_resource type="PackedScene" uid="uid://dei8n40gtxqsw" path="res://scenes/enemies/enemy_rabbit.tscn" id="8_lk0uv"]
-[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/attacker.tscn" id="8_v2b88"]
+[ext_resource type="PackedScene" uid="uid://dply1skjqut7x" path="res://scenes/bees/attacker.tscn" id="8_v2b88"]
 [ext_resource type="PackedScene" uid="uid://c21fqmty4cbhr" path="res://scenes/enemies/enemy_dog.tscn" id="9_u5hqr"]
 
 [node name="Lawn" type="Node2D"]

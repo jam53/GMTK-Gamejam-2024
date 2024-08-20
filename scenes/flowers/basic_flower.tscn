@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkaw854ax1oes"]
+[gd_scene load_steps=7 format=3 uid="uid://dkaw854ax1oes"]
 
 [ext_resource type="PackedScene" uid="uid://c4rj533k6di4v" path="res://scenes/components/flower_component.tscn" id="1_necb4"]
 [ext_resource type="Texture2D" uid="uid://cvd8xqvrbuftm" path="res://assets/sprites/F1_512x512_orange.png" id="2_axc86"]
 [ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="3_joiij"]
 [ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="4_2jp4e"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y76tc"]
+radius = 34.0147
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5p2cf"]
 radius = 45.0444
 
-[node name="Basic_Flower" type="Node2D" groups=["flowers"]]
+[node name="Basic_Flower" type="StaticBody2D" groups=["flowers"]]
 
 [node name="FlowerComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("1_necb4")]
 health_component = NodePath("../HealthComponent")
@@ -17,10 +20,12 @@ health_component = NodePath("../HealthComponent")
 scale = Vector2(0.173, 0.173)
 texture = ExtResource("2_axc86")
 
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y76tc")
+
 [node name="HealthComponent" parent="." instance=ExtResource("3_joiij")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_2jp4e")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("4_2jp4e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_5p2cf")

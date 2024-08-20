@@ -38,12 +38,11 @@ speed = 50.0
 parent = NodePath("..")
 hitbox_component = NodePath("../HitboxComponent")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "attack_component") instance=ExtResource("5_1eo3m")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("5_1eo3m")]
 attack_component = NodePath("../AttackComponent")
 enemy = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" groups=["enemies"]]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_c0lft")
 

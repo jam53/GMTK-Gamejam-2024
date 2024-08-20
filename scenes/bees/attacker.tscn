@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://dply1skjqut7x"]
+
+[ext_resource type="Script" path="res://scripts/bees/attacker.gd" id="1_uy8nc"]
+[ext_resource type="Texture2D" uid="uid://cpxejmxvj6p8y" path="res://assets/sprites/temp/bee_shadow.png" id="2_oivec"]
+[ext_resource type="Texture2D" uid="uid://y8tiw2oprtat" path="res://assets/sprites/temp/bee.png" id="3_y7a7x"]
+[ext_resource type="PackedScene" uid="uid://jaiykhugbens" path="res://scenes/components/attack_component.tscn" id="4_afn2j"]
+[ext_resource type="PackedScene" uid="uid://bg8sij5iv4h0j" path="res://scenes/components/health_component.tscn" id="5_tk22a"]
+[ext_resource type="PackedScene" uid="uid://tb08j7g6ttxh" path="res://scenes/components/hitbox_component.tscn" id="6_pegh7"]
+[ext_resource type="PackedScene" uid="uid://cxsk04ljtla46" path="res://scenes/boids_component.tscn" id="7_eh658"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kadw"]
+radius = 215.502
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3flu"]
+radius = 37.0135
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u70o"]
+radius = 1863.0
+
+[node name="Attacker" type="CharacterBody2D" groups=["attackers"]]
+z_index = 2
+script = ExtResource("1_uy8nc")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2kadw")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="ShadowSprite" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0.839216, 0.8, 1)
+position = Vector2(0.27842, -0.158137)
+scale = Vector2(0.0310142, 0.0351494)
+texture = ExtResource("2_oivec")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+position = Vector2(0.27842, -0.158137)
+scale = Vector2(0.027842, 0.0316274)
+texture = ExtResource("3_y7a7x")
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_afn2j")]
+attack = 1
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_tk22a")]
+max_hp = 1.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("attack_component") instance=ExtResource("6_pegh7")]
+attack_component = NodePath("../AttackComponent")
+
+[node name="AttackCollision" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_c3flu")
+
+[node name="BoidsComponent" parent="." node_paths=PackedStringArray("sprite", "flock_area_shape") instance=ExtResource("7_eh658")]
+sprite = NodePath("../Sprites")
+flock_area_shape = NodePath("FlockViewCollision")
+max_speed = 350.0
+target_follow_force = 0.076
+avoid_distance = 35.0
+stopable = true
+
+[node name="FlockViewCollision" type="CollisionShape2D" parent="BoidsComponent"]
+position = Vector2(0.13921, 0.0948822)
+scale = Vector2(0.027842, 0.0316274)
+shape = SubResource("CircleShape2D_2u70o")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

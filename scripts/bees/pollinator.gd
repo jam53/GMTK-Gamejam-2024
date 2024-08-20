@@ -1,4 +1,4 @@
-extends Node2D
+extends Bee
 
 @export var hive : Hive
 @export var pollinateTime := 2
@@ -15,6 +15,7 @@ var found_flower_location : Vector2
 var found_flower_parent : Node
 
 func _ready():
+	bee_type = Enums.BeeType.POLLINATOR
 	pollinate_timer.wait_time = pollinateTime
 	hive_timer.wait_time = hiveTime
 
