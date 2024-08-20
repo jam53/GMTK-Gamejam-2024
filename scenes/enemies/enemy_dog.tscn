@@ -15,7 +15,7 @@ height = 463.738
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6453"]
 size = Vector2(43.4186, 98.3612)
 
-[node name="EnemyDog" type="CharacterBody2D" groups=["badgers"]]
+[node name="EnemyDog" type="CharacterBody2D" groups=["badgers", "dogs"]]
 script = ExtResource("1_q6yrs")
 
 [node name="Dog" type="Sprite2D" parent="."]
