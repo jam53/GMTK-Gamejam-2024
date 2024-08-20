@@ -9,6 +9,7 @@ extends Node2D
 
 var basic_flower = preload("res://scenes/flowers/basic_flower.tscn")
 
+var new_flower_chance : float = 0.3
 var _flower_found := false
 var _in_hive := false
 var found_flower_location : Vector2
@@ -61,15 +62,16 @@ func _on_pollinate_timer_timeout():
 	boids_component.lure = hive
 	
 	if found_flower_location != null and found_flower_parent != null:
-		# Create a new basic_flower instance
-		var new_flower = basic_flower.instantiate()
-		
-		# Set the position of the new flower close to the found_flower
-		var offset = Vector2(randf() * 500 - 250, randf() * 500 - 250)  # Random offset within a 20x20 area
-		new_flower.position = found_flower_location + offset
-		
-		# Add the new flower as a child to the parent of found_flower
-		found_flower_parent.add_child(new_flower)
+		if randf() < new_flower_chance:
+			# Create a new basic_flower instance
+			var new_flower = basic_flower.instantiate()
+			
+			# Set the position of the new flower close to the found_flower
+			var offset = Vector2(randf() * 500 - 250, randf() * 500 - 250)  # Random offset within a 20x20 area
+			new_flower.position = found_flower_location + offset
+			
+			# Add the new flower as a child to the parent of found_flower
+			found_flower_parent.add_child(new_flower)
 
 
 func _on_hive_timer_timeout():
