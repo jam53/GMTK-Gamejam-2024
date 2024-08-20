@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn54re6imlidr"]
+[gd_scene load_steps=3 format=3 uid="uid://dn54re6imlidr"]
 
 [ext_resource type="Script" path="res://scripts/spawners/spawner.gd" id="1_7flba"]
+[ext_resource type="PackedScene" uid="uid://dkaw854ax1oes" path="res://scenes/basic_flower.tscn" id="2_lytnu"]
 
 [node name="FlowerSpawner" type="Node2D" node_paths=PackedStringArray("spawn_area")]
 script = ExtResource("1_7flba")
-spawn_area = NodePath("SpawnArea")
+spawn_area = NodePath("ReferenceRect")
+scene = ExtResource("2_lytnu")
 
-[node name="SpawnArea" type="ReferenceRect" parent="."]
-offset_left = 445.0
-offset_top = -257.0
-offset_right = 1530.0
-offset_bottom = 305.0
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 662.0
