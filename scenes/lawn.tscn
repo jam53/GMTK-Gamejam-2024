@@ -30,7 +30,6 @@ position = Vector2(327, 529)
 
 [node name="Hive" parent="." instance=ExtResource("2_qycfm")]
 position = Vector2(688, 349)
-capacity = 1
 
 [node name="AttackersHive" parent="." instance=ExtResource("4_c0gor")]
 position = Vector2(883, 145)
