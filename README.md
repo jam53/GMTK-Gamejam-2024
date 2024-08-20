@@ -47,6 +47,6 @@ To export a standalone binary for Honey Horizon:
 * [Honey drop](https://www.vecteezy.com/vector-art/14347164-honey-drop-icon-cartoon-vector-bee-nectar)
 * [Flowers](https://delirioussteve.itch.io/flower-power-2d-imagesicons)
 * [Hive](https://clipart-library.com/clipart/6Tp6Knqyc.htm)
-* [Music: RF Country Landscape by legacyAlli](https://freemusicarchive.org/music/legacyAlli/legacyAlli-RF_Country_Landscape) – legacyAlli - RF Country Landscape - Free Music Archive – License CC BY
-* [Death sound: Death Sound Pixel by gamer500](https://freesound.org/s/692084/) -- License: Creative Commons 0
+* [Music: RF Country Landscape by legacyAlli](https://freemusicarchive.org/music/legacyAlli/legacyAlli-RF_Country_Landscape)
+* [Death sound: Death Sound Pixel by gamer500](https://freesound.org/s/692084/)
 
