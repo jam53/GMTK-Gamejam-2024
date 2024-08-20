@@ -34,4 +34,4 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	var health_component = _find_health_component(body)
 	if health_component != null:
-		attack(health_component)
+		stop_attack(health_component)
